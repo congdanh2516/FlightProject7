@@ -1,0 +1,23 @@
+.mat-label{
+    opacity: 1 !important;
+    color: black;
+}
+
+mat-form-field.mat-form-field {
+    font-size: 20px;
+    width: 45%;
+}
+
+/* remove padding */
+/* :host >>> .mat-expansion-panel-body{
+    padding: 0 !important;
+  } */
+
+.mat-form-field{
+    margin-top: 40px;
+}
+
+label{
+    margin-top: 20px;
+}
+

@@ -1,0 +1,127 @@
+<!-- <body style="margin:0 auto; padding: 10px;">   -->
+  <mat-stepper linear #stepper style="padding: 0px !important;">
+    <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Nhập thông tin đăng nhập</ng-template>
+
+        <mat-form-field appearance="legacy">
+          <mat-label>CMND/CCCD/HC</mat-label>
+          <input matInput formControlName="firstCtrl" placeholder="Last name, First name" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy">
+          <mat-label>Mật khẩu</mat-label>
+          <input matInput formControlName="firstCtrl" [type]="hide ? 'password' : 'text'" required>
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy">
+          <mat-label>Xác nhận mật khẩu</mat-label>
+          <input matInput formControlName="firstCtrl" [type]="hide ? 'password' : 'text'" required>
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <div align="right">
+          <!-- <button mat-button matStepperNext>Tiếp tục</button> -->
+          <button mat-button matStepperNext
+          style="background-color: #E8A207; height: 60px; width: 150px; font-size: 20px;">
+          Tiếp tục
+          </button>
+        </div>
+      </form>
+    </mat-step>
+
+
+    <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Nhập thông tin cá nhân</ng-template>
+       
+        <mat-form-field appearance="legacy" style="width: 40%">
+          <mat-label>Danh xưng</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let element of suffix" [value]="element.value">
+              {{element.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+          <mat-form-field appearance="legacy" style="width: 40%; display: inline-block; margin-left: 20%;">
+            <mat-label>Họ</mat-label>
+            <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                 required>
+          </mat-form-field>
+
+          <mat-form-field appearance="legacy">
+            <mat-label>Đệm và tên</mat-label>
+            <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                 required>
+          </mat-form-field>
+
+          <mat-form-field appearance="legacy">
+            <mat-label>Ngày sinh</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+        <div align="right">
+          <button mat-button matStepperPrevious
+          style="background-color: #E8A207; height: 60px; width: 150px; font-size: 20px; margin-right: 20px;">
+          Trở lại
+          </button>
+
+          <button mat-button matStepperNext
+          style="background-color: #E8A207; height: 60px; width: 150px; font-size: 20px;">
+          Tiếp tục
+          </button>
+        </div>
+
+      </form>
+    </mat-step>
+
+
+    <mat-step>
+      <ng-template matStepLabel>Nhập liên hệ</ng-template>
+      
+      <mat-form-field class="example-full-width" appearance="legacy">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput
+               placeholder="Ex. pat@gmail.com">
+        <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="legacy">
+        <mat-label>Số điện thoại</mat-label>
+        <input type="email" matInput
+               placeholder="0123 456 789">
+        <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+      </mat-form-field>
+
+      <!-- <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div> -->
+
+      <div align="right">
+        <button mat-button matStepperPrevious
+        style="background-color: #E8A207; height: 60px; width: 150px; font-size: 20px; margin-right: 20px">
+        Trở lại
+        </button>
+
+        <button mat-button matStepperNext
+        style="background-color: #E8A207; height: 60px; width: 150px; font-size: 20px;">
+        Đăng ký
+        </button>
+      </div>
+
+    </mat-step>
+  </mat-stepper>
+  
+
+      
+
+<!-- </body> -->

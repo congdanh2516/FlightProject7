@@ -1,0 +1,28 @@
+  <div class="row" style="padding: 10px;">
+    <div class="col-md-12">
+      <mat-dialog-content class="mat-typography">
+        <p>
+          <mat-form-field appearance="legacy">
+            <mat-label>Tên đăng nhập</mat-label>
+            <input matInput [(ngModel)]="account.username">
+          </mat-form-field>
+        </p>
+      
+        <p>
+          <mat-form-field appearance="legacy">
+            <mat-label>Enter your password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="account.password">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+          
+        </p>
+      </mat-dialog-content>
+  
+      <mat-dialog-actions align="center" style="margin-bottom: 10px;">
+        <button mat-button style="background-color: #E8A207; height: 60px; width: 150px; font-size: 20px;" (click)="login()">Đăng nhập</button>
+      </mat-dialog-actions>
+    </div>
+  </div>  
+
