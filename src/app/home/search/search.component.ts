@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormControl } from '@angular/forms';
+import { SearchService } from 'src/app/service/search/search.service';
 
 @Component({
   selector: 'app-search',
@@ -9,7 +10,7 @@ import { FormControl } from '@angular/forms';
 })
 export class SearchComponent implements OnInit {
 
-  constructor() { }
+  constructor(private searchService : SearchService) { }
 
   ngOnInit(): void {
   }
@@ -34,5 +35,23 @@ export class SearchComponent implements OnInit {
   panelOpenState : boolean =false;
 
   oneway : boolean = false;
+
+  //tim kiem
+  flight : any = {
+    from : '',
+    to : '',
+    type : '',
+    startDate : '',
+    backDate : '',
+    quantity : ''
+  }
+
+  flights : any[];
+
+  search(flight : any){
+    this.searchService.search_sv(flight).subscribe(
+      data => this.flights = data
+    )
+  }
 
 }

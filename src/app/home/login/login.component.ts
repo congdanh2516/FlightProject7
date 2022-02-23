@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from 'src/app/service/login.service';
+import { LoginService } from 'src/app/service/login/login.service';
 
 
 @Component({
@@ -21,7 +21,17 @@ export class LoginComponent implements OnInit {
     password : ''
   }
 
+  //notice
+  notice : string = '';
+  empty : boolean = true;
+
   login(){
+      if(this.account.username == undefined || this.account.password == undefined){
+          this.notice="Vui long nhap ten dang nhap va mat khau";
+      }
+      else {
+        this.empty=false;
+      }
       console.log(this.account.username + this.account.password);
       this.loginService.login_sv(this.account).subscribe();
   }

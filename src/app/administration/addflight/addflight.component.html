@@ -1,0 +1,66 @@
+<div class="row">
+    <div class="col-md-12">
+        <h1>Thông tin chuyến bay mới</h1>
+        <mat-form-field appearance="legacy">
+            <mat-label>Từ</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let element of location" [value]="element.value">{{element.viewValue}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy">
+            <mat-label>Đến</mat-label>
+            <mat-select (selectionChange)="abc($event)">
+                <mat-option *ngFor="let element of location" [value]="element.value" >{{element.viewValue}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy"> 
+            <mat-label>Mã chuyến bay</mat-label>
+            <mat-select [disabled]="disableSelect.value">
+                <mat-option *ngFor="let element of flightsCode" [value]="element.code">{{element.code}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy">
+            <mat-label>Ngày bay</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy">
+            <mat-label>Giờ khởi hành</mat-label>
+            <input type="time" matInput>
+        </mat-form-field>
+
+        Thời lượng chuyến bay <br/>
+        <mat-form-field appearance="legacy" style="width : 20%">
+            <mat-label>Giờ</mat-label>
+            <input type="number" matInput>
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy" style="display: inline-block; width: 20%; margin-left: 10%">
+            <mat-label>Phút</mat-label>
+            <input type="number" matInput>
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy">
+            <mat-label>Máy bay</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let element of location" [value]="element.value">{{element.viewValue}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <div align="right">
+            <button mat-button
+                style="background-color: #E8A207; height: 60px; width: 150px; font-size: 20px; margin-right: 20px;">Nhập lại
+            </button>
+            <button mat-button
+                style="background-color: #E8A207; height: 60px; width: 150px; font-size: 20px;">Đăng nhập
+            </button>
+        </div>
+    </div>
+</div>
+
+<!--  -->

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { RegisterService } from 'src/app/service/register/register.service';
 
 @Component({
   selector: 'app-register',
@@ -20,7 +21,7 @@ export class RegisterComponent implements OnInit {
     {value: 1, viewValue: 'Ông'}
   ];
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(private _formBuilder: FormBuilder, private registerService : RegisterService) {}
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
@@ -29,6 +30,19 @@ export class RegisterComponent implements OnInit {
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required],
     });
+  }
+
+  newUser : any = {
+    suffix : '',
+    firstName : '',
+    lastName : '',
+    dateOfBirth : '',
+    email : '',
+    phoneNumber : '' 
+  }
+
+  register (newUser : any){
+    return this.registerService.register_sv(newUser).subscribe();
   }
 
 

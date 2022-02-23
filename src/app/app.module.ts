@@ -29,6 +29,8 @@ import { DialoginterfaceComponent } from './home/dialoginterface/dialoginterface
 import { RegisterComponent } from './home/register/register.component';
 import { SearchnbookComponent } from './home/searchnbook/searchnbook.component';
 import { HomeComponent } from './home/home.component';
+import { AdministrationComponent } from './administration/administration.component';
+import { AddflightComponent } from './administration/addflight/addflight.component';
 
 
 
@@ -41,7 +43,9 @@ import { HomeComponent } from './home/home.component';
     DialoginterfaceComponent,
     RegisterComponent,
     SearchnbookComponent,
-    HomeComponent
+    HomeComponent,
+    AdministrationComponent,
+    AddflightComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
 import { MatDialog } from '@angular/material/dialog';
-import { LoginComponent } from '../login/login.component';
 import { DialoginterfaceComponent } from '../dialoginterface/dialoginterface.component';
 
 @Component({
