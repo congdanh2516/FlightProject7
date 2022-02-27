@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddflightComponent } from './addflight/addflight.component';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-administration',
@@ -13,6 +14,9 @@ export class AdministrationComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  //icon
+  faMagnifyingGlass = faMagnifyingGlass;
 
   openDialog() {
     const dialogRef = this.dialog.open(AddflightComponent, {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { SearchService } from 'src/app/service/search/search.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -10,7 +11,7 @@ import { SearchService } from 'src/app/service/search/search.service';
 })
 export class SearchComponent implements OnInit {
 
-  constructor(private searchService : SearchService) { }
+  constructor(private searchService : SearchService, private router : Router) { }
 
   ngOnInit(): void {
   }
@@ -48,10 +49,11 @@ export class SearchComponent implements OnInit {
 
   flights : any[];
 
-  search(flight : any){
-    this.searchService.search_sv(flight).subscribe(
-      data => this.flights = data
-    )
+  search(){
+    // this.searchService.search_sv(flight).subscribe(
+    //   data => this.flights = data
+    // );
+    this.router.navigateByUrl('/flightlist');
   }
 
 }

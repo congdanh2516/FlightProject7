@@ -1,4 +1,31 @@
-<p>administration works!</p>
-<button mat-button (click)="openDialog()" 
-    style="background-color: #0C172E; color: white; border: none; font-size: 25px;">Tạo mới
-</button> 
+<div class="row">
+    <div class="col-md-7 animate__animated animate__slideInUp" 
+        style=" 
+        background-image: url('../../assets/image/admin3_1.jpg');
+        background-size: cover;
+        "
+        >
+
+        <div class="search-box">
+            <input class="search-txt" type="text" name="" id="" placeholder="Nhập mã chuyến bay">
+            <a href="#" class="search-btn">
+                <fa-icon [icon]="faMagnifyingGlass" style="color: #E8A207; font-size: 25px;"></fa-icon>
+            </a>
+        </div>
+        <p>
+            Advance Search
+        </p>
+       
+    </div>
+    
+    <div class="col-md-5 animate__animated animate__slideInDown" 
+        style="
+        background-image: url('../../assets/image/admin6.jfif');
+        background-size: cover;">
+
+        <button mat-button (click)="openDialog()" 
+            style="background-color: #0C172E; color: white; border: none; font-size: 25px;">Tạo mới
+        </button> 
+
+    </div>
+</div>

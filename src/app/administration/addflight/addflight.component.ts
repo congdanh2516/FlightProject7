@@ -24,7 +24,31 @@ export class AddflightComponent implements OnInit {
     {code : 'DT103', from : 'Ha Noi', to : 'Sai Gon'}
   ]
 
+  //vo hieu hoa select ma chuyen bay, khi nào người dùng chọn from, to rồi thì select mới đề xuất các mã 
   disableSelect = new FormControl(false);
+
+  //đầu vào
+  from : string = '';
+  to : string = '';
+  flightCode : string = '';
+  startDate : string = '';
+  timeFlight : string = '';
+  hourDuration : number;
+  minuteDuration : number;
+  plane : string = ''; 
+  priceTicket : number;
+
+  reset(){
+    this.from = '';
+    this.to = '';
+    this.flightCode = '';
+    this.startDate = '';
+    this.timeFlight = '';
+    this.hourDuration = NaN;
+    this.minuteDuration = NaN;
+    this.plane = '';
+    this.priceTicket = NaN;
+  }
 
   abc(event : any){
     console.log('abc is operating ....');

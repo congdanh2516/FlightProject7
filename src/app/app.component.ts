@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { animate } from '@angular/animations';
 
 
 @Component({
@@ -11,5 +12,6 @@ export class AppComponent {
   title = 'FlightProject';
   faCoffee = faCoffee;
  
+  
   
 }

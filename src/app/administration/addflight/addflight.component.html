@@ -3,61 +3,67 @@
         <h1>Thông tin chuyến bay mới</h1>
         <mat-form-field appearance="legacy">
             <mat-label>Từ</mat-label>
-            <mat-select>
+            <mat-select [(ngModel)]="from">
                 <mat-option *ngFor="let element of location" [value]="element.value">{{element.viewValue}}</mat-option>
             </mat-select>
         </mat-form-field>
 
         <mat-form-field appearance="legacy">
             <mat-label>Đến</mat-label>
-            <mat-select (selectionChange)="abc($event)">
+            <mat-select (selectionChange)="abc($event)" [(ngModel)]="to">
                 <mat-option *ngFor="let element of location" [value]="element.value" >{{element.viewValue}}</mat-option>
             </mat-select>
         </mat-form-field>
 
         <mat-form-field appearance="legacy"> 
             <mat-label>Mã chuyến bay</mat-label>
-            <mat-select [disabled]="disableSelect.value">
+            <mat-select [disabled]="disableSelect.value" [(ngModel)]="flightCode">
                 <mat-option *ngFor="let element of flightsCode" [value]="element.code">{{element.code}}</mat-option>
             </mat-select>
         </mat-form-field>
 
-        <mat-form-field appearance="legacy">
+        <mat-form-field appearance="legacy" style="width: 45%">
             <mat-label>Ngày bay</mat-label>
-            <input matInput [matDatepicker]="picker">
+            <input matInput [matDatepicker]="picker" [(ngModel)]="startDate">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
 
-        <mat-form-field appearance="legacy">
+        <mat-form-field appearance="legacy" style="display: inline-block; width: 45%; margin-left: 10%;">
             <mat-label>Giờ khởi hành</mat-label>
-            <input type="time" matInput>
+            <input type="time" matInput [(ngModel)]="timeFlight">
         </mat-form-field>
 
-        Thời lượng chuyến bay <br/>
-        <mat-form-field appearance="legacy" style="width : 20%">
+        <p style="display: inline-block; font-size: 20px;">Thời lượng chuyến bay</p>
+        <mat-form-field appearance="legacy" style="width : 20%; display: inline-block; margin-left: 10%;">
             <mat-label>Giờ</mat-label>
-            <input type="number" matInput>
+            <input type="number" matInput [(ngModel)]="hourDuration">
         </mat-form-field>
 
         <mat-form-field appearance="legacy" style="display: inline-block; width: 20%; margin-left: 10%">
             <mat-label>Phút</mat-label>
-            <input type="number" matInput>
+            <input type="number" matInput min="0" max="59" [(ngModel)]="minuteDuration">
         </mat-form-field>
 
         <mat-form-field appearance="legacy">
             <mat-label>Máy bay</mat-label>
-            <mat-select>
+            <mat-select [(ngModel)]="plane">
                 <mat-option *ngFor="let element of location" [value]="element.value">{{element.viewValue}}</mat-option>
             </mat-select>
         </mat-form-field>
 
+        <mat-form-field appearance="legacy">
+            <mat-label>Giá vé trần</mat-label>
+            <input type="number" matInput min="0" [(ngModel)]="priceTicket">
+        </mat-form-field>
+
         <div align="right">
             <button mat-button
+                (click)="reset()"
                 style="background-color: #E8A207; height: 60px; width: 150px; font-size: 20px; margin-right: 20px;">Nhập lại
             </button>
             <button mat-button
-                style="background-color: #E8A207; height: 60px; width: 150px; font-size: 20px;">Đăng nhập
+                style="background-color: #E8A207; height: 60px; width: 200px; font-size: 20px;">Tạo chuyến bay
             </button>
         </div>
     </div>

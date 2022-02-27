@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/service/login/login.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -9,30 +10,39 @@ import { LoginService } from 'src/app/service/login/login.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private loginService : LoginService) { }
+  constructor(
+    private loginService : LoginService, 
+    private router : Router
+  ) { }
 
   ngOnInit(): void {
   }
 
   hide : boolean = true;
 
-  account = {
-    username : '',
-    password : ''
-  }
+  username : string;
+  password : string;
 
   //notice
   notice : string = '';
   empty : boolean = true;
 
   login(){
-      if(this.account.username == undefined || this.account.password == undefined){
-          this.notice="Vui long nhap ten dang nhap va mat khau";
+      // if(this.account.username == undefined || this.account.password == undefined){
+      //     this.notice="Vui long nhap ten dang nhap va mat khau";
+      // }
+      // else {
+      //   this.empty=false;
+      // }
+      console.log(this.username + this.password);
+      const user = {
+        username : this.username,
+        password : this.password
       }
-      else {
-        this.empty=false;
-      }
-      console.log(this.account.username + this.account.password);
-      this.loginService.login_sv(this.account).subscribe();
+      console.log(user);
+      this.loginService.login_sv(user).subscribe(
+        data => {
+          console.log(data);
+        });
   }
 }

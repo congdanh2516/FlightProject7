@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -22,7 +23,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './home/header/header.component';
 import { SearchComponent } from './home/search/search.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
 import { LoginComponent } from './home/login/login.component';
 import { DialoginterfaceComponent } from './home/dialoginterface/dialoginterface.component';
@@ -31,6 +31,8 @@ import { SearchnbookComponent } from './home/searchnbook/searchnbook.component';
 import { HomeComponent } from './home/home.component';
 import { AdministrationComponent } from './administration/administration.component';
 import { AddflightComponent } from './administration/addflight/addflight.component';
+import { FlightlistComponent } from './flightlist/flightlist.component';
+import { HeaderinfoComponent } from './flightlist/headerinfo/headerinfo.component';
 
 
 
@@ -45,7 +47,9 @@ import { AddflightComponent } from './administration/addflight/addflight.compone
     SearchnbookComponent,
     HomeComponent,
     AdministrationComponent,
-    AddflightComponent
+    AddflightComponent,
+    FlightlistComponent,
+    HeaderinfoComponent
   ],
   imports: [
     BrowserModule,

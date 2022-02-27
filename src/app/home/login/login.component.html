@@ -4,14 +4,14 @@
         <p>
           <mat-form-field appearance="legacy">
             <mat-label>Tên đăng nhập</mat-label>
-            <input matInput [(ngModel)]="account.username">
+            <input matInput [(ngModel)]="username">
           </mat-form-field>
         </p>
       
         <p>
           <mat-form-field appearance="legacy">
             <mat-label>Enter your password</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="account.password">
+            <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="password">
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
@@ -22,7 +22,6 @@
   
       <mat-dialog-actions align="center" style="margin-bottom: 10px;">
         <button mat-button 
-        data-bs-toggle="modal" data-bs-target="#exampleModal"
         style="background-color: #E8A207; height: 60px; width: 150px; font-size: 20px;" (click)="login()">Đăng nhập</button>
       </mat-dialog-actions>
 
