@@ -33,6 +33,10 @@ import { AdministrationComponent } from './administration/administration.compone
 import { AddflightComponent } from './administration/addflight/addflight.component';
 import { FlightlistComponent } from './flightlist/flightlist.component';
 import { HeaderinfoComponent } from './flightlist/headerinfo/headerinfo.component';
+import { ListComponent } from './flightlist/list/list.component';
+import { FooterComponent } from './home/footer/footer.component';
+import { SpecificationComponent } from './flightlist/list/specification/specification.component';
+import { ClassComponent } from './flightlist/list/class/class.component';
 
 
 
@@ -49,7 +53,11 @@ import { HeaderinfoComponent } from './flightlist/headerinfo/headerinfo.componen
     AdministrationComponent,
     AddflightComponent,
     FlightlistComponent,
-    HeaderinfoComponent
+    HeaderinfoComponent,
+    ListComponent,
+    FooterComponent,
+    SpecificationComponent,
+    ClassComponent
   ],
   imports: [
     BrowserModule,

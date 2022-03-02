@@ -1,0 +1,14 @@
+.row {
+    width: 100%;
+    margin: 40px 0px;
+    color: white;
+}
+
+.className{
+    font-size: 30px;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 70px;
+}

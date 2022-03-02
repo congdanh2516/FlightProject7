@@ -1,0 +1,2 @@
+xanh : #0C172E
+vang : #E8A207

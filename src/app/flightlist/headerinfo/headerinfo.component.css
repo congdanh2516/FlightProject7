@@ -1,0 +1,20 @@
+.row{
+    height : 120px;
+    background-color: #0C172E;
+    display: flex;
+    align-items: center;
+    color: white !important;
+}
+
+input, select {
+    background-color: transparent;
+    color: white;
+    height: 60px;
+    font-size: 20px;
+}
+
+.form-control[readonly] {
+    background-color: transparent;
+    opacity: 1;
+    color: white;
+}
