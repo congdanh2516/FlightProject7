@@ -1,10 +1,17 @@
 <div class="row nav_me">
-    <div class="col-md-7 col-sm-5" style="font-size: 50px; font-weight: bold;">
-        <a href="/home" style="text-decoration: none;">DaTo Airways</a>    
+    <div class="col-md-1"></div>
+    <div class="col-md-1" style="width: 60px; display: flex; align-items: center;">
+        <fa-icon [icon]="faGlobe" style="font-size: 40px;"></fa-icon>
+    </div>
+    <div class="col-md-6 col-sm-5" style="font-size: 50px; font-weight: bold;">
+        <a href="/home" style="text-decoration: none; line-height: 60.8px;">
+            DaTo Airways</a>    
     </div>
     
-    <div class="col-md-4 col-sm-5" style="text-align: right; font-size: 25px;">
-        <button mat-button (click)="openDialog()" style="background-color: #0C172E; color: white; border: none; font-size: 25px;">Đăng nhập &nbsp; &nbsp;
+    <div class="col-md-4 col-sm-5" style="text-align: right; font-size: 25px; padding-right: 70px;">
+        <button mat-button (click)="openDialog()" 
+            style="background-color: #0C172E; color: white; border: none; font-size: 25px;">
+            Sign in &nbsp; &nbsp;
             <div style="display: inline; height: 100%; position: absolute;">
                 <fa-icon mat-button (click)="openDialog()" [icon]="faCircleUser" style="color: white; font-size: 40px;"></fa-icon>
             </div>

@@ -1,0 +1,30 @@
+<div class="row" style="text-align: center; margin-top: 40px;">
+    <div class="col-md-3" 
+        style="text-align: left; font-size: 25px;">
+        <p style="font-size: 17px; display: block;">Passenger {{no}}</p>
+        <p>{{firstName}}&nbsp;{{lastName}}</p>
+        
+    </div>
+    <div class="col-md-3"
+        style="display: flex; align-items: center; text-align: left; font-size: 17px;">
+        Suitcase Quantity : {{suitcaseQuantity}} - {{total}} VND
+    </div>
+    <div class="col-md-3">
+        <mat-form-field appearance="legacy">
+            <input matInput min="0" max="10" step="1" value="0" type="number" style="font-size: 25px;"
+            [(ngModel)]="suitcase10"
+            (change)="quantityChange()"
+            (keyup)="quantityChange()"
+            >
+        </mat-form-field>
+    </div>
+    <div class="col-md-3">
+        <mat-form-field appearance="legacy">
+            <input matInput min="0" max="10" step="1" value="0" type="number" style="font-size: 25px;"
+            [(ngModel)]="suitcase23"
+            (change)="quantityChange()"
+            (keyup)="quantityChange()"
+            >
+        </mat-form-field>
+    </div>
+</div>

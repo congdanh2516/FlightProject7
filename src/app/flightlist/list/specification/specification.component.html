@@ -1,1 +1,121 @@
-<p>specification works!</p>
+<div class="row flight">
+    <div class="col-md-6 info">
+
+        <div style="width: 100%;">
+            <div class="row" style="width: 100%; margin-top: 10px;">
+                <div class="col-md-1"></div>
+                <div class="col-md-3"></div>
+                <div class="col-md-4"></div>
+                <div class="col-md-3" style="text-align: right;">
+                    March 27
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+            <div class="row" style="width: 100%; margin-top: 20px;">
+                <div class="col-md-1"></div>
+                <div class="col-md-3 time">
+                    {{departTime}}
+                </div>
+                <div class="col-md-4" style="text-align: center;">
+                    <!-- <fa-icon mat-button [icon]="faPlane" style="color: black; font-size: 30px;"></fa-icon> -->
+                    <img src="../../../../assets/image/aeroplane.png" alt="" height="40px">
+                </div>
+                <div class="col-md-3  time" style="text-align: right !important; ">
+                    {{arrivedTime}}
+                </div>
+                <div class="col-md-1">
+
+                </div>
+            </div>
+
+            <div class="row" style="margin-top: 30px; margin-bottom: 20px; width: 100%;">
+                <div class="col-md-1"></div>
+                <div class="col-md-1">
+                    {{originCode}}
+                </div>
+                <div class="col-md-3">
+                    <hr>
+                </div>
+                <div class="col-md-2" style="text-align: center; font-size: 25px;">
+                    {{hours}}h&nbsp;{{minutes}}m
+                    <!-- ---------------------------------------------------------------------------------------------------- -->
+                </div>
+                <div class="col-md-3">
+                    <hr>
+                </div>
+                <div class="col-md-1">
+                    {{destinationCode}}
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-3">
+                    <a data-bs-toggle="collapse" href=#{{href}} role="button" aria-expanded="false" aria-controls="collapseExample" 
+                        (click)="changeLabel()"
+                        style="text-decoration: none;">
+                        {{labelDetailName}}
+                      </a>
+                </div>
+                <div class="col-md-8"></div>
+            </div>
+            
+        </div>
+    </div>
+       
+    <div class="col-md-3" style="margin-left: 0.6%; position: relative; height: 100%;">
+        <div [ngClass]="{price : !choose_eco, priceclick : choose_eco}" (click)="choose('eco')">
+            <p>{{economyPrice}} VND</p>
+        </div>
+        <div class="buttonprice" [ngStyle]="{display : !choose_eco ? 'none' : 'block'}">
+            <button mat-button 
+                (click)="chooseFlight(flightCode, 'eco', economyPrice)"
+                style="background-color: #E8A207; height: 100%; width: 100%; font-size: 20px; margin: 20px 20px 20px 0;">
+                Choose
+            </button>
+        </div>
+        
+    </div>
+    <div class="col-md-3" style="position: relative; height: 100%; width: 25.4%;">
+        <div [ngClass]="{price : !choose_bus, priceclick : choose_bus}" (click)="choose('bus')">
+            <p>{{businessPrice}} VND</p>
+        </div>
+        <div class="buttonprice" [ngStyle]="{display : !choose_bus ? 'none' : 'block'}">
+            <button mat-button 
+                (click)="chooseFlight(flightCode, 'bus', businessPrice)"
+                style="background-color: #E8A207; height: 100%; width: 100%; font-size: 20px; margin: 20px 20px 20px 0;">
+                Choose
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="collapse" id={{href}} style="width: 49%; font-size: 20px; line-height: 30px; margin-top: 10px;">
+    <div class="card card-body" 
+        style="border: 2px solid rgb(161, 161, 161); 
+            border-bottom-left-radius: 10px; border-top-left-radius: 10px;
+            border-bottom-right-radius: 0px; border-top-right-radius: 0px;">
+        <div class="row">
+            <div class="col-md-1" style="justify-content: center; display: flex;; align-items: center; font-size: 25px;">
+                <fa-icon [icon]="faCircleInfo"></fa-icon>
+            </div>
+            <div class="col-md-5">
+                <p style="margin-bottom:0px;">
+                    Source : {{originName}} <br>
+                    Destination : {{destinationName}} <br>
+                    Date : {{departDate}} <br>
+                    Time : {{departTime1}} <br>
+                </p>
+            </div>
+            <div class="col-md-5">
+                <p style="margin-bottom:0px;">
+                    Duaration : {{hours}} hour(s) and {{minutes}} minute(s) <br>
+                    Flight code : {{flightCode}} <br>
+                    Aicraft type : {{aircraftName}}
+                </p>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</div>

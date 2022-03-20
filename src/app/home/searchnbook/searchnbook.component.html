@@ -2,8 +2,14 @@
     class="animate__animated animate__slideInUp">
     <div class="col-md-8">
         <mat-tab-group dynamicHeight  style="background-color: rgb(255, 255, 255); color:#0C172E;">
-            <mat-tab label="Đặt vé" style="background-color: rgba(255, 255, 255, 0.425);"> <app-search></app-search> </mat-tab>
-            <mat-tab label="Tra cứu chuyến bay"> <app-register></app-register> </mat-tab>
+            <mat-tab label="Booking" style="background-color: rgba(255, 255, 255, 0.425);"> 
+                <app-search    
+                ></app-search> 
+            </mat-tab>
+            
+            <mat-tab label="Flight status"> 
+                <app-manage></app-manage>
+            </mat-tab>
         </mat-tab-group>
     </div>
 </div>

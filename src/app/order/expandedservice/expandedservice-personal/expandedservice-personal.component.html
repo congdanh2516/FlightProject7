@@ -1,0 +1,22 @@
+<div class="row" style="text-align: center; margin-top: 40px;">
+    <div class="col-md-3" 
+        style="text-align: left; font-size: 25px;">
+        <p style="font-size: 17px; display: block;">Passenger {{no}}</p>
+        <p>{{firstName}}&nbsp;{{lastName}}</p>
+    </div> 
+    <div class="col-md-3" style="justify-content: center; display: flex; align-items: center;">
+        <select class="form-select" aria-label="Default select example"
+            style="width: 80%; font-size: 17px !important;">
+            <option selected="selected">Choose special meal</option>
+            <option *ngFor = "let element of meal" [value]="element.id" style="margin-top: 40px !important;">
+                {{element.name}}
+            </option>
+        </select>
+    </div>
+    <div class="col-md-3" style="justify-content: center; display: flex; align-items: center;">
+        <mat-checkbox class="example-margin"></mat-checkbox>
+    </div>
+    <div class="col-md-3" style="justify-content: center; display: flex; align-items: center;">
+        <mat-checkbox class="example-margin"></mat-checkbox>
+    </div>
+</div>

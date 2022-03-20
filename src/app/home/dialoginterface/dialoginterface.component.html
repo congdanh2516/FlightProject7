@@ -1,8 +1,13 @@
-<mat-toolbar>
+<!-- <mat-toolbar style="background-color: #0C172E; color: white;">
     <h1 style="font-size: 30px;">Bay cùng DaTo</h1>
-</mat-toolbar>
+</mat-toolbar> -->
+<div class="row" style="background-color: #0C172E; color: white; padding: 20px; padding-left: 30px; height: 90px">
+    <div class="col-md-12">
+        <h1 style="font-size: 30px; margin-bottom: 0px !important; line-height: 50px;">Welcome to DaTo Airways</h1>
+    </div>
+</div>
 
-<mat-tab-group dynamicHeight>
-    <mat-tab label="Đăng nhập"> <app-login></app-login> </mat-tab>
-    <mat-tab label="Đăng ký"> <app-register></app-register> </mat-tab>
+<mat-tab-group dynamicHeight style="margin-top: 0px; padding: 0px 30px">
+    <mat-tab label="Sign in"> <app-login></app-login> </mat-tab>
+    <mat-tab label="Register"> <app-register></app-register> </mat-tab>
 </mat-tab-group>

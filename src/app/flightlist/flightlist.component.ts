@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LocalstorageService } from '../service/localstorage/localstorage.service';
+import { SearchService } from '../service/search/search.service';
 
 @Component({
   selector: 'app-flightlist',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FlightlistComponent implements OnInit {
 
-  constructor() { }
+  constructor(private search : SearchService, private storage : LocalstorageService) { 
+
+  }
+
+  flights : any[];
 
   ngOnInit(): void {
+    
   }
 
 

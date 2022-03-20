@@ -1,0 +1,93 @@
+<div class="row manage">
+    <div class="col-md-3"></div>
+    <div class="col-md-5">
+        <input class="form-control" type="text" name="" placeholder="Enter Ticket Number">
+    </div>
+    <div class="col-md-1">
+        <button mat-button
+            (click)="searchTicket()"
+            style="background-color: #E8A207; height: 70px; width: 170px; font-size: 20px;">
+            Search flight
+        </button>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+
+<div [ngClass]="{appear : !ticket}" class="ticketinfo">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-11">
+            <h1 style="padding: 0px !important; font-size: 40px !important; margin-bottom: 0px !important;">Ticket Info</h1>
+        </div>
+    </div>
+
+    <div class="passengerinfo">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-11" style="font-size: 20px">
+                <fa-icon [icon]="faUser"></fa-icon>&nbsp; Personal Info
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
+                Identification No: 
+            </div>
+            <div class="col-md-5">
+                Name: 
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+
+    <div class="passengerinfo">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-11" style="font-size: 20px">
+                <fa-icon [icon]="faPlane"></fa-icon>&nbsp; Flight Info
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
+                From: 
+            </div>
+            <div class="col-md-5">
+                To:
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
+                Date: 
+            </div>
+            <div class="col-md-5">
+                Time:
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+
+    <div class="passengerinfo">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-11" style="font-size: 20px">
+                <fa-icon [icon]="faPlus"></fa-icon>&nbsp; Futher Service Info
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-1">
+
+            </div>
+            <div class="col-md-1">
+
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+
+</div>
+

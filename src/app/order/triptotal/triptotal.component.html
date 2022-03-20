@@ -1,0 +1,73 @@
+<div class="triptotal">
+    <div class="title">
+        Trip Total
+    </div>
+
+    <div class="content">
+        <div class="info">
+            {{flight_searched.type ? 'ONE WAY' : 'ROUND TRIP'}} - {{this.flight_searched.quantityPassenger}} Passenger
+        </div>
+        <div class="flightsumary" *ngFor = "let element of flight">
+            <p>{{element[0].departure.name.toUpperCase()}} to {{element[0].destination.name.toUpperCase()}}</p>
+            <p>{{element[0].departDate}} • {{element[0].departHour}} to {{element[0].arrivedTime}}</p>
+            <a data-bs-toggle="collapse" href=#{{element[0].airCode}} role="button" aria-expanded="false" aria-controls="collapseExample" 
+                (click)="changeLabel()"
+                style="text-decoration: none;">
+                <!-- <fa-icon [icon]="faCircleInfo"></fa-icon>&nbsp; -->
+                Detail
+            </a>
+
+            <div class="collapse" id={{element[0].airCode}} style="width: 100%; font-size: 20px; line-height: 30px; margin-top: 10px;">
+                <div class="card card-body" 
+                    style="border: none !important; padding: 0px !important">
+                    <p style="margin-bottom:0px;">
+                        <b>Duration</b> : {{element[0].timeTemp.hour}} hour(s) and {{element[0].timeTemp.minute}} minute(s) <br>
+                        <b>Flight Code</b> : {{element[0].airCode}} <br>
+                        <b>Aircraft Type</b> : {{element[0].airName}} <br>
+                        <b>Class</b> : Business
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="total">
+           <div class="row">
+               <div class="col-md-6">
+                   Fare
+               </div>
+               <div class="col-md-6" style="text-align: right;">
+                   5 478 000 VND
+               </div>
+           </div>
+
+           <div class="row">
+                <div class="col-md-6">
+                    Taxes and fee
+                </div>
+                <div class="col-md-6" style="text-align: right;">
+                    600 000 VND
+                </div>
+            </div>
+
+            <div class="row" style="font-size: 25px; font-weight: bold;">
+                <div class="col-md-6">
+                    Total 
+                </div>
+                <div class="col-md-6" style="text-align: right;">
+                    8 000 000 VND
+                </div>
+            </div>
+        </div>
+
+        <div style="padding : 0 30px">
+            <mat-dialog-actions align="center" style="margin-bottom: 10px;">
+                <button mat-button 
+                    style="background-color: #E8A207; height: 60px; width: 100%; font-size: 20px;">
+                    Go ahead Payment
+                </button>
+            </mat-dialog-actions>
+        </div>
+
+    </div>
+</div>

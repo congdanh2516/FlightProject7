@@ -12,4 +12,5 @@ export class DialoginterfaceComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
 }

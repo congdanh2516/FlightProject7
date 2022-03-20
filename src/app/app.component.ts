@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
-import { animate } from '@angular/animations';
+import * as AOS from 'aos';
 
 
 @Component({
@@ -9,6 +9,11 @@ import { animate } from '@angular/animations';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  ngOnInit(): void {
+    AOS.init();
+  }
+  
   title = 'FlightProject';
   faCoffee = faCoffee;
  

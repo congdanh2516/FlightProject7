@@ -51,3 +51,41 @@ table {
     width: 400px;
     display: block;
 }
+
+
+.admin{
+    background-image: url('../../assets/image/plane1.png');
+    background-repeat: no-repeat;
+    background-size: 30%;
+    background-position-x:95%;
+    background-position-y: 5%;
+}
+
+.option{
+    height: 70px;
+    background-color: white;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 40px;
+    box-shadow: 1px 1px 8px 5px #ccc;
+    border-radius: 5px;
+}
+
+.suboption{
+    width: 33.33%;
+    /* border: 2px solid green; */
+    height: 100%;
+    float: right;
+    line-height: 68px;
+    font-size: 25px;
+}
+
+.mat-tab-label{
+    font-size: 20px !important;
+    height: 70px !important;
+}
+
+::ng-deep .mat-dialog-container{
+    padding : 0px !important;
+    overflow-x:hidden !important;
+}

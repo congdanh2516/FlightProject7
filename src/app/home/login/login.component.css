@@ -5,3 +5,18 @@ mat-form-field.mat-form-field {
 .mat-form-field {
     margin-top: 16px;
 }
+
+/* ::ng-deep .mat-dialog-container{
+    height: 480px !important;
+    overflow-y: hidden !important;
+    padding: 50px !important;
+    padding-bottom: 0px !important;
+} */
+
+.mat-tab-label-active{
+    opacity: 1 !important;
+}
+
+button{
+    margin-bottom: 10px;
+  }

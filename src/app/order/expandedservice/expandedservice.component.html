@@ -1,0 +1,107 @@
+<div class="row">
+    <div class="col-md-12">
+        <!-- <div style="font-size: 22px;">
+            EXPANDED SERVICES
+        </div>
+        <hr>
+        <br>
+        <div class="row">
+            <div class="col-md-9" style="line-height: 60px;">
+                CCD
+            </div>
+            <div class="col-md-3" align=end>
+                <button 
+                data-bs-toggle="modal" data-bs-target="#service"
+                mat-button 
+                style="border: 2px solid rgb(211, 210, 210); height: 60px; width: 200px; font-size: 20px; display: inline-block;" >
+                ADD SERVICE
+            </button>
+            </div>
+        </div> -->
+
+        <div>
+            <a data-bs-toggle="modal" data-bs-target="#service"
+                style="font-size: 25px; color: #0C172E; cursor: pointer;">
+                <fa-icon [icon]="faChevronRight "></fa-icon> &nbsp;
+                Add more free service
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="service" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+    style="margin-top: 50px;">
+    <div class="modal-dialog" style="border-radius: 5px !important; max-width: 60% !important;">
+        <div class="modal-content">
+
+            <!-- header -->
+            <div class="modal-header" 
+                style="background-color: #0C172E; color: white !important;
+                border-top-right-radius: 0 !important;
+                border-top-left-radius: 0 !important;
+                ">
+                <p class="modal-title" id="exampleModalLabel" 
+                    style="padding-left: 14px; margin-top: 10px; font-size: 25px;">
+                    SERVICES
+                </p>
+            </div>
+
+            <div class="modal-body" style="padding: 30px;">
+                <div class="row" 
+                    style="text-align: center;">
+                    <div class="col-md-3">
+                     
+                    </div>
+                    <div class="col-md-3">
+                        <fa-icon [icon]="faBurger" style="font-size: 50px; color: #0C172E;"></fa-icon>
+                        <!-- <img src="../../../assets/image/plate.png" alt="" height="50px"> -->
+                    </div>
+                    <div class="col-md-3">
+                        <fa-icon [icon]="faWheelChair" style="font-size: 60px;"></fa-icon>
+                        <!-- <img src="../../../assets/image/suitcase.png" alt="" height="60px"> -->
+                    </div>
+                    <div class="col-md-3">
+                        <fa-icon [icon]="faBaby" style="font-size: 60px;"></fa-icon>
+                        <!-- <img src="../../../assets/image/suitcase.png" alt="" height="60px"> -->
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 40px; font-size: 25px; text-align: center;">
+                    <div class="col-md-3">
+
+                    </div> 
+                    <div class="col-md-3">
+                        Meal
+                    </div>
+                    <div class="col-md-3">
+                        Health
+                    </div>
+                    <div class="col-md-3">
+                        Crip
+                    </div>
+                </div>
+
+                <!-- passenger -->
+                <app-expandedservice-personal *ngFor = "let element of passengerlist, let i=index"
+                    [firstName]="element.firstName"
+                    [lastName]="element.lastName"
+                    [no]="i+1"
+                ></app-expandedservice-personal>
+            </div>
+         
+        <!-- footer -->
+        <div class="modal-footer" style="padding: 30px;">
+            <button mat-button data-bs-dismiss="modal"
+                style="border: 1px solid rgb(210, 210, 210); height: 60px; width: 150px; font-size: 20px; margin-right: 20px;">
+                Close
+            </button>
+            <button mat-button 
+                style="background-color: #E8A207; height: 60px; width: 150px; font-size: 20px;">
+                ADD
+            </button>
+        </div>
+     </div>
+ 
+</div>

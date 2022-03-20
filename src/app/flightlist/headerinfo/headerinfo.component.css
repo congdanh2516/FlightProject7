@@ -1,5 +1,5 @@
 .row{
-    height : 120px;
+    height : 170px;
     background-color: #0C172E;
     display: flex;
     align-items: center;
@@ -9,8 +9,9 @@
 input, select {
     background-color: transparent;
     color: white;
-    height: 60px;
-    font-size: 20px;
+    height: 80px;
+    font-size: 25px;
+    border-color: rgba(255, 255, 255, 0.527);
 }
 
 .form-control[readonly] {
@@ -18,3 +19,35 @@ input, select {
     opacity: 1;
     color: white;
 }
+
+
+.mat-label{
+    opacity: 1 !important;
+    color: black;
+}
+
+mat-form-field.mat-form-field {
+    font-size: 20px;
+    width: 30%;
+    opacity: 1 !important;
+}
+
+/* remove padding */
+/* :host >>> .mat-expansion-panel-body{
+    padding: 0 !important;
+  } */
+
+.mat-form-field{
+    margin-top: 40px;
+}
+
+label{
+    margin-top: 20px;
+}
+
+
+input:hover{
+    border-color: #E8A207;
+}
+
+

@@ -6,9 +6,8 @@
 
 .className{
     font-size: 30px;
-    height: 100%;
+    height: 100px;
     width: 100%;
-    border-radius: 10px;
+    border-radius: 5px;
     text-align: center;
-    line-height: 70px;
 }

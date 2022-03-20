@@ -1,0 +1,41 @@
+.info{
+    margin-top: 30px;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.253);
+    box-shadow: 1px 1px 7px 4px #ccc;
+}
+
+.title{
+    background-color: #0C172E;
+    color: white;
+    font-size: 25px;
+    height: 80px;
+    line-height: 20px;
+    padding: 30px;
+}
+
+.credit{
+    font-size: 20px;
+    padding-bottom: 10px;
+}
+
+.content{
+    padding: 30px;
+}
+
+.content input{
+    border-radius: 5px !important;
+    border: 2px solid rgba(0, 0, 0, 0.253);
+    height : 70px;
+    font-size: 20px;
+    margin-top: 30px;
+}
+
+input:hover{
+    border: 2px solid #0C172E !important;
+    box-shadow: none !important;
+}   
+
+.type input{
+    display: inline-block;
+}

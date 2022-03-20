@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
 import { MatDialog } from '@angular/material/dialog';
 import { DialoginterfaceComponent } from '../dialoginterface/dialoginterface.component';
+import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
@@ -14,6 +15,9 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  //icon
+  faGlobe = faGlobe;
 
   faCircleUser = faCircleUser;
 

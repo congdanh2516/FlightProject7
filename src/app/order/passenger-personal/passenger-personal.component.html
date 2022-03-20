@@ -1,0 +1,44 @@
+<!-- [class.appear]="appear" -->
+<div class="content" [class.appear]="appear">
+    <div class="row" style="margin-top: 30px; font-size: 20px;">
+        <div class="col-md-1" style="width: 40px;">
+            <fa-icon [icon]="faCircleInfo" style="font-size: 25px;"></fa-icon>
+        </div>
+        <div class="col-md-11" style="align-items: center; display: flex;">
+            All of the following information is &nbsp;<b>required</b>
+        </div>
+    </div>
+
+    <div class="enterinfo">
+        <select [(ngModel)]="suffix" (change)="onChange()"
+            class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" 
+            style="margin-bottom: 0px; width: 20%;" >
+            <option value="" selected="selected" disabled="disable" hidden="hidden">Suffix</option>
+            <option value="1">Mr</option>
+            <option value="0">Ms</option>
+        </select>
+
+        <input [(ngModel)]="firstName" (keyup)="onChange()"
+            type="text" class="form-control" placeholder="First Name" aria-label="Recipient's username" aria-describedby="basic-addon2"
+            style="width: 37%; margin-left: 3%;" required>
+
+        <input [(ngModel)]="lastName" (keyup)="onChange()"
+            type="text" class="form-control" placeholder="Last Name" aria-label="Recipient's username" aria-describedby="basic-addon2"
+            style="width: 37%; margin-left: 3%;">
+
+        <input [(ngModel)]="dateofBirth"  (change)="onChange()"
+            type="date" class="form-control" placeholder="Date of Birth" aria-label="Recipient's username" aria-describedby="basic-addon2"
+            style="width: 48.5%;">
+
+        <input [(ngModel)]="identification" (keyup)="onChange()"
+            type="text" class="form-control" placeholder="Identification No" aria-label="Recipient's username" aria-describedby="basic-addon2"
+            style="width: 48.5%; margin-left: 3%;">
+
+    </div>
+
+</div>
+
+<!-- [class.appear]="!appear" -->
+<div class="content" [class.appear]="!appear" style="padding: 30px; font-size: 25px;">
+    {{firstName}}&nbsp;{{lastName}}
+</div>

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map } from 'rxjs/operators';
 
 
 @Injectable({
@@ -10,7 +9,7 @@ export class LoginService {
 
   constructor(private httpClient : HttpClient) { }
 
-  private apiUrl = "http://localhost:9000/api/users/login";
+  private apiUrl = "http://localhost:9000/api/user-accounts/login";
 
   login_sv(account : any){
     let header = new HttpHeaders();

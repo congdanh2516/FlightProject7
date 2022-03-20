@@ -1,17 +1,17 @@
   <div class="row" style="padding: 10px;">
     <div class="col-md-12">
-      <mat-dialog-content class="mat-typography">
+      <mat-dialog-content class="mat-typography" >
         <p>
           <mat-form-field appearance="legacy">
-            <mat-label>Tên đăng nhập</mat-label>
-            <input matInput [(ngModel)]="username">
+            <mat-label>User Name</mat-label>
+            <input matInput [(ngModel)]="username" required>
           </mat-form-field>
         </p>
       
         <p>
           <mat-form-field appearance="legacy">
-            <mat-label>Enter your password</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="password">
+            <mat-label>Password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="password" required>
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
@@ -22,11 +22,10 @@
   
       <mat-dialog-actions align="center" style="margin-bottom: 10px;">
         <button mat-button 
-        style="background-color: #E8A207; height: 60px; width: 150px; font-size: 20px;" (click)="login()">Đăng nhập</button>
+          style="background-color: #E8A207; height: 60px; width: 150px; font-size: 20px;" (click)="login()">
+          Sign in
+        </button>
       </mat-dialog-actions>
-
-     
-
     </div>
   </div>  
 

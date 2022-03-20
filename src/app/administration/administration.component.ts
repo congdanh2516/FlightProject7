@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddflightComponent } from './addflight/addflight.component';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faCirclePlus } from '@fortawesome/free-solid-svg-icons';
+import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-administration',
@@ -17,14 +19,30 @@ export class AdministrationComponent implements OnInit {
 
   //icon
   faMagnifyingGlass = faMagnifyingGlass;
+  faCirclePlus = faCirclePlus;
+ faGlobe = faGlobe;
 
-  openDialog() {
+  openDialogAddNew() {
     const dialogRef = this.dialog.open(AddflightComponent, {
-      width: '700px',
+      width: '1000px',
+      
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
   }
+
+
+  openDialogFlightStatus() {
+    const dialogRef = this.dialog.open(AddflightComponent, {
+      width: '1000px',
+      
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
 }

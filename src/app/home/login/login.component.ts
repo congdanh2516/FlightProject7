@@ -36,8 +36,8 @@ export class LoginComponent implements OnInit {
       // }
       console.log(this.username + this.password);
       const user = {
-        username : this.username,
-        password : this.password
+        identificationCard : this.username,
+        userPassword : this.password
       }
       console.log(user);
       this.loginService.login_sv(user).subscribe(

@@ -1,0 +1,51 @@
+/* div {
+    border: 2px solid red;
+} */
+
+.triptotal{
+    border-radius: 5px;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.253);
+    padding-bottom: 30px;
+    box-shadow: 1px 1px 7px 4px #ccc;
+}
+
+.title, .info{
+    padding: 30px;
+}
+
+.title{
+    background-color: #0C172E;
+    color: white;
+    font-size: 25px;
+    height: 80px;
+    line-height: 20px;
+}
+
+.flightsumary{
+    padding : 20px;
+    margin: 0 20px;
+    border : 2px solid rgb(161, 161, 161);
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.info, .total{
+    font-size: 25px;
+    font-weight: bold;
+    padding : 40px 30px;
+    padding-bottom: 20px;
+}
+
+.total {
+    font-weight: normal;
+    font-size: 20px;
+}
+
+.row{
+    margin : 20px 0px;
+}
+
+.flightsumary{
+    margin-top: 20px;
+}

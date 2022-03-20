@@ -3,9 +3,9 @@
     line-height: 100px;
     background-color: #0C172E;
     padding:0 30px;
+    padding-left: 0px;
     color: white;
     
-    justify-content:center;
 	display: flex;
 	align-items: center;
 }

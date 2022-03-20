@@ -16,7 +16,6 @@
 mat-tab-group {
     position: relative;
     width: 100%;
-    margin : 0 5.5%;
 }
 
 ::ng-deep.mat-tab-label, ::ng-deep.mat-tab-label-active{
@@ -24,4 +23,22 @@ mat-tab-group {
     padding: 3px!important;
     margin: 3px!important;
     font-size: 20px;
+}
+
+.notice{
+    height: 100px;
+    border: 1px solid rgba(0, 0, 0, 0.253);
+    border-left: 20px solid #0C172E;
+    box-shadow: 1px 1px 7px 4px #ccc;
+    background-color: white;
+    line-height: 98px;
+    font-size: 17px;
+    padding-left: 20px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+
+::ng-deep .mat-tab-body-content{
+    overflow: hidden !important;
 }

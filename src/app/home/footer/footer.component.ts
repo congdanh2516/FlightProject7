@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { faFacebookF } from '@fortawesome/free-brands-svg-icons';
 import { faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
-import { faFontAwesome } from '@fortawesome/free-brands-svg-icons';
-import { IconDefinition, Library } from '@fortawesome/fontawesome-svg-core';
+import { faGlobe } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-footer',
@@ -17,8 +17,9 @@ export class FooterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
-  faFacebook = faFacebook;
+  faGlobe = faGlobe ;
+  faFacebook = faFacebookF;
   faInstagram = faInstagram;
   faCircleUser = faCircleUser;
+  faEnvelope = faEnvelope;
 }

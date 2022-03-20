@@ -1,0 +1,254 @@
+{
+    "airportfrom" : [
+        {
+            "id" : "SGN",
+            "name" : "Ho Chi Minh"
+        },
+        {
+            "id" : "HAN",
+            "name" : "Ha Noi"
+        },
+        {
+            "id" : "VCA",
+            "name" : "Can Tho"
+        },
+        {
+            "id" : "DAD",
+            "name" : "Da Nang"
+        },
+        {
+            "id" : "PQC",
+            "name" : "Phu QUoc"
+        },
+        {
+            "id" : "DLI",
+            "name" : "Da Lat"
+        },
+        {
+            "id" : "VSC",
+            "name" : "Con Dao"
+        },
+        {
+            "id" : "HUI",
+            "name" : "Hue"
+        },
+        {
+            "id" : "VII",
+            "name" : "Vinh"
+        },
+        {
+            "id" : "CXR",
+            "name" : "Nha Trang"
+        }
+    ],
+
+    "airportto" : [
+        {
+            "id" : "SGN",
+            "name" : "Ho Chi Minh"
+        },
+        {
+            "id" : "HAN",
+            "name" : "Ha Noi"
+        },
+        {
+            "id" : "VCA",
+            "name" : "Can Tho"
+        },
+        {
+            "id" : "DAD",
+            "name" : "Da Nang"
+        },
+        {
+            "id" : "PQC",
+            "name" : "Phu QUoc"
+        },
+        {
+            "id" : "DLI",
+            "name" : "Da Lat"
+        },
+        {
+            "id" : "VSC",
+            "name" : "Con Dao"
+        },
+        {
+            "id" : "HUI",
+            "name" : "Hue"
+        },
+        {
+            "id" : "VII",
+            "name" : "Vinh"
+        },
+        {
+            "id" : "CXR",
+            "name" : "Nha Trang"
+        }
+    ],
+    
+
+    "aircraft" : [
+        {
+            "id" : "DTAC01",
+            "name" : "Airbus A321"
+        },
+
+        {
+            "id" : "DTAC02",
+            "name" : "Airbus A320"
+        },
+
+        {
+            "id" : "DTAC08",
+            "name" : "Boeing 747"
+        },
+
+        {
+            "id" : "DTAC04",
+            "name" : "Airbus A340"
+        },
+
+        {
+            "id" : "DTAC05",
+            "name" : "Boeing 787-9 Dreamliner"
+        },
+
+        {
+            "id" : "DTAC01",
+            "name" : "Boeing 777"
+        }
+    ],
+
+
+    "airline" : [
+        {
+            "id" : "DT001",
+            "from" : "SGN",
+            "to" : "HAN",
+            "price" : 1500000,
+            "duration" : [
+                {
+                    "hours" : 2,
+                    "minutes" : 15
+                }
+            ]
+        },
+
+        {
+            "id" : "DT002",
+            "from" : "SGN",
+            "to" : "HAN",
+            "price" : 1500000,
+            "duration" : [
+                {
+                    "hours" : 2,
+                    "minutes" : 15
+                }
+            ]
+        },
+
+        {
+            "id" : "DT003",
+            "from" : "SGN",
+            "to" : "HAN",
+            "price" : 1500000,
+            "duration" : [
+                {
+                    "hours" : 2,
+                    "minutes" : 15
+                }
+            ]
+        },
+
+        {
+            "id" : "DT004",
+            "from" : "HAN",
+            "to" : "SGN",
+            "price" : 1500000,
+            "duration" : [
+                {
+                    "hours" : 2,
+                    "minutes" : 15
+                }
+            ]
+        },
+
+        {
+            "id" : "DT005",
+            "from" : "HAN",
+            "to" : "SGN",
+            "price" : 1500000,
+            "duration" : [
+                {
+                    "hours" : 2,
+                    "minutes" : 15
+                }
+            ]
+        },
+
+        {
+            "id" : "DT006",
+            "from" : "SGN",
+            "to" : "PQC",
+            "price" : 1000000,
+            "duration" : [
+                {
+                    "hours" : 1,
+                    "minutes" : 15
+                }
+            ]
+        },
+
+        {
+            "id" : "DT007",
+            "from" : "SGN",
+            "to" : "PQC",
+            "price" : 1000000,
+            "duration" : [
+                {
+                    "hours" : 1,
+                    "minutes" : 15
+                }
+            ]
+        },
+
+        {
+            "id" : "DT008",
+            "from" : "SGN",
+            "to" : "PQC",
+            "price" : 1000000,
+            "duration" : [
+                {
+                    "hours" : 1,
+                    "minutes" : 15
+                }
+            ]
+        },
+
+        {
+            "id" : "DT009",
+            "from" : "PQC",
+            "to" : "SGN",
+            "price" : 1000000,
+            "duration" : [
+                {
+                    "hours" : 1,
+                    "minutes" : 15
+                }
+            ]
+        },
+
+        {
+            "id" : "DT010",
+            "from" : "PQC",
+            "to" : "SGN",
+            "price" : 1000000,
+            "duration" : [
+                {
+                    "hours" : 1,
+                    "minutes" : 15
+                }
+            ]
+        }
+
+    ]
+}

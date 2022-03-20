@@ -17,6 +17,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -37,6 +40,21 @@ import { ListComponent } from './flightlist/list/list.component';
 import { FooterComponent } from './home/footer/footer.component';
 import { SpecificationComponent } from './flightlist/list/specification/specification.component';
 import { ClassComponent } from './flightlist/list/class/class.component';
+import { OrderComponent } from './order/order.component';
+import { TriptotalComponent } from './order/triptotal/triptotal.component';
+import { DetailflightComponent } from './order/detailflight/detailflight.component';
+import { LugageComponent } from './order/lugage/lugage.component';
+import { LuggagepopupComponent } from './order/lugage/luggagepopup/luggagepopup.component';
+import { ExpandedserviceComponent } from './order/expandedservice/expandedservice.component';
+import { PassengerinfoComponent } from './order/passengerinfo/passengerinfo.component';
+import { PlaceComponent } from './home/place/place.component';
+import { PaymentComponent } from './payment/payment.component';
+import { CheckoutComponent } from './payment/checkout/checkout.component';
+import { PassengerPersonalComponent } from './order/passenger-personal/passenger-personal.component';
+import { ContactInfoComponent } from './order/contact-info/contact-info.component';
+import { LuggagePersonalComponent } from './order/lugage/luggage-personal/luggage-personal.component';
+import { ExpandedservicePersonalComponent } from './order/expandedservice/expandedservice-personal/expandedservice-personal.component';
+import { ManageComponent } from './home/manage/manage.component';
 
 
 
@@ -57,7 +75,22 @@ import { ClassComponent } from './flightlist/list/class/class.component';
     ListComponent,
     FooterComponent,
     SpecificationComponent,
-    ClassComponent
+    ClassComponent,
+    OrderComponent,
+    TriptotalComponent,
+    DetailflightComponent,
+    LugageComponent,
+    LuggagepopupComponent,
+    ExpandedserviceComponent,
+    PassengerinfoComponent,
+    PlaceComponent,
+    PaymentComponent,
+    CheckoutComponent,
+    PassengerPersonalComponent,
+    ContactInfoComponent,
+    LuggagePersonalComponent,
+    ExpandedservicePersonalComponent,
+    ManageComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +111,10 @@ import { ClassComponent } from './flightlist/list/class/class.component';
     MatNativeDateModule,
     MatExpansionModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatRadioModule,
+    MatCheckboxModule,
+    MatSnackBarModule
   ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'fill'}}

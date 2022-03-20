@@ -1,0 +1,69 @@
+.passengerinfo{
+    padding-left: 12px;
+}
+.notice{
+    height: 100px;
+    border: 1px solid rgba(0, 0, 0, 0.253);
+    border-left: 20px solid #0C172E;
+    box-shadow: 1px 1px 7px 4px #ccc;
+    background-color: white;
+    line-height: 98px;
+    font-size: 17px;
+    padding-left: 20px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.title{
+    background-color: #0C172E;
+    color: white;
+    font-size: 25px;
+    height: 80px;
+    line-height: 20px;
+    padding: 30px;
+}
+
+.passenger{
+    border: 1px solid rgba(0, 0, 0, 0.253);
+    box-shadow: 1px 1px 7px 4px #ccc;
+    background-color: white;
+    margin-top: 30px;
+}
+
+.content{
+    padding: 0px 30px;
+    padding-bottom: 30px;
+}
+
+.mat-form-field{
+    width: 49%;
+}
+
+input, select{
+    border-radius: 5px !important;
+    border: 2px solid rgba(0, 0, 0, 0.253);
+    height : 70px;
+    font-size: 20px;
+}
+
+input:hover, select:hover{
+    border: 2px solid #0C172E !important;
+    box-shadow: none !important;
+}   
+
+.enterinfo{
+    padding: 0px;
+}
+.enterinfo input{
+    margin-top: 30px;
+    display: inline-block;
+}
+
+select{
+    display: inline-block;
+    margin-bottom: 0px !important;
+}
+
+.appear {
+    display: none;
+}

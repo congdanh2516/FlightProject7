@@ -1,37 +1,83 @@
 <div class="row">
-    <div class="col-md-2" style="margin-left: 5.5%;">
+    <div class="col-md-1"></div>
+    <div class="col-md-2" style="padding-left: 0px !important;">
           <input type="text"
             class="form-control" name="" id="" aria-describedby="helpId" placeholder=""
-            value="HA NOI"
+            [value]="origin"
             readonly>
     </div>
     ⇋
     <div class="col-md-2">
         <input type="text"
             class="form-control" name="" id="" aria-describedby="helpId" placeholder=""
-            value="TP HO CHI MINH"
+            [value]="destination"
             readonly>
     </div>
     
     <div class="col-md-2">
         <input type="text"
             class="form-control" name="" id="" aria-describedby="helpId" placeholder=""
-            value="Khu hoi"
+            [value]="type ? 'One Way' : 'Round Trip'"
             readonly>
     </div>
 
-    <div class="col-md-2">
-        <input type="text"
+    <div class="col-md-3" style="width:550px">
+        <ng-container *ngIf="type; else roundtrip">
+            <input type="text"
             class="form-control" name="" id="" aria-describedby="helpId" placeholder=""
-            value="27/02 - 28/02"
+            value="{{departDate}}"
             readonly>
+        </ng-container>
+
+        <ng-template #roundtrip>
+            <input type="text"
+            class="form-control" name="" id="" aria-describedby="helpId" placeholder=""
+            value="{{departDate}} - {{returnDate}}"
+            readonly>
+        </ng-template>
     </div>
 
-    <div class="col-md-2">
-        <button mat-button
-            style="background-color: #E8A207; height: 60px; width: 170px; font-size: 20px; margin: 20px 20px 20px 0; color: #0C172E">
-            Chỉnh sửa
+    <div class="col-md-2" style="width: 172px;">
+        <button mat-button   data-bs-toggle="modal" data-bs-target="#search"
+            style="background-color: #E8A207; height: 80px; width: 170px; font-size: 20px; margin: 20px 20px 20px 0; color: #0C172E">
+            Modify
             </button>
     </div>
-      
+    <!-- <div class="col-md-1"></div> -->
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="search" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+  style="margin-top: 300px;">
+  <div class="modal-dialog" style="border-radius: 5px !important; max-width: 70% !important;">
+    <div class="modal-content">
+
+        <!-- header -->
+        <div class="modal-header" 
+            style="background-color: #0C172E; color: white !important;
+            border-top-right-radius: 0 !important;
+            border-top-left-radius: 0 !important;
+            ">
+            <p class="modal-title" id="exampleModalLabel" 
+            style="padding-left: 14px; margin-top: 10px; font-size: 25px;">
+            SEARCH FLIGHT
+            </p>
+        </div>
+
+        <div class="modal-body" style="padding: 0 !important;">
+            <app-search 
+                panelOpenState=true
+                [originCode]="flight.origin"
+                [destinationCode]="flight.destination"
+                [type]="flight.type"
+                [departDate]="flight.departDate"
+                [returnDate]="flight.returnDate"
+                [quantityPassenger]="flight.quantityPassenger"
+            ></app-search>
+        </div>
+
+    </div>
+  </div>
 </div>

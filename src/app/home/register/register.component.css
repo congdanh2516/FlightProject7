@@ -23,3 +23,6 @@ mat-form-field.mat-form-field {
    padding: 10px !important;
  }
 
+ button{
+   margin-bottom: 30px;
+ }

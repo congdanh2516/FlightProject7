@@ -1,2 +1,9 @@
 xanh : #0C172E
 vang : #E8A207
+
+https://github.com/ToanCris102/api-air.git
+
+
+This works for me to override all local changes and does not require an identity:
+git reset --hard
+git pull origin master

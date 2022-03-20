@@ -1,5 +1,6 @@
 .footer{
-    height : 400px;
+    height : 500px;
+    width: 101%;
     background-color: #0C172E;
     color: white;
     padding : 0 10%;
@@ -11,9 +12,20 @@
 }
 
 p .name{
-    font-size: 27px;
+    font-size: 20px;
 } 
  
 p {
     font-size: 20px;
+    line-height: 30px;
+}
+
+.footer-bottom{
+    font-size: 20px;
+    text-align: center;
+    height: 300px;
+    
+    justify-content: center;
+    display: flex;
+    align-items: center;
 }

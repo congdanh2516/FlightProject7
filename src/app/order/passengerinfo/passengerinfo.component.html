@@ -1,0 +1,120 @@
+<div class="passengerinfo">
+    <div class="row">
+        <h1 style="padding: 0px !important; font-size: 40px !important; margin-bottom: 0px !important;">Type Passenger Info</h1>
+    </div>
+    <!-- Notice -->
+    <div class="row notice" style="margin-top: 30px;">
+        <div class="col-md-1" style="width: 40px;">
+            <fa-icon [icon]="faCircleInfo" style="font-size: 25px;"></fa-icon>
+        </div>
+        <div class="col-md-11">
+            All of the infomation of the passenger is secure
+        </div>
+    </div>
+
+    <div class="row notice" style="margin-top: 30px;">
+        <div class="col-md-1" style="width: 40px;">
+            <fa-icon [icon]="faCircleInfo" style="font-size: 25px;"></fa-icon>
+        </div>
+        <div class="col-md-11" style="align-items: center; display: flex;">
+            Use login to enter information automatically
+        </div>
+    </div>
+
+    <!-- Passenger data -->
+    <div class="row" style="margin-top: 40px;">
+        <h1 style="padding: 0px !important; font-size: 40px !important; margin-bottom: 0px !important;">Passenger Info</h1>
+    </div>
+
+    <!-- passenger -->
+    <div class="row passenger" *ngFor = "let number of quantityPassenger; let i=index">
+        <div class="title">
+            Passenger {{i+1}}
+        </div>
+        <app-passenger-personal [appear] = "appear" (contactinfo)="onGetContactInfo($event, i)"></app-passenger-personal>
+    </div>
+    <!-- end passenger -->
+    
+    <!-- contact data -->
+    <div class="row" style="margin-top: 40px;">
+        <h1 style="padding: 0px !important; font-size: 40px !important; margin-bottom: 0px !important;">Contact Info</h1>
+    </div>
+
+    <div class="row passenger">
+        <div class="title">
+            Contact Info
+        </div>
+        <div class="content" [class.appear]="appear">
+
+            <div class="row" style="margin-top: 30px; font-size: 20px;">
+                <div class="col-md-1" style="width: 40px;">
+                    <fa-icon [icon]="faCircleInfo" style="font-size: 25px;"></fa-icon>
+                </div>
+                <div class="col-md-11 ">
+                    All of the following information is <b>required</b>
+                </div>
+            </div>
+        
+            <div class="enterinfo">
+                <select [(ngModel)]="suffix"
+                    class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" 
+                    style="margin-bottom: 0px; width: 20%;" >
+                    <option value="" selected="selected" disabled="disable" hidden="hidden">Suffix</option>
+                    <option value="1">Mr</option>
+                    <option value="0">Ms</option>
+                </select>
+        
+                <input [(ngModel)]="firstName"
+                    type="text" class="form-control" placeholder="First Name" aria-label="Recipient's username" aria-describedby="basic-addon2"
+                    style="width: 37%; margin-left: 3%;" required>
+        
+                <input [(ngModel)]="lastName"
+                    type="text" class="form-control" placeholder="Last Name" aria-label="Recipient's username" aria-describedby="basic-addon2"
+                    style="width: 37%; margin-left: 3%;">
+        
+                <input [(ngModel)]="dateofBirth"
+                    type="date" class="form-control" placeholder="Date of Birth" aria-label="Recipient's username" aria-describedby="basic-addon2"
+                    style="width: 48.5%;">
+        
+                <input [(ngModel)]="identification"
+                    type="text" class="form-control" placeholder="Identification No" aria-label="Recipient's username" aria-describedby="basic-addon2"
+                    style="width: 48.5%; margin-left: 3%;">
+        
+                <hr style="margin-top: 40px;">
+                <input [(ngModel)]="phone"
+                    type="tel" class="form-control" placeholder="Phone Number" aria-label="Recipient's username" aria-describedby="basic-addon2"
+                    style="width: 48.5%;">
+                <input [(ngModel)]="email"
+                    type="email" class="form-control" placeholder="Email" aria-label="Recipient's username" aria-describedby="basic-addon2"
+                    style="width: 48.5%; margin-left: 3%;">
+            </div>
+        
+            <h2 style="margin-top: 30px">Notice : Enter incorrect info, pleases! dr chung toi lien hej khi can thiet</h2>
+        
+        </div>
+        
+        <div class="content" [class.appear]="!appear" style="padding: 30px; font-size: 25px;">
+            {{firstName}}&nbsp;{{lastName}}
+        </div>
+
+    </div>
+    <!-- end contact data -->
+
+    <div class="row" style="margin-top: 30px;">
+        <a data-bs-toggle="collapse" href="#addservice" role="button" aria-expanded="false" aria-controls="collapseExample" 
+            (click)="nextStep()"
+            style="text-decoration: none; padding: 0px; font-size: 30px;">
+            {{nextStepTitle}}
+        </a>
+    </div>
+
+</div>
+<div class="collapse" id="addservice" style="padding: 0px !important; margin: 0px !important;">
+    <div style="margin-top: 30px;">
+        <app-lugage></app-lugage>
+    </div>
+
+    <div style="margin-top: 30px;">
+        <app-expandedservice></app-expandedservice>
+    </div>
+</div>
