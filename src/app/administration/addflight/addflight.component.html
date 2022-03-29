@@ -12,9 +12,8 @@
         <h1 style="font-size: 40px; color: #0C172E;">New Flight Info</h1>
         <mat-form-field appearance="legacy">
             <mat-label>Origin</mat-label>
-            <mat-select [(ngModel)]="departure">
-                <mat-option *ngFor="let element of locationfrom" [value]="element.id"
-                    (click)="exceptLocation(element.id)"
+            <mat-select [(ngModel)]="departure" (selectionChange)="exceptAirport($event, 'from')">
+                <mat-option *ngFor="let element of airportFrom" [value]="element.id"
                     >{{element.name}} ({{element.id}}), Viet Nam
                 </mat-option>
             </mat-select>
@@ -22,8 +21,8 @@
 
         <mat-form-field appearance="legacy">
             <mat-label>Destination</mat-label>
-            <mat-select (selectionChange)="abc($event)" [(ngModel)]="destination">
-                <mat-option *ngFor="let element of locationto" [value]="element.id" 
+            <mat-select [(ngModel)]="destination" (selectionChange)="exceptAirport($event, 'to')">
+                <mat-option *ngFor="let element of airportTo" [value]="element.id" 
                     >{{element.name}} ({{element.id}}), Viet Nam
                 </mat-option>
             </mat-select>
@@ -62,7 +61,7 @@
         <mat-form-field appearance="legacy">
             <mat-label>Aircaft</mat-label>
             <mat-select [(ngModel)]="airName">
-                <mat-option *ngFor="let element of locationfrom" [value]="element.id">{{element.name}}</mat-option>
+                <mat-option *ngFor="let element of airportFrom" [value]="element.id">{{element.name}}</mat-option>
             </mat-select>
         </mat-form-field>
 

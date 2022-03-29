@@ -12,9 +12,9 @@ import { LocalstorageService } from 'src/app/service/localstorage/localstorage.s
 })
 export class ExpandedserviceComponent implements OnInit {
 
-  passengerlist : any;
+  passengerlist : any[] = [];
   constructor(private storage : LocalstorageService) { 
-    this.passengerlist = this.storage.getItem('passenger');
+    
   }
 
   ngOnInit(): void {
@@ -34,5 +34,13 @@ export class ExpandedserviceComponent implements OnInit {
     {id : 'LG023', weight : 23, price : 270000}
   ]
 
+  openService(){
+    this.passengerlist = this.storage.getItem('passenger');
+  }
+
+  add : boolean = false;
+  addService(){
+    this.add = !this.add;
+  }
   
 }

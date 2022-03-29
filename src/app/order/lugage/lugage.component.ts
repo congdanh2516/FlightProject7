@@ -12,6 +12,7 @@ export class LugageComponent implements OnInit {
 
   passengerlist : any;
   constructor(private storage : LocalstorageService) {
+   
   }
 
   ngOnInit(): void {
@@ -39,5 +40,12 @@ export class LugageComponent implements OnInit {
   openLuggage(){
     this.passengerlist = this.storage.getItem('passenger');
   }
+
+  add : boolean = false;
+  addLuggage(){
+    this.add = !this.add;
+  }
+
+  trip : boolean = true;
 
 }

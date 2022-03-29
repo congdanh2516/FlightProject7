@@ -12,17 +12,18 @@ import { LocalstorageService } from 'src/app/service/localstorage/localstorage.s
 })
 export class SpecificationComponent implements OnInit {
 
-  flight : any;
+  flight_searched : any;
   flight_return : any;
   departure : boolean; //khu hoi, chon may chuyen r
   constructor(private storage : LocalstorageService, private router : Router) {
-    this.flight = this.storage.getItem('flight');
+    this.flight_searched = this.storage.getItem('flight_searched');
     this.departure = this.storage.getItem('departure');
   }
 
   ngOnInit(): void {
   }
 
+  @Input()arrivedDateTime : string;
   @Input()departTime : string;
   @Input()arrivedTime : string;
   @Input()departTime1 : string;
@@ -43,6 +44,8 @@ export class SpecificationComponent implements OnInit {
   @Input()id : string;
 
   @Input()cfc : string;
+
+  @Input()turn : string;
 
 
   //arrivedTime  : Date;
@@ -85,40 +88,37 @@ export class SpecificationComponent implements OnInit {
   }
 
   chooseFlight(flightCode : string, type : string, price : number){
-    var cfc : String[] = []; //mang ma chuyen bay da chon
-    
+
+    var cfc : any[] = []; //mang ma chuyen bay da chon
+    var option : Object = {
+      flightCode: this.cfc,
+      type : type,
+    }
+
     console.log(flightCode + type + price);
-    if(this.flight.type) {
-      cfc.push(this.cfc);
+    
+    //one way
+    if(this.flight_searched.type) {
+      cfc.push(option);
       this.storage.setItem('cfc', cfc);
       this.router.navigateByUrl('/purchase');
-      
     }
-    else 
+    else //round trip
     {
-      if(this.departure){
+      if(this.turn == 'return'){ //da chon chuyen di
         cfc = this.storage.getItem('cfc');
-        cfc.push(this.cfc);
+        if(cfc.length==2){
+          cfc.pop();
+        }
+        cfc.push(option);
         this.storage.setItem('cfc', cfc);
         this.router.navigateByUrl('/purchase');
       }
-      else 
+      else //chon chuyen di, dieu huong den chonj chuyen ve
       {
-        this.flight_return = {
-          origin : this.flight.destination,
-          destination : this.flight.origin,
-          type : this.flight.type,
-          departDate : this.flight.returnDate,
-          returnDate : this.flight.departDate,
-          quantityPassenger : this.flight.quantityPassenger
-        }
-
-        cfc.push(this.cfc);
+        cfc.push(option);
         this.storage.setItem('cfc', cfc);
-        this.storage.setItem('flight', this.flight_return);
-        this.storage.setItem('departure', true);
-        this.router.navigateByUrl('/flightlist');
-        location.reload();
+        this.router.navigate(['/list', this.flight_searched.destination, this.flight_searched.origin, this.flight_searched.type.toString(), this.flight_searched.returnDate.toString(), this.flight_searched.quantityPassenger, 'return']);
       }
     }
     

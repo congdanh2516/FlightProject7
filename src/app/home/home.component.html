@@ -1,52 +1,59 @@
-<div class="row">
-    <div class="col-md-12" style="background-image: url('../../assets/image/bghome7_1.jpg');
-                                background-repeat: no-repeat;
-                                background-size: cover;
-                                height: 850px; 
-                                
-                                display: flex;
-                                justify-content: center;
-                                flex-direction: column;
-                                ">
+<div [ngClass]="{home : message}" (click)="changeBlur()">
+    <div class="row" >
+        <div class="col-md-12" style="background-image: url('../../assets/image/bghome7_1.jpg');
+                                    background-repeat: no-repeat;
+                                    background-size: cover;
+                                    height: 850px; 
 
-        <div>
-            <app-searchnbook></app-searchnbook>
+                                    display: flex;
+                                    justify-content: center;
+                                    flex-direction: column;
+                                    ">
+    
+            
         </div>
     </div>
+    
+    <div class="row" style="margin-top: 40px;">
+        <div class="col-md-1"></div>
+        <div class="col-md-10" data-aos="fade-up">
+            <h1 style="padding: 0px !important; font-size: 40px !important; margin-bottom: 0px !important;">
+                TOP DESTINATION IN VIETNAM
+            </h1>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    
+    <div class="row" style="margin-top: 30px;" data-aos="fade-up" data-aos-duration="1000">
+        <div class="col-md-1"></div>
+        <div class="col-md-4">
+            <app-place image = "../../assets/image/hanoi.jpg" text="HA NOI"></app-place>
+        </div>
+        <div class="col-md-3">
+            <app-place image = "../../assets/image/phuquoc.jpg" text="PHU QUOC"></app-place>
+        </div>
+        <div class="col-md-3">
+            <app-place image = "../../assets/image/dalat.jpg" text="DA LAT"></app-place>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    
+    <div class="row" style="margin-top : 30px;" data-aos="fade-up" data-aos-duration="1000">
+        <div class="col-md-1"></div>
+        <div class="col-md-5">
+            <app-place image = "../../assets/image/saigon.jpg" text="HO CHI MINH"></app-place>
+        </div>
+        <div class="col-md-5">
+            <app-place image = "../../assets/image/hue.jpg" text="HUE"></app-place>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    
 </div>
 
-<div class="row" style="margin-top: 40px;">
-    <div class="col-md-1"></div>
-    <div class="col-md-10" data-aos="fade-up">
-        <h1 style="padding: 0px !important; font-size: 40px !important; margin-bottom: 0px !important;">
-            TOP DESTINATION IN VIETNAM
-        </h1>
+<div
+    style="position: absolute; top: 110px; justify-content: center; display: flex; align-items: center;height: 860px;">
+    <div style="z-index: 9999 !important;">
+        <app-searchnbook></app-searchnbook>
     </div>
-    <div class="col-md-1"></div>
 </div>
-
-<div class="row" style="margin-top: 30px;" data-aos="fade-up" data-aos-duration="1000">
-    <div class="col-md-1"></div>
-    <div class="col-md-4">
-        <app-place image = "../../assets/image/hanoi.jpg" text="HA NOI"></app-place>
-    </div>
-    <div class="col-md-3">
-        <app-place image = "../../assets/image/phuquoc.jpg" text="PHU QUOC"></app-place>
-    </div>
-    <div class="col-md-3">
-        <app-place image = "../../assets/image/dalat.jpg" text="DA LAT"></app-place>
-    </div>
-    <div class="col-md-1"></div>
-</div>
-
-<div class="row" style="margin-top : 30px;" data-aos="fade-up" data-aos-duration="1000">
-    <div class="col-md-1"></div>
-    <div class="col-md-5">
-        <app-place image = "../../assets/image/saigon.jpg" text="HO CHI MINH"></app-place>
-    </div>
-    <div class="col-md-5">
-        <app-place image = "../../assets/image/hue.jpg" text="HUE"></app-place>
-    </div>
-    <div class="col-md-1"></div>
-</div>
-

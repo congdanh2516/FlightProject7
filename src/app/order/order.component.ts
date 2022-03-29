@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LocalstorageService } from '../service/localstorage/localstorage.service';
 
 @Component({
   selector: 'app-order',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private storage : LocalstorageService) {
+    this.storage.removeItem('contact');
+    this.storage.removeItem('passenger');
+  }
 
   ngOnInit(): void {
   }

@@ -31,8 +31,13 @@ export class SearchService {
     return this.httpClient.get(api);
   }
 
+  getAirportList(){
+    var api = "http://localhost:9000/api/airportNames"
+    return this.httpClient.get(api);
+  }
+
   search_name_airport(code : string){
-    var api = `http://localhost:3000/airportfrom/${code}`;
+    var api = `http://localhost:9000/api/airportNames/${code}`;
     return this.httpClient.get(api);
   }
 

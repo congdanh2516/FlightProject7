@@ -1,17 +1,19 @@
 <!-- <body style="margin:0 auto; padding: 10px;">   -->
   <mat-stepper linear #stepper style="padding: 0px !important;">
     <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
-      <form [formGroup]="firstFormGroup">
+      <form [formGroup]="firstFormGroup" >
         <ng-template matStepLabel>Type sign in info</ng-template>
 
         <mat-form-field appearance="legacy">
           <mat-label>Personal Identification No</mat-label>
-          <input matInput formControlName="firstCtrl" placeholder="Last name, First name" required>
+          <input [(ngModel)]="identificationCard"
+            matInput formControlName="firstCtrl" placeholder="Last name, First name" required>
         </mat-form-field>
 
         <mat-form-field appearance="legacy">
           <mat-label>Password</mat-label>
-          <input matInput formControlName="firstCtrl" [type]="hide ? 'password' : 'text'" required>
+          <input [(ngModel)]="userPassword" 
+          matInput formControlName="firstCtrl" [type]="hide ? 'password' : 'text'" required>
           <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
@@ -19,7 +21,8 @@
 
         <mat-form-field appearance="legacy">
           <mat-label>Verify Password</mat-label>
-          <input matInput formControlName="firstCtrl" [type]="hide ? 'password' : 'text'" required>
+          <input
+          matInput formControlName="firstCtrl" [type]="hide ? 'password' : 'text'" required>
           <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
@@ -42,8 +45,8 @@
        
         <mat-form-field appearance="legacy" style="width: 40%">
           <mat-label>Suffix</mat-label>
-          <mat-select>
-            <mat-option *ngFor="let element of suffix" [value]="element.value">
+          <mat-select [(ngModel)]="suffix" formControlName="secondCtrl">
+            <mat-option *ngFor="let element of suffixList" [value]="element.value">
               {{element.viewValue}}
             </mat-option>
           </mat-select>
@@ -51,19 +54,22 @@
 
           <mat-form-field appearance="legacy" style="width: 40%; display: inline-block; margin-left: 20%;">
             <mat-label>Last Name</mat-label>
-            <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+            <input  [(ngModel)]="lastName"
+            matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
                  required>
           </mat-form-field>
 
           <mat-form-field appearance="legacy">
             <mat-label>First Name</mat-label>
-            <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+            <input [(ngModel)]="firstName"
+            matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
                  required>
           </mat-form-field>
 
           <mat-form-field appearance="legacy">
             <mat-label>Date of Birth</mat-label>
-            <input matInput [matDatepicker]="picker">
+            <input matInput formControlName="secondCtrl"
+               [matDatepicker]="picker" [(ngModel)]="dateOfBirth">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
@@ -89,14 +95,14 @@
       
       <mat-form-field class="example-full-width" appearance="legacy">
         <mat-label>Email</mat-label>
-        <input type="email" matInput
+        <input type="email" matInput [(ngModel)]="userEmail"
                placeholder="Ex. pat@gmail.com">
         <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
       </mat-form-field>
 
       <mat-form-field class="example-full-width" appearance="legacy">
         <mat-label>Phone No</mat-label>
-        <input type="email" matInput
+        <input type="email" matInput [(ngModel)]="userPhoneNumber"
                placeholder="0123 456 789">
         <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
       </mat-form-field>
@@ -113,6 +119,7 @@
         </button>
 
         <button mat-button matStepperNext
+        (click)="register()"
         style="background-color: #E8A207; height: 60px; width: 150px; font-size: 20px;">
         Register
         </button>

@@ -1,13 +1,14 @@
-<div class="row" style="justify-content: center; display: flex; align-items: center; padding: 10px;"  
+<div  (click)="changeBlur()"  
+    class="row" style="justify-content: center; display: flex; align-items: center; width: 2250px !important; font-size: 25px;"  
     class="animate__animated animate__slideInUp">
     <div class="col-md-8">
         <mat-tab-group dynamicHeight  style="background-color: rgb(255, 255, 255); color:#0C172E;">
-            <mat-tab label="Booking" style="background-color: rgba(255, 255, 255, 0.425);"> 
-                <app-search    
+            <mat-tab label='✈ &nbsp;&nbsp; Booking' style="background-color: rgba(255, 255, 255, 0.425);"> 
+                <app-search  
                 ></app-search> 
             </mat-tab>
             
-            <mat-tab label="Flight status"> 
+            <mat-tab label="⌨ &nbsp;&nbsp; Search Ticket" (click)="changeBlur()"> 
                 <app-manage></app-manage>
             </mat-tab>
         </mat-tab-group>

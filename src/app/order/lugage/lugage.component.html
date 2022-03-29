@@ -33,7 +33,7 @@
   
   <!-- Modal -->
 <div class="modal fade" id="luggage" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
-    style="margin-top: 50px;">
+    style="margin-top: 50px; height: 950px; overflow: auto;">
     <div class="modal-dialog" style="border-radius: 5px !important; max-width: 60% !important;">
       <div class="modal-content">
 
@@ -76,12 +76,28 @@
                     23kg - 270 000 VND
                 </div>
             </div>
-
-            <app-luggage-personal *ngFor = "let element of passengerlist, let i=index" 
-                [firstName]="element.firstName"
-                [lastName]="element.lastName"
-                [no]="i+1"
-            ></app-luggage-personal>
+            <mat-checkbox class="example-margin" style="font-size: 20px;" [(ngModel)]="trip">&nbsp; One Way</mat-checkbox>
+            <p>{{trip}}</p>
+            <ng-container *ngIf = "trip == true ; else trip2">
+                <div>
+                    <app-luggage-personal *ngFor = "let element of passengerlist, let i=index" 
+                    [firstName]="element.firstName"
+                    [lastName]="element.lastName"
+                    [no]="i+1"
+                    [add]="add"
+                ></app-luggage-personal>
+                </div>
+            </ng-container>
+            <ng-template #trip2>
+                <div>
+                    <app-luggage-personal *ngFor = "let element of passengerlist, let i=index" 
+                        [firstName]="element.lastName"
+                        [lastName]="element.firstName"
+                        [no]="i+1"
+                        [add]="add"
+                    ></app-luggage-personal>
+                </div>
+            </ng-template>
 
         </div>
 
@@ -92,6 +108,7 @@
             Close
           </button>
           <button mat-button 
+            (click)="addLuggage()"
             style="background-color: #E8A207; height: 60px; width: 150px; font-size: 20px;">
              ADD
          </button>

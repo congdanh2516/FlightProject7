@@ -37,7 +37,7 @@
 <div class="admin">
     <div class="quote">
         <div class="row" 
-            style=" justify-content: center; display:flex; align-items: center; text-align: center;">
+            style="height: 700px; margin-top: 50px; justify-content: center; display:flex; align-items: center; text-align: center;">
             <div class="col-md-1"></div>
             <div class="col-md-10" class="animate__animated animate__slideInUp">
                 <p style="font-size: 70px;">Discover new lands</p>
@@ -45,9 +45,13 @@
                 <p style="font-size: 40px; color: #E8A207;">______</p>
                 <div class="option">
                     <div class="suboption">
-                        <button mat-button (click)="openDialogFlightStatus()" 
+                        <button mat-button (click)="searchFlight()"  
                             style="color: #0C172E; border: none; font-size: 25px;">
+                            <a 
+                            data-bs-toggle="modal" data-bs-target="#luggage"
+                            style="font-size: 25px; color: #0C172E; cursor: pointer;">
                             Flight Status
+                        </a>
                         </button>
                     </div>
                     <div class="suboption" style="border-right: 1px solid black;">
@@ -69,3 +73,53 @@
         </div>
     </div>
 </div>
+
+
+
+<div class="modal fade" id="flightStatus" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="search">
+        <div class="row">
+            <div class="col-md-9">
+                <input style="height: 70px;" 
+                    class="form-control" type="text" name="" placeholder="Enter Ticket Number">
+            </div>
+            <div class="col-md-3">
+                <button mat-button
+                    style="background-color: #E8A207; height: 70px; font-size: 20px;">
+                    Search flight
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="luggage" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+    style="margin-top: 140px; padding: 0px !important; ">
+    <div class="modal-dialog" style="border-radius: 5px !important; max-width: 30% !important;">
+      <div class="modal-content">
+        <div class="modal-body" style="padding: 0px !important;">
+            <div class="row" >
+                <div class="col-md-10">
+                    <input style="height: 70px;" 
+                        class="form-control" type="text" name="" placeholder="Enter Ticket Number">
+                </div>
+                <div class="col-md-2">
+                    <button mat-button
+                        style="background-color: #E8A207; height: 70px; font-size: 20px;">
+                        Search
+                    </button>
+                </div>
+            </div>
+            <!-- <div class="consequence">
+                <div class="row" style="margin-top: 30px">
+                    <div class="col-md-10">
+                        <input style="height: 70px;" 
+                        class="form-control" type="text" name="" placeholder="Enter Ticket Number" readonly>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+      </div>
+    </div>
+</div>
+

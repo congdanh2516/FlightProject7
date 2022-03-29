@@ -18,7 +18,7 @@
             <option value="0">Ms</option>
         </select>
 
-        <input [(ngModel)]="firstName" (keyup)="onChange()"
+        <input [(ngModel)]="firstName" (keyup)="onChange()" [ngClass]="{error : errorFirstName}"
             type="text" class="form-control" placeholder="First Name" aria-label="Recipient's username" aria-describedby="basic-addon2"
             style="width: 37%; margin-left: 3%;" required>
 

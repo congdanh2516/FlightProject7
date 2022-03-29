@@ -32,3 +32,7 @@ input:hover, select:hover{
     border: 2px solid #0C172E !important;
     box-shadow: none !important;
 }
+
+.error{
+    border-color: red !important;
+}

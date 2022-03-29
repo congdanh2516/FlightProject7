@@ -67,3 +67,7 @@ select{
 .appear {
     display: none;
 }
+
+.error{
+    border-color: red !important;
+}

@@ -10,11 +10,13 @@ import { LocalstorageService } from 'src/app/service/localstorage/localstorage.s
 export class PassengerPersonalComponent implements OnInit, OnDestroy, OnChanges {
 
   @Input()appear : boolean;
+  @Input()no : number;
 
   @Output('contactinfo')
   onHandleContactinfo = new EventEmitter<any>();
 
   public contactinfo : any;
+
 
   constructor(private storage : LocalstorageService) { }
 
@@ -37,40 +39,52 @@ export class PassengerPersonalComponent implements OnInit, OnDestroy, OnChanges 
   }
 
   ngOnChanges() {
-    
-
-
-    if(this.appear){
-      if(!this.storage.getItem('passenger')){
-        var passenger1 = {
-          suffix : this.suffix,
-          firstName : this.firstName,
-          lastName : this.lastName,
-          dateofBirth : this.dateofBirth,
-          identification : this.identification
-        }
-        let passenger : any[] = [];
-        passenger.push(passenger1);
-        this.storage.setItem('passenger', passenger);
-      }
-      else 
-      {
-        if (this.storage.getItem('passenger').length < this.storage.getItem('flight_searched').quantityPassenger){
-          var passenger : any[] = [];
-          var passenger_local = this.storage.getItem('passenger');
-          for(var i=0; i<this.storage.getItem('passenger').length; i++)
-          {
-            passenger.push(passenger_local[i]);
-          }
-          const passenger1 = {
+    if(this.checkValid()){
+      if(this.appear){
+        if(!this.storage.getItem('passenger')){
+          var passenger1 = {
             suffix : this.suffix,
             firstName : this.firstName,
             lastName : this.lastName,
             dateofBirth : this.dateofBirth,
             identification : this.identification
           }
+          let passenger : any[] = [];
           passenger.push(passenger1);
           this.storage.setItem('passenger', passenger);
+        }
+        else 
+        {
+          if (this.storage.getItem('passenger').length < this.storage.getItem('flight_searched').quantityPassenger){
+            var passenger : any[] = [];
+            var passenger_local = this.storage.getItem('passenger');
+            for(var i=0; i<this.storage.getItem('passenger').length; i++)
+            {
+              passenger.push(passenger_local[i]);
+            }
+            const passenger1 = {
+              suffix : this.suffix,
+              firstName : this.firstName,
+              lastName : this.lastName,
+              dateofBirth : this.dateofBirth,
+              identification : this.identification
+            }
+            passenger.push(passenger1);
+            this.storage.setItem('passenger', passenger);
+          }
+  
+  
+            // const passenger1 = {
+            //   suffix : this.suffix,
+            //   firstName : this.firstName,
+            //   lastName : this.lastName,
+            //   dateofBirth : this.dateofBirth,
+            //   identification : this.identification
+            // }
+            // console.log(this.no)
+            // var passenger = this.storage.getItem('passenger');
+            // passenger[this.no] = passenger1;
+            // this.storage.setItem('passenger', passenger);
         }
       }
     }
@@ -85,5 +99,17 @@ export class PassengerPersonalComponent implements OnInit, OnDestroy, OnChanges 
 
   //icon
   faCircleInfo = faCircleInfo;
+
+
+
+  errorFirstName : boolean = false;
+  checkValid() : boolean {
+    var check = true;
+    if(this.suffix == ""){
+      this.errorFirstName = true;
+      check=false;
+    }
+    return check;
+  }
 
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import { faCreditCard } from '@fortawesome/free-solid-svg-icons';
+import { LocalstorageService } from 'src/app/service/localstorage/localstorage.service';
 
 @Component({
   selector: 'app-checkout',
@@ -10,7 +11,7 @@ import { faCreditCard } from '@fortawesome/free-solid-svg-icons';
 })
 export class CheckoutComponent implements OnInit {
 
-  constructor() {}
+  constructor(private storage : LocalstorageService) {}
 
   ngOnInit(): void {
   }
@@ -45,6 +46,63 @@ export class CheckoutComponent implements OnInit {
     );
   }
   
+  buy(){
+    var passengers : any[] = [];
+    passengers = this.storage.getItem('passenger');
+    var contact = this.storage.getItem('contact');
+    console.log(contact); //gui thong tin nguoi dat ve
+
+    var cfc : any[] = []; 
+    cfc = this.storage.getItem('cfc');
+
+    passengers.map( (item) => {
+      var passenger = {
+        suffix : item.suffix,
+        lastName : item.lastName,
+        firstName : item.firstName,
+        dateofBirth : item.dateofBirth,
+        identification : item.identification
+      }
+      console.log(passenger); //gui thong tin hang khach
+    });
+
+    cfc.map((flight) => {
+      passengers.map( (item) => {
+        var service : any = {};
+        if("luggage" in item){
+          service.luggage = item.luggage;
+        }
   
+        if("services" in item){
+          if("meal" in item.services){
+            service.meal = item.services.meal;
+          }
+          if("health" in item.services){
+            service.health = item.services.health;
+          }
+          if("crip" in item.services){
+            service.crip = item.services.crip;
+          }
+        }
+        
+        var type : boolean;
+        if(flight.type == "eco"){
+          type = false;
+        }
+        else type = true;
+
+        var ticket = {
+          idFlight : flight.flightCode,
+          userInfo : item.identification,
+          purchaser : contact.identification,
+          trader : type,
+          service : service
+        };
+        
+        console.log(ticket);
+      })
+    })
+
+  }  
 
 }

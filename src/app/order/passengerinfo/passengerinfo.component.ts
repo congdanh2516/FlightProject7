@@ -46,23 +46,25 @@ export class PassengerinfoComponent implements OnInit {
   nextStep(){
     //kiem tra cac truong da duoc nhap day du chua
 
-    this.appear=!this.appear;
-    if (!this.appear) {
-      this.nextStepTitle = "Next Step";
-    }
-    else this.nextStepTitle = "Back to Info";
+ //   if(this.checkValid()){
+      this.appear=!this.appear;
+      if (!this.appear) {
+        this.nextStepTitle = "Next Step";
+      }
+      else this.nextStepTitle = "Back to Info";
 
-    var contact = {
-      suffix : this.suffix,
-      firstName : this.firstName,
-      lastName : this.lastName,
-      dateofBirth : this.dateofBirth,
-      identification : this.identification,
-      email : this.email,
-      phone : this.phone
-    }
+      var contact = {
+        suffix : this.suffix,
+        firstName : this.firstName,
+        lastName : this.lastName,
+        dateofBirth : this.dateofBirth,
+        identification : this.identification,
+        email : this.email,
+        phone : this.phone
+      }
 
-    this.storage.setItem('contact', contact);
+      this.storage.setItem('contact', contact);
+ //   }
   }
 
   panelOpenState = false;
@@ -82,4 +84,15 @@ export class PassengerinfoComponent implements OnInit {
   }
 
 
+  errorFirstName : boolean = false;
+  checkValid() : boolean {
+    var check = false;
+    if(this.firstName == ""){
+      this.errorFirstName = true;
+      check=false;
+    }
+    this.errorFirstName=true
+    console.log(check);
+    return check;
+  }
 }

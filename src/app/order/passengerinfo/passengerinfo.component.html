@@ -31,7 +31,7 @@
         <div class="title">
             Passenger {{i+1}}
         </div>
-        <app-passenger-personal [appear] = "appear" (contactinfo)="onGetContactInfo($event, i)"></app-passenger-personal>
+        <app-passenger-personal [no]="i" [appear] = "appear" (contactinfo)="onGetContactInfo($event, i)"></app-passenger-personal>
     </div>
     <!-- end passenger -->
     
@@ -64,7 +64,7 @@
                     <option value="0">Ms</option>
                 </select>
         
-                <input [(ngModel)]="firstName"
+                <input [(ngModel)]="firstName" [ngClass]="{error : errorFirstName}"
                     type="text" class="form-control" placeholder="First Name" aria-label="Recipient's username" aria-describedby="basic-addon2"
                     style="width: 37%; margin-left: 3%;" required>
         

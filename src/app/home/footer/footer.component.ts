@@ -4,6 +4,7 @@ import { faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
 import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { SharingdataService } from 'src/app/service/sharingdata/sharingdata.service';
 
 @Component({
   selector: 'app-footer',
@@ -12,7 +13,7 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private data : SharingdataService) { }
 
   ngOnInit(): void {
   }
@@ -22,4 +23,8 @@ export class FooterComponent implements OnInit {
   faInstagram = faInstagram;
   faCircleUser = faCircleUser;
   faEnvelope = faEnvelope;
+
+  changeBlur(){
+    this.data.changeMessage(false);
+  }
 }

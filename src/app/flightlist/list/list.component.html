@@ -1,72 +1,92 @@
 <app-headerinfo
     [origin]="flightOriginName"
     [destination]="flightDestinationName"
-    [type]="flight.type"
+    [type]="flight_searched.type"
     [departDate]="departDate"
     [returnDate]="returnDate"
 ></app-headerinfo>
-<div class="row flightname">
-    <div class="col-md-1"></div>
-    <div class="col-md-3" 
-        style="color : #E8A207; font-size: 34px; font-weight: bold; 
-            border: 1px solid rgba(0, 0, 0, 0.253);
-            border-left: 20px solid #0C172E;
-            box-shadow: 1px 1px 7px 4px #ccc;
-            background-color: white;">
-        <fa-icon [icon]="faPlaneDeparture" style="color: #0C172E;"></fa-icon> &nbsp;
-        {{flights[0].departure.name.toUpperCase()}} <span style="color: #0C172E;"> - </span> {{flights[0].destination.name.toUpperCase()}}
+
+<div [ngClass]="{appear : appear}">
+    <div class="row flightname">
+        <div class="col-md-1"></div>
+        <div class="col-md-3" 
+            style="color : #E8A207; font-size: 34px; font-weight: bold; 
+                border: 1px solid rgba(0, 0, 0, 0.253);
+                border-left: 20px solid #0C172E;
+                box-shadow: 1px 1px 7px 4px #ccc;
+                background-color: white;">
+            <fa-icon [icon]="faPlaneDeparture" style="color: #0C172E;"></fa-icon> &nbsp;
+            {{from}} <span style="color: #0C172E;"> - </span> {{to}}
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-1" style="width: 40px;">
+            <fa-icon [icon]="faCircleInfo" style="font-size: 25px;"></fa-icon>
+        </div>
+        <div class="col-md-4" style="font-size: 25px;">
+            All fares shown are the total price roundtrip, per person.
+        </div>
     </div>
-    <div class="col-md-1"></div>
-    <div class="col-md-1" style="width: 40px;">
-        <fa-icon [icon]="faCircleInfo" style="font-size: 25px;"></fa-icon>
-    </div>
-    <div class="col-md-4" style="font-size: 25px;">
-        All fares shown are the total price roundtrip, per person.
+    
+    <!-- <div class="row notice" style="margin-top: 30px; margin-left: 7.9%; width: 40%;">
+        <div class="col-md-1" style="width: 40px;">
+            <fa-icon [icon]="faCircleInfo" style="font-size: 25px;"></fa-icon>
+        </div>
+        <div class="col-md-9">
+            All of the infomation of the passenger is secure
+        </div>
+        <div class="col-md-1"></div>
+    </div> -->
+    
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10 date">
+            <!-- (selectedTabChange)="" -->
+            <mat-tab-group [selectedIndex]="2" >
+                <mat-tab label="26-02-2022"> 
+                    </mat-tab>
+                <mat-tab label="27-02-2022"> Content 2 </mat-tab>
+                <mat-tab label="28-02-2022"> 
+                        <app-class></app-class> 
+                        <app-specification *ngFor = "let flight of flights" 
+                            [originCode] = "flight.departure.id"
+                            [destinationCode] = "flight.destination.id"
+                            [originName] = "flight.departure.name"
+                            [destinationName] = "flight.destination.name"
+                            [hours] = "flight.timeTemp.hour"
+                            [minutes] = "flight.timeTemp.minute"
+                            [aircraftName] = "flight.airName"
+                            [economyPrice] = "flight.price"
+                            [businessPrice] = "flight.price"
+                            [href] = "flight.airCode"
+                            [departDate] = "flight.departDate"
+                            [departTime1] = "flight.departHour1"
+                            [departTime] = "flight.departHour"
+                            [flightCode] = "flight.airCode"
+                            [arrivedTime] = "flight.arrivedTime"
+                            [cfc] = "flight._id"
+                            [turn]="turn"
+                            [arrivedDateTime]="flight.arrivedDateTime.toDateString()"
+                            >
+                        </app-specification>
+                </mat-tab>
+                <mat-tab label="01-03-2022"> Content 3 </mat-tab>
+                <mat-tab label="02-03-2022"> Content 3 </mat-tab>
+              </mat-tab-group>
+        </div>
+        <div class="col-md-1"></div>
     </div>
 </div>
 
-<!-- <div class="row notice" style="margin-top: 30px; margin-left: 7.9%; width: 40%;">
-    <div class="col-md-1" style="width: 40px;">
-        <fa-icon [icon]="faCircleInfo" style="font-size: 25px;"></fa-icon>
+<div [ngClass]="{appear : !appear}">
+    <div class="row" style="margin-top: 100px; height: 800px;">
+        <div class="col-md-4"></div>
+        <div class="col-md-1">
+            <img src="../../../assets/image/circle-solid.svg" alt="" height="20px" class="pot">
+        </div>
+        <div class="col-md-4" style="text-align: left; font-size: 30px;">
+            <!-- <fa-icon [icon]="faSpinner" class="pot"></fa-icon>     -->
+            SORRY, NOT FOUND ANY FLIGHT SUITE YOU
+        </div>
+        <div class="col-md-3"></div>
     </div>
-    <div class="col-md-9">
-        All of the infomation of the passenger is secure
-    </div>
-    <div class="col-md-1"></div>
-</div> -->
-
-<div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-10 date">
-        <mat-tab-group [selectedIndex]="2" (selectedTabChange)="yourFn($event)">
-            <mat-tab label="26-02-2022"> 
-                </mat-tab>
-            <mat-tab label="27-02-2022"> Content 2 </mat-tab>
-            <mat-tab label="28-02-2022"> 
-                    <app-class></app-class> 
-                    <app-specification *ngFor = "let flight of flights" 
-                        [originCode] = "flight.departure.id"
-                        [destinationCode] = "flight.destination.id"
-                        [originName] = "flight.departure.name"
-                        [destinationName] = "flight.destination.name"
-                        [hours] = "flight.timeTemp.hour"
-                        [minutes] = "flight.timeTemp.minute"
-                        [aircraftName] = "flight.airName"
-                        [economyPrice] = "flight.price"
-                        [businessPrice] = "flight.price"
-                        [href] = "flight.airCode"
-                        [departDate] = "flight.departDate"
-                        [departTime1] = "flight.departHour1"
-                        [departTime] = "flight.departHour"
-                        [flightCode] = "flight.airCode"
-                        [arrivedTime] = "flight.arrivedTime"
-                        [cfc] = "flight._id"
-                        >
-                    </app-specification>
-            </mat-tab>
-            <mat-tab label="01-03-2022"> Content 3 </mat-tab>
-            <mat-tab label="02-03-2022"> Content 3 </mat-tab>
-          </mat-tab-group>
-    </div>
-    <div class="col-md-1"></div>
 </div>

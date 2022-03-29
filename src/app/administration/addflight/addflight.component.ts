@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { NEVER } from 'rxjs';
 import { AddflightService } from 'src/app/service/addflight/addflight.service';
+import { SearchService } from 'src/app/service/search/search.service';
 
 
 @Component({
@@ -13,25 +14,22 @@ import { AddflightService } from 'src/app/service/addflight/addflight.service';
 })
 export class AddflightComponent implements OnInit {
 
-  constructor(private addflightSV : AddflightService) { }
+  airportList : any;
+  airportFrom : any;
+  airportTo : any;
+  constructor(private addflightSV : AddflightService, private search : SearchService) {
+    this.search.getAirportList().subscribe(
+      data => {
+        this.airportList = data;
+        this.airportFrom = data;
+        this.airportTo = data;
+      }
+    )
 
-  locationfrom : any;
-  locationto : any;
+  }
 
   ngOnInit(): void {
 
-    
-    this.addflightSV.getAirportFrom().subscribe(
-      data => {
-        this.locationfrom = data;
-      }
-    )
-
-    this.addflightSV.getAirportTo().subscribe(
-      data => {
-        this.locationto = data;
-      }
-    )
   }
 
   flightsCode = [
@@ -85,21 +83,7 @@ export class AddflightComponent implements OnInit {
 
   //loai bo vi tri
   exceptLocation(locationcode : any){
-      // console.log(this.locationto);
-      // for(var i=0; i<this.locationto.length; i++){
-      //   if (this.locationto[i].id == locationcode){
-      //     this.locationto.splice(i,1);
-      //   }
-      // }
-      // console.log(this.locationto);
-
-      // this.startDate.setHours(Number(this.timeFlight.substring(0,2)), Number(this.timeFlight.substring(3,5)));
-      // //console.log(this.timeFlight);
-      // console.log(this.startDate);
-
-    
-
-      // console.log(this.timeTemp);
+      
       
   }
 
@@ -137,6 +121,29 @@ export class AddflightComponent implements OnInit {
 
     this.addflightSV.addFlight(newFlight).subscribe();
     console.log(newFlight);
+  }
+
+  exceptAirport(event : any, type : string){
+    // this.airportFrom = _.cloneDeep(this.airportList);
+    // this.airportTo = _.cloneDeep(this.airportList);
+    this.airportTo = [...this.airportList];
+    this.airportFrom = [...this.airportList];
+    if(type == "from"){
+      for(var i = 0; i <  this.airportTo.length; i++){
+        if(this.airportTo[i].id == event.value){
+          this.airportTo.splice(i,1);
+        }
+      }
+    }
+
+    if(type == "to"){
+      for(var i = 0; i <  this.airportFrom.length; i++){
+        if(this.airportFrom[i].id == event.value){
+          this.airportFrom.splice(i,1);
+        }
+      }
+    }
+
   }
 
 }

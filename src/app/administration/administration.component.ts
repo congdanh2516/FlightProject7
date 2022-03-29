@@ -20,7 +20,7 @@ export class AdministrationComponent implements OnInit {
   //icon
   faMagnifyingGlass = faMagnifyingGlass;
   faCirclePlus = faCirclePlus;
- faGlobe = faGlobe;
+  faGlobe = faGlobe;
 
   openDialogAddNew() {
     const dialogRef = this.dialog.open(AddflightComponent, {
@@ -45,4 +45,9 @@ export class AdministrationComponent implements OnInit {
     });
   }
 
+  searchFlight(){
+    this.blur=true;
+  }
+
+  blur : boolean = false;
 }

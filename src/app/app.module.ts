@@ -111,6 +111,7 @@ import { ManageComponent } from './home/manage/manage.component';
     MatNativeDateModule,
     MatExpansionModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     MatRadioModule,
     MatCheckboxModule,

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 const httpOptions = {
-  headers : new HttpHeaders({'Content-Type' : 'Application/json'})
+  headers : new HttpHeaders({'Content-Type' : 'application/json'})
 }
 
 @Injectable({
@@ -12,9 +12,8 @@ export class RegisterService {
 
   constructor(private httpClient : HttpClient) { }
 
-  private apiUrl = "";
-
   register_sv(newUser : any){
-    return this.httpClient.post(this.apiUrl, newUser);
+    var api = "http://localhost:9000/api/user-accounts/signup"
+    return this.httpClient.post(api, newUser, httpOptions);
   }
 }

@@ -16,9 +16,9 @@ export class RegisterComponent implements OnInit {
   secondFormGroup: FormGroup;
   isEditable = true;
 
-  suffix = [
-    {value: 0, viewValue: 'Bà'},
-    {value: 1, viewValue: 'Ông'}
+  suffixList = [
+    {value: 0, viewValue: 'Ms'},
+    {value: 1, viewValue: 'Mr'}
   ];
 
   constructor(private _formBuilder: FormBuilder, private registerService : RegisterService) {}
@@ -32,16 +32,32 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  newUser : any = {
-    suffix : '',
-    firstName : '',
-    lastName : '',
-    dateOfBirth : '',
-    email : '',
-    phoneNumber : '' 
-  }
+  //var
+  suffix : string;
+  identificationCard : string;
+  userPassword : string;
+  userEmail : string;
+  userPhoneNumber : string;
+  dateOfBirth : Date;
+  lastName : string;
+  firstName : string;
+  
 
-  register (newUser : any){
+  register (){
+    var userInfo = {
+        suffix : this.suffix,
+        firstName : this.firstName,
+        lastName : this.lastName
+    }
+    const newUser = {
+      identificationCard : this.identificationCard,
+      userPassword : this.userPassword,
+      userEmail : this.userEmail,
+      userPhoneNumber : this.userPhoneNumber,
+      dateOfBirth : this.dateOfBirth,
+      userName : userInfo
+    }
+    console.log(newUser);
     return this.registerService.register_sv(newUser).subscribe();
   }
 

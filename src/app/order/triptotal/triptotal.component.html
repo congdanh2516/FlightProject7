@@ -37,7 +37,7 @@
                    Fare
                </div>
                <div class="col-md-6" style="text-align: right;">
-                   5 478 000 VND
+                   {{fare}} VND
                </div>
            </div>
 
@@ -46,7 +46,7 @@
                     Taxes and fee
                 </div>
                 <div class="col-md-6" style="text-align: right;">
-                    600 000 VND
+                    {{taxes}} VND
                 </div>
             </div>
 
@@ -55,7 +55,7 @@
                     Total 
                 </div>
                 <div class="col-md-6" style="text-align: right;">
-                    8 000 000 VND
+                    {{fare + taxes}} VND
                 </div>
             </div>
         </div>
@@ -63,6 +63,7 @@
         <div style="padding : 0 30px">
             <mat-dialog-actions align="center" style="margin-bottom: 10px;">
                 <button mat-button 
+                    (click)="payment()"
                     style="background-color: #E8A207; height: 60px; width: 100%; font-size: 20px;">
                     Go ahead Payment
                 </button>

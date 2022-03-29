@@ -20,7 +20,8 @@
         </div> -->
 
         <div>
-            <a data-bs-toggle="modal" data-bs-target="#service"
+            <a (click)="openService()"
+                data-bs-toggle="modal" data-bs-target="#service"
                 style="font-size: 25px; color: #0C172E; cursor: pointer;">
                 <fa-icon [icon]="faChevronRight "></fa-icon> &nbsp;
                 Add more free service
@@ -88,6 +89,7 @@
                     [firstName]="element.firstName"
                     [lastName]="element.lastName"
                     [no]="i+1"
+                    [add]="add"
                 ></app-expandedservice-personal>
             </div>
          
@@ -98,6 +100,7 @@
                 Close
             </button>
             <button mat-button 
+                (click)="addService()"
                 style="background-color: #E8A207; height: 60px; width: 150px; font-size: 20px;">
                 ADD
             </button>

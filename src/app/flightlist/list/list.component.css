@@ -42,3 +42,45 @@ mat-tab-group {
 ::ng-deep .mat-tab-body-content{
     overflow: hidden !important;
 }
+
+.appear{
+    display: none;
+}
+
+.image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120px;
+    height: 120px;
+    margin:-60px 0 0 -60px;
+    -webkit-animation:spin 4s linear infinite;
+    -moz-animation:spin 4s linear infinite;
+    animation:spin 4s linear infinite;
+}
+@-moz-keyframes spin { 
+    50% { -moz-transform: rotate(360deg); } 
+}
+@-webkit-keyframes spin { 
+    100% { -webkit-transform: rotate(360deg); } 
+}
+@keyframes spin { 
+    100% { 
+        -webkit-transform: rotate(360deg); 
+        transform:rotate(360deg); 
+    } 
+}
+
+.pot {
+    position: relative;
+    animation: myfirst 2s 2;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+  }
+  
+  @keyframes myfirst {
+    0%   {left: 0px; top: 0px;}
+    50%  {left: 130px; top: 0px;}
+    100% {left: 0px; top: 0px;}
+  }
+  
