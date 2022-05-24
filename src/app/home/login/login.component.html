@@ -1,4 +1,11 @@
-  <div class="row" style="padding: 10px;">
+  <div class="row">
+    <div class="col-md-10 notice" [ngStyle]="{display : warning ? 'block' : 'none'}">
+      <fa-icon [icon]="faCircleExclamation" style="color: rgb(177, 2, 2);"></fa-icon>
+      <span style="margin-left: 8px; font-weight: 500; font-size: 25px; color: #0C172E;">Error. Please resolve before you continue</span>
+      <p style="margin-top: 17px; font-size: 20px;">{{notice}}</p>
+    </div>
+  </div>
+  <!-- <div class="row" style="padding: 10px;">
     <div class="col-md-12">
       <mat-dialog-content class="mat-typography" >
         <p>
@@ -16,7 +23,6 @@
               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
           </mat-form-field>
-          
         </p>
       </mat-dialog-content>
   
@@ -27,23 +33,30 @@
         </button>
       </mat-dialog-actions>
     </div>
-  </div>  
+  </div>   -->
 
- <!-- modal thong bao chua nhap thong tin dang nhap -->
- <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index: 10 !important;">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
+
+<div style="height: 50px"></div>
+<div class="row">
+  <div class="col-md-12">
+    <label for="username" style="display: block">Identification Card No</label>
+    <input type="text" name="" id="username" [(ngModel)]="username" (keyup)="onKeyUp()" [ngClass]="{error : warning}">
   </div>
-</div> -->
+</div>
+
+<div style="height: 40px"></div>
+<div class="row">
+  <div class="col-md-12">
+    <label for="username" style="display: block">Password</label>
+    <input type="password" name="" id="" [(ngModel)]="password" (keyup)="onKeyUp()" [ngClass]="{error : warning}">
+  </div>
+</div>
+
+<div style="height: 30px;"></div>
+
+<mat-dialog-actions align="center" style="margin-bottom: 20px;">
+  <button mat-button 
+    style="background-color: #E8A207; height: 60px; width: 150px; font-size: 20px;" (click)="login()">
+    Sign in
+  </button>
+</mat-dialog-actions>

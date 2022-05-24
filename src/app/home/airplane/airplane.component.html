@@ -1,0 +1,21 @@
+<div class="row" style="text-align: center; font-size: 50px;" data-aos="fade-up" data-aos-duration="1000">
+    <p>Our aircraft</p>
+</div>
+<div class="row" style="height: 400px;" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1000">
+    <div class="col-md-12">
+        <carousel [cellWidth]="cellWidth" [height]=400 [transitionDuration]=500>
+            <div class="carousel-cell" style="margin-left: 20px;">
+                <app-airplanecard image = "../../assets/image/a350.png" text="Airbus A350"></app-airplanecard>
+            </div>
+            <div class="carousel-cell">
+                <app-airplanecard image = "../../assets/image/a321_2.png" text="Airbus A321"></app-airplanecard>
+            </div>
+            <div class="carousel-cell">
+                <app-airplanecard image = "../../assets/image/747.png" text="Boeing 747"></app-airplanecard>
+            </div>
+            <div class="carousel-cell">
+                <app-airplanecard image = "../../assets/image/787.png" text="Boeing 787"></app-airplanecard>
+            </div>
+        </carousel>
+    </div>
+</div>

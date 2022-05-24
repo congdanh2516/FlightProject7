@@ -9,7 +9,7 @@
 <div [ngClass]="{appear : appear}">
     <div class="row flightname">
         <div class="col-md-1"></div>
-        <div class="col-md-3" 
+        <div class="col-md-3" data-aos="zoom-out" data-aos-duration="1000"
             style="color : #E8A207; font-size: 34px; font-weight: bold; 
                 border: 1px solid rgba(0, 0, 0, 0.253);
                 border-left: 20px solid #0C172E;
@@ -18,8 +18,15 @@
             <fa-icon [icon]="faPlaneDeparture" style="color: #0C172E;"></fa-icon> &nbsp;
             {{from}} <span style="color: #0C172E;"> - </span> {{to}}
         </div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <app-stepper [active]=1></app-stepper>
+        </div>
+        
+    </div>
+    <div class="row" style="margin-top: 60px; margin-bottom: 60px;">
         <div class="col-md-1"></div>
-        <div class="col-md-1" style="width: 40px;">
+        <div class="col-md-1" style="width: 40px; padding-left: 0;">
             <fa-icon [icon]="faCircleInfo" style="font-size: 25px;"></fa-icon>
         </div>
         <div class="col-md-4" style="font-size: 25px;">
@@ -27,25 +34,44 @@
         </div>
     </div>
     
-    <!-- <div class="row notice" style="margin-top: 30px; margin-left: 7.9%; width: 40%;">
-        <div class="col-md-1" style="width: 40px;">
-            <fa-icon [icon]="faCircleInfo" style="font-size: 25px;"></fa-icon>
-        </div>
-        <div class="col-md-9">
-            All of the infomation of the passenger is secure
-        </div>
-        <div class="col-md-1"></div>
-    </div> -->
-    
+
+    <app-class [departDate]="departDate_2"></app-class>
     <div class="row">
         <div class="col-md-1"></div>
+        <div class="col-md-10" style="padding: 0;">
+            <app-specification *ngFor = "let flight of flights" 
+            [originCode] = "flight.departure.id"
+            [destinationCode] = "flight.destination.id"
+            [originName] = "flight.departure.name"
+            [destinationName] = "flight.destination.name"
+            [hours] = "flight.timeTemp.hour"
+            [minutes] = "flight.timeTemp.minute"
+            [aircraftName] = "flight.airName"
+            [economyPrice] = "flight.price"
+            [businessPrice] = "flight.price*2.1"  
+            [href] = "flight.airCode"
+            [departDate] = "flight.departDate"
+            [departTime1] = "flight.departHour1"
+            [departTime] = "flight.departHour"
+            [flightCode] = "flight.airCode"
+            [arrivedTime] = "flight.arrivedTime"
+            [cfc] = "flight.airCode"
+            [turn]="turn"
+            [arrivedDateTime]="flight.arrivedDateTime.toDateString()"
+            >
+        </app-specification>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    
+    <!--<div class="row">
+        <div class="col-md-1"></div>
         <div class="col-md-10 date">
-            <!-- (selectedTabChange)="" -->
             <mat-tab-group [selectedIndex]="2" >
                 <mat-tab label="26-02-2022"> 
                     </mat-tab>
                 <mat-tab label="27-02-2022"> Content 2 </mat-tab>
-                <mat-tab label="28-02-2022"> 
+                <mat-tab label={{departDate}}> 
                         <app-class></app-class> 
                         <app-specification *ngFor = "let flight of flights" 
                             [originCode] = "flight.departure.id"
@@ -56,14 +82,14 @@
                             [minutes] = "flight.timeTemp.minute"
                             [aircraftName] = "flight.airName"
                             [economyPrice] = "flight.price"
-                            [businessPrice] = "flight.price"
+                            [businessPrice] = "flight.price*2.1"  
                             [href] = "flight.airCode"
                             [departDate] = "flight.departDate"
                             [departTime1] = "flight.departHour1"
                             [departTime] = "flight.departHour"
                             [flightCode] = "flight.airCode"
                             [arrivedTime] = "flight.arrivedTime"
-                            [cfc] = "flight._id"
+                            [cfc] = "flight.airCode"
                             [turn]="turn"
                             [arrivedDateTime]="flight.arrivedDateTime.toDateString()"
                             >
@@ -74,11 +100,11 @@
               </mat-tab-group>
         </div>
         <div class="col-md-1"></div>
-    </div>
+    </div>-->
 </div>
 
-<div [ngClass]="{appear : !appear}">
-    <div class="row" style="margin-top: 100px; height: 800px;">
+<div [ngClass]="{appear : !appear}" style="height: 800px;">
+    <div class="row" style="margin-top: 100px; ">
         <div class="col-md-4"></div>
         <div class="col-md-1">
             <img src="../../../assets/image/circle-solid.svg" alt="" height="20px" class="pot">
@@ -89,4 +115,13 @@
         </div>
         <div class="col-md-3"></div>
     </div>
+    <div class="row" *ngIf="checkFlightList">
+        <div class="col-md-5"></div>
+        <div class="col-md-7" style="text-align : left; font-size :30px; color: #E8A207;">
+           <span (click)="directToPurchase()" style="cursor: pointer;"
+           >Continue with <b>One way </b> <fa-icon [icon]="faChevronRight" style="font-size: 25px;"></fa-icon><fa-icon [icon]="faChevronRight" style="font-size: 25px;"></fa-icon></span>
+        </div>
+    </div>
 </div>
+
+<div style="height: 150px; background-color: #f8f8f8;"></div>

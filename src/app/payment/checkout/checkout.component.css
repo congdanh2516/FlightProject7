@@ -39,3 +39,31 @@ input:hover{
 .type input{
     display: inline-block;
 }
+
+::ng-deep .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
+    border-color:#0C172E !important; 
+  }
+
+  ::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle{
+    color:#0C172E;
+    background-color:#0C172E ;
+  }
+
+  ::ng-deep .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+      background-color:#0C172E !important; 
+  }
+
+  .choosemethod{
+      border: 3px solid #0C172E !important;
+  }
+
+  .notice{
+    background-color: #f8f8f8; 
+    box-shadow: 1px 1px 7px 5px #ccc; 
+    margin-top: 30px;
+    margin-left: 20px;
+    padding: 25px;
+    font-size: 20px;
+
+    display: none;
+}

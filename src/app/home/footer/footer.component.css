@@ -1,6 +1,6 @@
 .footer{
     height : 500px;
-    width: 101%;
+    width: 100.8%;
     background-color: #0C172E;
     color: white;
     padding : 0 10%;
@@ -9,6 +9,13 @@
     justify-content: center;
     display: flex;
     align-items: center;
+}
+
+.footer2{
+    color: white;
+    height: 700px;
+    background-color: #0C172E;
+    
 }
 
 p .name{
@@ -28,4 +35,23 @@ p {
     justify-content: center;
     display: flex;
     align-items: center;
+
+    background-color: #f8f8f8;
+}
+
+.divide{
+    display: flex;
+    width: 16.67%;
+    float: right;
+    height: 300px;
+
+    justify-content: center;
+    /* align-items: center; */
+}
+
+a{
+    font-size: 20px;
+    line-height: 30px;
+    text-decoration: none;
+    color: #224e8e;
 }

@@ -1,0 +1,58 @@
+a{
+    text-decoration: none;
+    color: #0C172E;
+    font-size: 25px;
+    display: inline-block !important;
+}
+
+p{
+    font-size: 20px;
+    display: inline-block;
+}
+
+span{
+    font-size: 30px;
+    font-weight: 500;
+    margin-left: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+table{
+    font-size : 25px;
+}
+
+tr, thead{
+    height: 60px;
+}
+
+th{
+    font-weight: bold;
+}
+
+tr:hover {
+    border-top : 1px solid black;
+    border-bottom : 1px solid black;
+}
+
+thead tr:hover{
+    border : none;
+
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+    background-color: #0C172E !important;
+}
+
+::ng-deep .mat-checkbox-inner-container {
+    width: 24px !important;
+    height: 24px !important;
+}
+
+::ng-deep .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: #E8A207 !important;
+}
+
+::ng-deep .mat-checkbox-ripple .mat-ripple-element {
+    background-color: blue !important;
+}
+

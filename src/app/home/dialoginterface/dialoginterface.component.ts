@@ -12,5 +12,10 @@ export class DialoginterfaceComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  login_var : number;
+  getLogin(value : any){
+    this.login_var = value;
+  }
+
 
 }

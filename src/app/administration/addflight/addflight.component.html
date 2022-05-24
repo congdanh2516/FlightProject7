@@ -1,18 +1,26 @@
-<div class="row" style="padding-left: 12px; padding-right: 12px;">
-    <div class="col-md-4" 
-        style="background-image: url('../../../assets/image/addflight5-3.jpg');
-        background-size: cover;
-        padding : 0px !important;
-        ">
+<div class="row" style="margin-top: 50px;">
+    <div class="col-md-1"></div>
+    <div class="col-md-11" style="padding-left: 0px;">
+        <a routerLink='/admin'>Admin</a> <fa-icon [icon]="faChevronRight" style="margin : 0 10px"></fa-icon>
+        <a>Create new flight</a>
+    </div>
+</div>
+<div class="row" style="margin-top: 50px;">
 
+    <div class="col-md-1">
     </div>
-    <div class="col-md-1" style="padding-left:0px; padding-right: 0px; width: 50px;">
-    </div>
-    <div class="col-md-7" style="background-color: rgba(255, 255, 255, 0.493); padding: 30px 0; padding-left: 0px;">
-        <h1 style="font-size: 40px; color: #0C172E;">New Flight Info</h1>
+    <div class="col-md-4" style="padding-left: 0px;">
+        <h1 style="font-size: 50px; color: #0C172E;">New Flight Info</h1>
+
+        <div class="row" style="margin-top: 40px;">
+            <h1 style=" font-size: 30px !important; margin-bottom: 0px !important; height: 70px; line-height: 70px;">
+                Location
+            </h1>
+        </div>
+
         <mat-form-field appearance="legacy">
             <mat-label>Origin</mat-label>
-            <mat-select [(ngModel)]="departure" (selectionChange)="exceptAirport($event, 'from')">
+            <mat-select [(ngModel)]="departure" (selectionChange)="exceptAirport($event, 'from')" (selectionChange)="location($event, 'origin')" (selectionChange)="hideError()">
                 <mat-option *ngFor="let element of airportFrom" [value]="element.id"
                     >{{element.name}} ({{element.id}}), Viet Nam
                 </mat-option>
@@ -21,7 +29,7 @@
 
         <mat-form-field appearance="legacy">
             <mat-label>Destination</mat-label>
-            <mat-select [(ngModel)]="destination" (selectionChange)="exceptAirport($event, 'to')">
+            <mat-select [(ngModel)]="destination" (selectionChange)="exceptAirport($event, 'to')" (selectionChange)="location($event, 'destination')" (selectionChange)="hideError()">
                 <mat-option *ngFor="let element of airportTo" [value]="element.id" 
                     >{{element.name}} ({{element.id}}), Viet Nam
                 </mat-option>
@@ -34,57 +42,181 @@
                 <mat-option *ngFor="let element of flightsCode" [value]="element.code">{{element.code}}</mat-option>
             </mat-select>
         </mat-form-field> -->
+        <div class="row" style="margin-top: 40px;">
+            <h1 style=" font-size: 30px !important; margin-bottom: 0px !important; height: 70px; line-height: 70px;">
+                Time
+            </h1>
+        </div>
 
         <mat-form-field appearance="legacy" style="width: 45%">
             <mat-label>Depart Date</mat-label>
-            <input matInput [matDatepicker]="picker" [(ngModel)]="startDate" id="startDate">
+            <input matInput [matDatepicker]="picker" [(ngModel)]="startDate" [min]="minDate" id="startDate" (dateChange)="getDate()" (dateChange)="hideError()">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
 
         <mat-form-field appearance="legacy" style="display: inline-block; width: 45%; margin-left: 10%;">
             <mat-label>Depart Time</mat-label>
-            <input type="time" matInput [(ngModel)]="timeFlight">
+            <input type="time" format=24 matInput [(ngModel)]="timeFlight" (change)="hideError()">
         </mat-form-field>
+        
 
         <p style="display: inline-block; font-size: 20px;">Duration</p>
         <mat-form-field appearance="legacy" style="width : 20%; display: inline-block; margin-left: 10%;">
             <mat-label>Hour(s)</mat-label>
-            <input type="number" matInput [(ngModel)]="hourDuration">
+            <input type="number" min=0 matInput [(ngModel)]="hourDuration" (change)="hideError()">
         </mat-form-field>
 
         <mat-form-field appearance="legacy" style="display: inline-block; width: 20%; margin-left: 10%">
             <mat-label>Minute(s)</mat-label>
-            <input type="number" matInput min="0" max="59" [(ngModel)]="minuteDuration">
+            <input type="number" min=0 matInput min="0" max="59" [(ngModel)]="minuteDuration" (change)="hideError()">
         </mat-form-field>
 
+        <div class="row" style="margin-top: 40px;">
+            <h1 style=" font-size: 30px !important; margin-bottom: 0px !important; height: 70px; line-height: 70px;">
+                Aircraft
+            </h1>
+        </div>
+
         <mat-form-field appearance="legacy">
-            <mat-label>Aircaft</mat-label>
-            <mat-select [(ngModel)]="airName">
-                <mat-option *ngFor="let element of airportFrom" [value]="element.id">{{element.name}}</mat-option>
+            <!-- <mat-label>Aircaft</mat-label> -->
+            <mat-select [(ngModel)]="airName" (selectionChange)="hideError()">
+                <mat-option *ngFor="let element of aircraft" [value]="element.id + '-' + element.name">{{element.id}} - {{element.name}}</mat-option>
             </mat-select>
         </mat-form-field>
 
+        <div class="row" style="margin-top: 40px;">
+            <h1 style=" font-size: 30px !important; margin-bottom: 0px !important; height: 70px; line-height: 70px;">
+                Original Price
+            </h1>
+        </div>
+
         <mat-form-field appearance="legacy" style="width: 94%;">
-            <mat-label>Original Price</mat-label>
-            <input type="number" matInput min="0" [(ngModel)]="price">
+            <!-- <mat-label>Original Price</mat-label> -->
+            <input type="number" matInput min="0" [(ngModel)]="price" (change)="hideError()">
         </mat-form-field> VND
 
-        <mat-form-field appearance="legacy" style="width: 97%;">
+        <!-- <mat-form-field appearance="legacy" style="width: 97%;">
             <mat-label>Taxes fee</mat-label>
             <input type="number" matInput min="0" [(ngModel)]="taxes">
-        </mat-form-field>%
+        </mat-form-field>% -->
 
-        <div align="right">
+        <div align="right" style="margin-top: 40px;">
             <button mat-button
                 (click)="reset()"
-                style="background-color: #E8A207; height: 60px; width: 150px; font-size: 20px; margin-right: 20px;">Reset
+                style="border: 2px solid #0C172E; height: 60px; width: 150px; font-size: 20px; margin-right: 40px;">Reset
             </button>
-            <button mat-button (click)="addFlight()"
+            <button mat-button (click)="addFlight()" 
                 style="background-color: #E8A207; height: 60px; width: 200px; font-size: 20px;">Create
             </button>
         </div>
     </div>
+
+    <div class="col-md-1"></div>
+    <div class="col-md-3">
+        <h1 style="font-size: 50px; color: #0C172E;">Overview Info</h1>
+        <div class="row" style="margin-top: 40px;">
+            <h1 style=" font-size: 30px !important; margin-bottom: 0px !important; height: 70px; line-height: 70px;">
+                Location 
+                <fa-icon [icon]="faCircleCheck" style="color: green;" *ngIf="from != '' && to != ''"></fa-icon>
+                <fa-icon [icon]="faCircleXmark" style="color: rgb(167, 4, 4);" *ngIf="from == '' || to == ''"></fa-icon>
+            </h1>
+        </div>
+        <div style="height: 40px;"></div>
+        <p>From : </p> <span>{{from}}</span>
+        <div style="height: 40px;"></div>
+        <p>To : </p><span>{{to}}</span>
+
+        <div class="row" style="margin-top: 40px;">
+            <h1 style=" font-size: 30px !important; margin-bottom: 0px !important; height: 70px; line-height: 70px;">
+                Time 
+                <fa-icon [icon]="faCircleCheck" style="color: green;" *ngIf="dateShow != '' && timeFlight != '' && (hourDuration != 0 || minuteDuration != 0)"></fa-icon>
+                <fa-icon [icon]="faCircleXmark" style="color: rgb(167, 4, 4);" *ngIf="dateShow == '' || timeFlight == '' || (hourDuration == 0 && minuteDuration == 0)"></fa-icon>
+            </h1>
+        </div>
+
+        <div style="height: 40px;"></div>
+        <p>Departure date : </p><span>{{dateShow}}</span>
+
+        <div style="height: 40px;"></div>
+        <p>Time : </p><span>{{timeFlight}}</span>
+
+        <div style="height: 40px;"></div>
+        <p>Duration : </p><span *ngIf="hourDuration != 0 || minuteDuration != 0">{{hourDuration}} hour(s) and {{minuteDuration}} minute(s)</span>
+
+        <div style="height: 80px;"></div>
+        <div class="notice" *ngIf="warning">
+            <fa-icon [icon]="faCircleExclamation" style="color: rgb(177, 2, 2);"></fa-icon>
+            <span style="margin-left: 8px; font-weight: 500; font-size: 25px; color: #0C172E;">Error. Please resolve before you continue</span>
+            <p style="margin-top: 17px; font-size: 20px;"></p>
+          </div>
+    </div>
+
+    <div class="col-md-3">
+        <div style="height: 32px;"></div>
+        
+        <div class="row" style="margin-top: 40px;">
+            <h1 style=" font-size: 30px !important; margin-bottom: 0px !important; height: 70px; line-height: 70px;">
+                Aircraft
+                <fa-icon [icon]="faCircleCheck" style="color: green;" *ngIf="airName != ''"></fa-icon>
+                <fa-icon [icon]="faCircleXmark" style="color: rgb(167, 4, 4);" *ngIf="airName == ''"></fa-icon>
+            </h1>
+        </div>
+
+        <div style="height: 40px;"></div>
+        <p>Aicraft name : </p><span>{{airName}}</span>
+
+        <div class="row" style="margin-top: 40px;">
+            <h1 style=" font-size: 30px !important; margin-bottom: 0px !important; height: 70px; line-height: 70px;">
+                Price
+                <fa-icon [icon]="faCircleCheck" style="color: green;" *ngIf="price != 0"></fa-icon>
+                <fa-icon [icon]="faCircleXmark" style="color: rgb(167, 4, 4);" *ngIf="price == 0"></fa-icon>
+            </h1>
+        </div>
+        <div style="height: 40px;"></div>
+        <p>Origin price : </p><span *ngIf="price != 0">{{price | currency : 'VND' : 'VND '}}</span>
+    
+    </div>
+
+    <div class="col-md-1"></div>
 </div>
 
-<!--  -->
+
+<div style="height: 100px;"></div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="verify" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+  style="margin-top: 50px;">
+  <div class="modal-dialog" style="border-radius: 5px !important; max-width: 35% !important;">
+    <div class="modal-content">
+
+        <!-- header -->
+        <div class="modal-header" 
+            style="background-color: #0C172E; color: white !important;
+            border-top-right-radius: 0 !important;
+            border-top-left-radius: 0 !important;
+            ">
+            <p class="modal-title" id="exampleModalLabel" 
+            style="padding-left: 14px; margin-top: 10px; font-size: 25px;">
+            NOTICE
+            </p>
+        </div>
+
+        <div class="modal-body" style="padding: 30px" style="font-size: 20px; margin: auto; height: 100px; line-height: 50px;">
+            Create new flight successfully. This flight code is<span style="color: #E8A207; font-weight: 500;">{{airCode}}</span>
+        </div>
+
+        <!-- footer -->
+        <div class="modal-footer" style="padding: 30px;">
+            <button mat-button data-bs-dismiss="modal"
+                style="border: 1px solid rgb(210, 210, 210); height: 60px; width: 150px; font-size: 20px; margin-right: 20px;">
+                Close
+            </button>
+        </div>
+
+    </div>
+  </div>
+</div>
+
+<div style="height: 150px; background-color: #f8f8f8;"></div>

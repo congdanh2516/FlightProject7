@@ -33,17 +33,17 @@ export class SearchService {
 
   getAirportList(){
     var api = "http://localhost:9000/api/airportNames"
-    return this.httpClient.get(api);
+    return this.httpClient.get<any>(api);
   }
 
   search_name_airport(code : string){
     var api = `http://localhost:9000/api/airportNames/${code}`;
-    return this.httpClient.get(api);
+    return this.httpClient.get<any>(api);
   }
 
-  search_by_id(id : string){
+  search_by_id(id : string) : Observable<any> {
     var api = `http://localhost:9000/api/flights/${id}`;
-    return this.httpClient.get(api);
+    return this.httpClient.get<any>(api);
   }
 
   addHour(departHour : number, departMinute : number, durationHour : number, durationMinute : number){
@@ -110,7 +110,19 @@ export class SearchService {
     return s;
   }
 
+
+  searchTicket(ticketCode : any){
+    // let header = new HttpHeaders()
+    // .set("Content-type", "application/json");
+    let api= `http://localhost:9000/api/info-flight/${ticketCode}`;
+    return this.httpClient.get<any>(api);
+    
+  }
   
+
+  getPassengerList(){
+    
+  }
 }
 
   

@@ -14,6 +14,6 @@ export class RegisterService {
 
   register_sv(newUser : any){
     var api = "http://localhost:9000/api/user-accounts/signup"
-    return this.httpClient.post(api, newUser, httpOptions);
+    return this.httpClient.post<any>(api, newUser, httpOptions);
   }
 }

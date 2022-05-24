@@ -1,0 +1,237 @@
+<div style="height: 50px;"></div>
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-11" style="padding-left: 0px;">
+        <a routerLink='/admin'>Admin</a> <fa-icon [icon]="faChevronRight" style="margin : 0 10px"></fa-icon>
+        <a>Detail flight</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-4">
+
+        <div class="row" style="margin-top: 50px;">
+            <div class="col-md-12" style="padding-left: 0; font-size: 50px;">
+                    Detail FLight
+            </div>
+        </div>
+        
+        <div style="height: 70px;"></div>
+        
+        <div class="row">
+            <div class="col-md-12" style="padding-left : 0">
+                <p>Flight code :</p> <span>{{flight.airCode}}</span>
+            </div>
+        </div>
+        
+        <div style="height: 40px;"></div>
+        
+        <div class="row">
+            <div class="col-md-12" style="padding-left : 0">
+                <!-- <span [ngStyle]="{color : !flight.status ? 'rgb(177, 2, 2)' : 'green'}">{{!flight.status? 'Cancelled' : 'Existing'}}</span> -->
+                <p>Flight status :</p> <span [ngStyle]="{color : flightStatus == 'Running' ? 'green' : 'rgb(177, 2, 2)'}">{{flightStatus}}</span>
+            </div>
+        </div>
+
+        <div style="height: 40px;"></div>
+        
+        <div class="row">
+            <div class="col-md-7" style="padding-left : 0">
+                <p>From :</p> <span>{{from}}</span>
+            </div>
+
+            <div class="col-md-5" style="padding-left : 0">
+                <p>To :</p> <span>{{to}}</span>
+            </div>
+        </div>
+
+        <div style="height: 40px;"></div>
+
+        <div class="row">
+            <div class="col-md-7" style="padding-left : 0">
+                <p>Departure date :</p> <span>{{departDate}}</span>
+            </div>
+
+            <div class="col-md-5" style="padding-left : 0">
+                <p>Time :</p> <span>{{departTime}}</span>
+            </div>
+        </div>
+
+        <div style="height: 40px;"></div>
+
+        <div class="row">
+            <div class="col-md-10" style="padding-left : 0">
+                <p>Duration :</p> <span>{{duration}}</span>
+            </div>
+        </div>
+
+        <div style="height: 40px;"></div>
+
+        <div class="row">
+            <div class="col-md-7" style="padding-left : 0">
+                <p>Aircraft name :</p> <span>{{flight.airName}}</span>
+            </div>
+        </div>
+
+        <div style="height:50px;"></div>
+
+        <div class="row" *ngIf="flightStatus=='Running'">
+            <div class="col-md-2" style="padding: 0;">
+                <mat-dialog-actions align="center" style="margin-bottom: 10px;">
+                    <button mat-button data-bs-toggle="modal" data-bs-target="#cancel"
+                        (click)="checkDate()"
+                        style="background-color: rgb(177, 2, 2); height: 60px; width: 250px; font-size: 25px; color: white;">
+                        Cancel this flight
+                    </button>
+                </mat-dialog-actions>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-6">
+        <div class="row" style="margin-top: 50px;">
+            <div class="col-md-12" style="padding-left: 0; font-size: 50px;">
+                Passenger list
+            </div>
+        </div>
+        <div style="height: 70px;"></div>
+        <div class="row">
+            <div class="col-md-12" style="padding-left: 0;">
+                <!-- <button mat-button (click)="downloadExcel()"
+                    style="font-size: 25px; padding-left: 0; color: #E8A207;">
+                    Download excel <fa-icon [icon]="faDownload"></fa-icon>
+                </button> -->
+            </div>
+        </div>
+        <div style="height: 20px;"></div>
+        <div class="row" style="overflow: auto;">
+            <table id="test">
+                <thead>
+                    <tr>
+                        <th>ID no.</th>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>Suffix</th>
+                        <th>Date of birth</th>
+                    </tr>
+                </thead>
+                <tr *ngFor="let element of passengerList">
+                    <td>{{element.identificationCard}}</td>
+                    <td>{{element.userName.firstName}}</td>
+                    <td>{{element.userName.lastName}}</td>
+                    <td>{{element.userName.suffix}}</td>
+                    <td>{{element.dateOfBirth}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="cancel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+  style="margin-top: 150px;">
+  <div class="modal-dialog" style="border-radius: 5px !important; max-width: 30% !important;">
+    <div class="modal-content">
+
+        <ng-container *ngIf="checkDate_var; else cannotCancel">
+            <!-- header -->
+            <div class="modal-header" 
+                style="background-color: #0C172E; color: white !important;
+                border-top-right-radius: 0 !important;
+                border-top-left-radius: 0 !important;
+                ">
+                <p class="modal-title" id="exampleModalLabel" 
+                style="padding-left: 14px; margin-top: 10px; font-size: 25px;">
+                What are the reasons for cancelling this flight?
+                </p>
+            </div>
+
+            <div class="modal-body" style="padding: 30px;">
+                <div class="row">
+                    <!-- <div class="col-md-4" style="font-size: 25px; line-height: 70px;">
+                        Type reasons
+                    </div> -->
+                    <div class="col-md-12">
+                        <input [(ngModel)]="reasonString"
+                            style="height: 70px; font-size: 25px;"
+                            type="text" class="form-control" placeholder="Reasons" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    </div>
+                </div>
+
+                <div style="height: 30px;" *ngIf="reasonString!=''"></div>
+
+                <section class="example-section">
+                    <mat-checkbox class="example-margin" style="font-size: 20px;" [(ngModel)]="agree" *ngIf="reasonString!=''">&nbsp; Agree to cancel</mat-checkbox>
+                </section>
+
+                <div  *ngIf="agree" style="height: 30px;"></div>
+
+                <div class="row" *ngIf="agree">
+                    <!-- <div class="col-md-4" style="font-size: 25px; line-height: 70px;">
+                        Type reasons
+                    </div> -->
+                    <div class="col-md-12">
+                        <input [(ngModel)]="passcode" (keyup)="changeError()"
+                            style="height: 70px; font-size: 25px;"
+                            type="password" class="form-control" placeholder="Type your passcode" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    </div>
+                </div>
+
+                <div class="row" *ngIf="error" style="margin-top: 20px;">
+                    <div class="col-md-12" style=" color: rgb(153, 3, 3); font-size: 20px;">
+                        <fa-icon [icon]="faCircleExclamation"></fa-icon> Passcode is incorrect
+                    </div>
+                </div>
+
+                
+            </div>
+
+            <!-- footer -->
+            <div class="modal-footer" style="padding: 30px;">
+                <button mat-button data-bs-dismiss="modal" [ngStyle]="{marginRight : passcode == '' || !agree ? '0' : '20px'}"
+                    style="border: 1px solid rgb(210, 210, 210); height: 60px; width: 150px; font-size: 20px;">
+                    Close
+                </button>
+                <button mat-button [ngStyle]="{display : passcode == '' || !agree ? 'none' : 'block'}"
+                    (click)="cancleFlight()"
+                    style="background-color: rgb(177, 2, 2); height: 60px; width: 150px; font-size: 20px; color: white;" >
+                    Cancel
+                </button>
+            </div>
+        </ng-container>
+        
+        <ng-template #cannotCancel>
+            <div class="modal-header" 
+                style="background-color: #0C172E; color: white !important;
+                border-top-right-radius: 0 !important;
+                border-top-left-radius: 0 !important;
+                ">
+                <p class="modal-title" id="exampleModalLabel" 
+                style="padding-left: 14px; margin-top: 10px; font-size: 25px;">
+                Notice
+                </p>
+            </div>
+            <div class="modal-body" style="padding: 30px;">
+                <div class="row">
+                    <div class="col-md-12" style="text-align: center; font-size: 20px;">
+                        Flights can only be canceled at least 24 hours from the departure time
+                    </div>
+                </div>
+            
+            </div>
+            <div class="modal-footer" style="padding: 30px;">
+                <button mat-button data-bs-dismiss="modal" [ngStyle]="{marginRight : passcode == '' || !agree ? '0' : '20px'}"
+                    style="border: 1px solid rgb(210, 210, 210); height: 60px; width: 150px; font-size: 20px;">
+                    Close
+                </button>
+            </div>
+        </ng-template>
+
+    </div>
+  </div>
+</div>
+
+<div style="height: 150px; background-color: #f8f8f8;"></div>

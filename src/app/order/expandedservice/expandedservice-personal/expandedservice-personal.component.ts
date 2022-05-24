@@ -15,46 +15,30 @@ export class ExpandedservicePersonalComponent implements OnInit, OnDestroy, OnCh
 
   change : boolean = false;
   ngOnChanges(): void {
-    console.log(this.add);
-      var passenger = this.storage.getItem('passenger');
-      console.log(passenger);
-      var services : { meal?: string, health?: boolean, crip? : boolean} = {};
+    var services : any[] = [];
+    services = this.storage.getItem('services');
 
-      var passengerno : Object = new Object(passenger[this.no-1]);
+    var service_passenger : any[] = [];
+    service_passenger = services[this.no-1];
+
+    var service_trip : any = {};
+    service_trip = service_passenger[this.flightOrder];
+
+    if(this.change == false){
+      this.meal = service_trip.meal;
+      this.health = service_trip.health;
+      this.crip = service_trip.crip;
+      this.change=true;
+    }
+    else {
+      service_trip.meal = this.meal;
+      service_trip.health = this.health;
+      service_trip.crip = this.crip;
       
-      if(this.change==false){
-        if('services' in passengerno){
-          this.meal = passenger[this.no-1].services.meal;
-          this.health = passenger[this.no-1].services.health;
-          this.crip = passenger[this.no-1].services.crip;
-        }
-        this.change=true;
-      }
-      else {
-        services.meal = this.meal;
-        services.health = this.health;
-        services.crip = this.crip;
-
-      if(this.meal == ""){
-        delete services.meal;
-      }
-
-      if(this.health == false){
-        delete services.health;
-      }
-
-      if(this.crip == false){
-        delete services.crip;
-      }
-
-      console.log(services);
-
-      passenger[this.no-1].services = services;
-      if((JSON.stringify(services) == JSON.stringify({}))){
-        delete passenger[this.no-1].services;
-      }
-      this.storage.setItem('passenger', passenger);
-      }
+      service_passenger[this.flightOrder] = service_trip;
+      services[this.no-1] = service_passenger;
+      this.storage.setItem('services', services);
+    }
 
       
   }
@@ -68,6 +52,7 @@ export class ExpandedservicePersonalComponent implements OnInit, OnDestroy, OnCh
   @Input()lastName : string;
   @Input()no : number;
   @Input()add : boolean;
+  @Input()flightOrder : number;
 
   mealList = [
     {id : 'ML001', name : "Vegetarian Meal"},

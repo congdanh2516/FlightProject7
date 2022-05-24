@@ -1,0 +1,30 @@
+<div class="row" style="height: 400px;">
+    <div class="col-md-7 text">
+        <div>
+            <p style="font-size: 50px; font-weight: 700px; color: #0C172E;">Popular destination</p>
+            <p style="font-size: 25px; margin-top: 40px;">These are famous iconic places of Vietnam, most visited by domestic and international tourists.</p>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <carousel [cellWidth]="cellWidth" [height]=500>
+            <div class="carousel-cell">
+                <app-imagecard image = "../../assets/image/dalat.jpg" text="Da Lat"></app-imagecard>
+            </div>
+            <div class="carousel-cell" style="margin-left: 50px !important;">
+                <app-imagecard image = "../../assets/image/phuquoc.jpg" text="Phu Quoc"></app-imagecard>
+            </div>
+            <div class="carousel-cell" style="margin-left: 100px !important;">
+                <app-imagecard image = "../../assets/image/saigon.jpg" text="Sai Gon"></app-imagecard>
+            </div>
+            <div class="carousel-cell" style="margin-left: 150px !important;">
+                <app-imagecard image = "../../assets/image/hanoi.jpg" text="Ha Noi"></app-imagecard>
+            </div>
+            <div class="carousel-cell" style="margin-left: 200px !important;">
+                <app-imagecard image = "../../assets/image/hue.jpg" text="Hue"></app-imagecard>
+            </div>
+            <div class="carousel-cell">
+                <!-- <app-imagecard image = "../../assets/image/dalat.jpg" text="Da Lat"></app-imagecard> -->
+            </div>
+        </carousel>
+    </div>
+</div>

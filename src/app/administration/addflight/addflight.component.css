@@ -9,3 +9,47 @@ mat-form-field{
 }
 
 .cdk-global-overlay-wrapper, .cdk-overlay-container { z-index: 1000!important; } 
+
+::ng-deep .mat-form-field-flex {
+    padding: 10px !important;
+   
+  }
+ 
+  /* Border */
+ .mat-form-field-appearance-outline .mat-form-field-outline {
+   color: #0C172E;
+ }
+ 
+ ::ng-deep .mat-form-field-suffix{
+   height: 20px;
+ }
+
+ p{
+     font-size: 20px;
+     display: inline-block;
+ }
+
+ span{
+     font-size: 30px;
+     font-weight: 500;
+     margin-left: 20px;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ }
+
+ a{
+     text-decoration: none;
+     color: #0C172E;
+     font-size: 25px;
+     display: inline-block !important;
+ }
+
+ .notice{
+    background-color: #f8f8f8; 
+    box-shadow: 1px 1px 7px 5px #ccc;
+    padding: 25px;
+    font-size: 20px;
+    width: 600px;
+    height: 90px;
+
+    /* display: none; */
+}

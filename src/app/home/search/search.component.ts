@@ -26,8 +26,8 @@ export class SearchComponent implements OnInit, OnDestroy{
     this.minDate = new Date();
 
     this.getAirportLits( (data : any) => {
-      this.airportFrom = _.cloneDeep(data);
-      this.airportTo = _.cloneDeep(data)
+      this.airportFrom = _.cloneDeep(data.result);
+      this.airportTo = _.cloneDeep(data.result)
     });
 
     this.data.changeMessage(false);
@@ -97,7 +97,8 @@ export class SearchComponent implements OnInit, OnDestroy{
   getAirportLits(callback : Function){
     this.searchService.getAirportList().subscribe(
       data => {
-        this.airportList = data;
+        console.log("Airport List")
+        this.airportList = data.result;
         console.log(this.airportList)
         callback(data)
       }

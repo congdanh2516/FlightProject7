@@ -14,61 +14,37 @@ export class LuggagePersonalComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   ngOnInit(): void {
-    // var passenger = this.storage.getItem('passenger');
-    // var luggageLocal : any = {};
-    // var passengerno : Object = new Object(passenger[0]);
-    // console.log('luggage' in passengerno);
-    // if('luggage' in passengerno){
-    //   console.log("No");
-    //   console.log(this.no);
-    //   console.log(typeof(this.no));
-    //   let index = Number(this.no)-1;
-    //   luggageLocal = passenger[index].luggage;
-    //   this.suitcase10 = luggageLocal.LG010 | 0; 
-    //   this.suitcase23 = luggageLocal.LG023 | 0;
-    // }
+   
   }
 
-  test = {
-    var1 : "dssdf",
-    var2 : "dsfdsw"
-  }
 
   change : boolean = false;
   ngOnChanges(): void {
-    console.log(this.add);
-      var passenger = this.storage.getItem('passenger');
-      console.log(passenger);
-      var luggage : { LG010?: number, LG023?: number} = {LG010 : 0, LG023 : 0};
+    var services : any[] = [];
+    services = this.storage.getItem('services');
 
-      var passengerno : Object = new Object(passenger[this.no-1]);
-      
-      if(this.change==false){
-        if('luggage' in passengerno){
-          this.suitcase10 = passenger[this.no-1].luggage.LG010 | this.suitcase10;
-          this.suitcase23 = passenger[this.no-1].luggage.LG023 | this.suitcase23;
-        }
-        this.change=true;
-      }
-      else {
-        luggage.LG010 = this.suitcase10;
-        luggage.LG023 = this.suitcase23;
+    var service_passenger : any[] = [];
+    service_passenger = services[this.no-1];
 
-      if(this.suitcase10 == 0){
-        delete luggage.LG010;
-      }
+    var service_trip : any = {};
+    service_trip = service_passenger[this.flightOrder];
 
-      if(this.suitcase23 == 0){
-        delete luggage.LG023;
-      }
-      console.log(luggage);
-
-      passenger[this.no-1].luggage = luggage;
-      if((JSON.stringify(luggage) == JSON.stringify({}))){
-        delete passenger[this.no-1].luggage;
-      }
-      this.storage.setItem('passenger', passenger);
-      }
+    if(this.change == false){
+      this.suitcase10 = service_trip.luggage.LG010;
+      this.suitcase23 = service_trip.luggage.LG023;
+      this.suitcaseQuantity = this.suitcase10 + this.suitcase23;
+      this.total = this.suitcase10*162000 + this.suitcase23*270000;
+      this.change=true;
+    }
+    else {
+      console.log("Hello");
+      service_trip.luggage.LG010 = this.suitcase10;
+      service_trip.luggage.LG023 = this.suitcase23;
+      console.log(service_trip);
+      service_passenger[this.flightOrder] = service_trip;
+      services[this.no-1] = service_passenger;
+      this.storage.setItem('services', services);
+    }
 
       
   }
@@ -82,6 +58,7 @@ export class LuggagePersonalComponent implements OnInit, OnDestroy, OnChanges {
   @Input()lastName : string;
   @Input()no : number;
   @Input()add : boolean;
+  @Input()flightOrder : number;
 
   suitcase10 : number = 0;
   suitcase23 : number = 0;

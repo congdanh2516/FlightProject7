@@ -2,3 +2,24 @@
     z-index: -1;
     filter: brightness(40%);
 }
+
+.ticket h1{
+    font-weight: 500;
+    font-size: 30px !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    padding: 15px;
+    transition-property: all;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+}
+
+a:hover {
+    background-color: rgba(128, 128, 128, 0.164);
+    border-radius: 10px;
+}

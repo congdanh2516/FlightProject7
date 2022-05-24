@@ -1,0 +1,18 @@
+{
+    "passenger" : [
+        {
+            "identificationNo" : "123",
+            "firstName" : "Cao",
+            "lastName" : "Danh",
+            "gender" : "Nam",
+            "dateOfBirth" : "16/09/2000"
+        },
+        {
+            "identificationNo" : "124",
+            "firstName" : "Cao",
+            "lastName" : "Danh",
+            "gender" : "Nam",
+            "dateOfBirth" : "16/09/2000"
+        }
+    ]
+}

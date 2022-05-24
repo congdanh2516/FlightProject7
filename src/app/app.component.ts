@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import * as AOS from 'aos';
+import { render } from 'creditcardpayments/creditCardPayments';
 
 
 @Component({
@@ -10,6 +11,8 @@ import * as AOS from 'aos';
 })
 export class AppComponent {
 
+  constructor(){}
+  
   ngOnInit(): void {
     AOS.init();
   }

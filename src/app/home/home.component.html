@@ -1,6 +1,6 @@
 <div [ngClass]="{home : message}" (click)="changeBlur()">
     <div class="row" >
-        <div class="col-md-12" style="background-image: url('../../assets/image/bghome7_1.jpg');
+        <div class="col-md-12" style="background-image: url('../../assets/image/bghome17.jpg');
                                     background-repeat: no-repeat;
                                     background-size: cover;
                                     height: 850px; 
@@ -13,8 +13,48 @@
             
         </div>
     </div>
+
     
-    <div class="row" style="margin-top: 40px;">
+
+    <div id="popular" class="row" style="height: 120px; background-color: #0C172E; text-align: center; color: white; line-height: 120px; font-size: 25px; position: sticky; top: 0; z-index: 999;">
+        <div class="col-md-1"></div>
+        <div class="col-md-2 animate__animated animate__slideInLeft">
+            <a href="#top"><fa-icon [icon]="faMagnifyingGlass"></fa-icon> &nbsp;Book flight</a>
+        </div>|
+        <div class="col-md-2 animate__animated animate__slideInLeft">
+           <a href="#popular" target="_self"><fa-icon [icon]="faLocationDot"></fa-icon> &nbsp;Popular destination</a>
+        </div>|
+        <div class="col-md-2 animate__animated animate__slideInLeft">
+           <a href="#whybook"> <fa-icon [icon]="faGlobe"></fa-icon> &nbsp;Why book on DaTo?</a>
+        </div>|
+        <div class="col-md-2 animate__animated animate__slideInLeft">
+            <a href="#book"><fa-icon [icon]="faStairs"></fa-icon> &nbsp;How to book?</a>
+        </div>|
+        <div class="col-md-2 animate__animated animate__slideInLeft">
+            <a href="#aircraft"><fa-icon [icon]="faPlane"></fa-icon> &nbsp;Our aircraft</a>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+
+  
+
+  
+    <div style="height: 100px;"></div>
+    <div data-aos="fade-right" data-aos-duration="1000" >
+        <app-imagecarousel></app-imagecarousel>
+    </div>
+
+
+    <div id="whybook" style="height: 200px;"></div>
+    <div class="row">
+        <app-introduce></app-introduce>
+    </div>
+    <div id="book" style="height: 100px;"></div>
+    <div class="row">
+        <app-howtobook></app-howtobook>
+    </div>
+    
+    <!-- <div class="row" style="margin-top: 40px;">
         <div class="col-md-1"></div>
         <div class="col-md-10" data-aos="fade-up">
             <h1 style="padding: 0px !important; font-size: 40px !important; margin-bottom: 0px !important;">
@@ -47,12 +87,43 @@
             <app-place image = "../../assets/image/hue.jpg" text="HUE"></app-place>
         </div>
         <div class="col-md-1"></div>
+    </div> -->
+
+    
+
+    <div id="aircraft" style="height: 150px;"></div>
+    <div>
+        <app-airplane></app-airplane>
     </div>
     
+    <div style="height: 100px;"></div>
+    <div class="row">
+        <div class="col-md-12" style="padding: 0;">
+            <div style="padding: 0; background-image: url('../../assets/image/mountain.jpg');
+            background-repeat: no-repeat;
+            width: 100%; height: 700px; background-size: cover;
+            color: white; display: flex; align-items: center;
+            ">
+            <div style="color: white; font-size: 80px; font-weight: 500;
+                margin-left: 100px;
+                height: 200px;
+                padding: 30px;
+                line-height: 100px;
+                "> 
+                <p> DaTo Airways </p>
+                <p>
+                    The spirit of VIET NAM
+                </p>
+            </div>
+            
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <div
-    style="position: absolute; top: 110px; justify-content: center; display: flex; align-items: center;height: 860px;">
+    style="position: absolute; top: 150px; justify-content: center; display: flex; align-items: center;height: 860px; width: 98%;">
     <div style="z-index: 9999 !important;">
         <app-searchnbook></app-searchnbook>
     </div>

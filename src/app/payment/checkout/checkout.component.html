@@ -1,6 +1,6 @@
 <div class="checkout">
     <div class="row">
-        <h1 style="font-size: 40px !important; margin-bottom: 0px !important;">
+        <h1 style="font-size: 40px !important; margin-bottom: 0px !important; height: 66px; line-height: 66px;">
             Checkout
         </h1>
     </div>
@@ -13,61 +13,99 @@
                 <div class="col-md-12" style="font-size: 24px;">
                     Pleases complete your payment below. Remember, your privacy is important to us and we all appreciate that.
                 </div>
-            </div>  
-            <div class="row" style="margin-top: 30px;">
-                <div class="col-md-1" style="width:30px; font-size:20px;">
-                    <fa-icon [icon]="faCreditCard"></fa-icon>
+            </div> 
+            
+            <div class="row" style="margin-top: 50px; font-size: 30px; font-weight: 500;">
+                <div class="col-md-12">
+                    Payment method
                 </div>
-                <div class="col-md-11">
-                    <div class="credit">
-                        <b>Credit/Debit Card</b>
+            </div>
+            <div style="height: 50px;"></div>
+            <div class="row">
+                <mat-radio-group aria-label="Select an option" (change)="changeMethod()">
+                    <div [ngClass]="{choosemethod : paymentMethod == 1}" 
+                        style="border : 2px solid black; padding: 10px; padding-left: 20px; width: 48.5%; display: inline-block; height: 80px; line-height: 55px; border-radius: 10px;">
+                            <mat-radio-button value=1 style="font-size: 25px;" checked>Credit/Debit card</mat-radio-button>
+                            <span style="margin-left: 55%;"><fa-icon [icon]="faCreditCard" style="font-size: 25px;"></fa-icon></span>
+                    </div>
+                    <div [ngClass]="{choosemethod : paymentMethod == 2}" 
+                        style="border : 2px solid black; padding: 10px; padding-left: 20px; width: 48.5%; display: inline-block; margin-left: 3%; height: 80px; line-height: 55px; border-radius: 10px;">
+                        <mat-radio-button value=2 style="font-size: 25px;">Paypal</mat-radio-button>
+                        <span style="margin-left: 75%;"><img src="../../../assets/image/paypal-brands.svg" alt="" height="27px"></span>
+                    </div>
+                </mat-radio-group>
+            </div>
+            
+            <ng-container *ngIf = "paymentMethod == 1 ; else paypal">
+                <div class="row" style="margin-top: 50px;">
+                    <div class="col-md-3">
+                        <div class="credit">
+                            <b style=" font-size: 30px; font-weight: 500;">Credit/Debit Card</b> &nbsp;
+                            <fa-icon [icon]="faCreditCard"></fa-icon>
+                        </div>
+                    </div>
+                    <hr style="margin-top:20px;">
+                </div>
+    
+                <div class="row" style="margin-top: 20px;  font-size: 20px;">
+                    <div class="col-md-1" style="width: 40px; ">
+                        <fa-icon [icon]="faCircleInfo" style="font-size: 25px;"></fa-icon>
+                    </div>
+                    <div class="col-md-11" style="align-items: center; display: flex;">
+                        All of the following information is &nbsp;<b>required</b>
                     </div>
                 </div>
-                <hr style="margin-top:20px;">
-            </div>
-
-            <div class="row" style="margin-top: 20px;  font-size: 20px;">
-                <div class="col-md-1" style="width: 40px; ">
-                    <fa-icon [icon]="faCircleInfo" style="font-size: 25px;"></fa-icon>
+    
+                <div class="row" style="margin-top: 20px;  font-size: 20px; margin-top: 20px;">
+                    <div class="col-md-1" style="width: 40px;">
+                        <fa-icon [icon]="faCircleInfo" style="font-size: 25px;"></fa-icon>
+                    </div>
+                    <div class="col-md-11" style="align-items: center; display: flex;">
+                        All of the following information is &nbsp;<b>secure</b>
+                    </div>
                 </div>
-                <div class="col-md-11" style="align-items: center; display: flex;">
-                    All of the following information is &nbsp;<b>required</b>
+    
+                <div class="type">
+                    <input type="number" class="form-control" placeholder="Card Number" aria-label="Recipient's username" aria-describedby="basic-addon2"
+                        style="width: 48.5%;">
+    
+                    <span style="margin-left: 3%; font-size: 25px; width : 8.5%">Expire Date</span> 
+                    <input maxlength='5' placeholder="MM/YY" type="text" (keyup)="formatString($event)" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2"
+                        style="width: 36%; margin-left: 2%;">
+    
+                    <input type="text" class="form-control" placeholder="Name on Card" aria-label="Recipient's username" aria-describedby="basic-addon2"
+                        style="width: 48.5%;">
+    
+                    <input type="password" maxlength='3' class="form-control" placeholder="CVV" aria-label="Recipient's username" aria-describedby="basic-addon2"
+                        style="width: 48.5%; margin-left: 3%;">
+                </div>    
+            </ng-container>
+
+            <ng-template #paypal>
+                <div class="row" style="margin-top: 50px;">
+                    <div class="col-md-3">
+                        <div class="credit">
+                            <b style=" font-size: 30px; font-weight: 500;">Paypal</b> &nbsp;
+                            <span><img src="../../../assets/image/paypal-brands.svg" alt="" height="27px"></span>
+                        </div>
+                    </div>
+                    <hr style="margin-top:20px;">
                 </div>
-            </div>
+                <!-- <div class="row"> -->
+                    <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+                    <!-- <div style="height: 100px; position: relative; top: -110px; background-color: white; z-index: 999999 !important;"></div> -->
+                <!-- </div> -->
+            </ng-template>
 
-            <div class="row" style="margin-top: 20px;  font-size: 20px; margin-top: 20px;">
-                <div class="col-md-1" style="width: 40px;">
-                    <fa-icon [icon]="faCircleInfo" style="font-size: 25px;"></fa-icon>
-                </div>
-                <div class="col-md-11" style="align-items: center; display: flex;">
-                    All of the following information is &nbsp;<b>secure</b>
-                </div>
-            </div>
-
-            <div class="type">
-                <input type="number" class="form-control" placeholder="Card Number" aria-label="Recipient's username" aria-describedby="basic-addon2"
-                    style="width: 48.5%;">
-
-                <span style="margin-left: 3%; font-size: 25px; width : 8.5%">Expire Date</span> 
-                <input maxlength='5' placeholder="MM/YY" type="text" (keyup)="formatString($event)" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2"
-                    style="width: 36%; margin-left: 2%;">
-
-                <input type="text" class="form-control" placeholder="Name on Card" aria-label="Recipient's username" aria-describedby="basic-addon2"
-                    style="width: 48.5%;">
-
-                <input type="password" maxlength='3' class="form-control" placeholder="CVV" aria-label="Recipient's username" aria-describedby="basic-addon2"
-                    style="width: 48.5%; margin-left: 3%;">
-            </div>
-
-            <div class="row" style="margin-top: 30px;">
+            <div class="row" style="margin-top: 30px;" *ngIf="paymentMethod == 1">
                 <div class="col-md-10" style="font-size: 20px; line-height: 60px;">
-                    By selecting "Buy now," you agree to the terms and conditions that is associated with this purchase.
+                    By selecting "<b>Buy now</b>", you agree to the terms and conditions that is associated with this purchase.
                 </div>
                 <div class="col-md-2">
                     <mat-dialog-actions align="center" style="margin-bottom: 10px;">
-                        <button mat-button data-bs-toggle="modal" data-bs-target="#luggage2"
-                            (click)="buy()"
-                            style="background-color: #E8A207; height: 60px; width: 100%; font-size: 20px;">
+                        <button mat-button data-bs-toggle="modal" data-bs-target="#verify"
+                        (click)="buy()"
+                            style="background-color: #E8A207; height: 60px; width: 100%; font-size: 25px;">
                             Buy now
                         </button>
                     </mat-dialog-actions>
@@ -80,14 +118,14 @@
     
 
 </div>
-
+<!-- <div id="myPaypalButtons"></div> -->
 
 
   
 <!-- Modal -->
-<div class="modal fade" id="luggage2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+<div class="modal fade" id="verify" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
   style="margin-top: 50px;">
-  <div class="modal-dialog" style="border-radius: 5px !important; max-width: 30% !important;">
+  <div class="modal-dialog" style="border-radius: 5px !important; max-width: 35% !important;">
     <div class="modal-content">
 
         <!-- header -->
@@ -102,15 +140,33 @@
             </p>
         </div>
 
-        <div class="modal-body" style="padding: 30px;">
+        <div class="modal-body" style="padding: 30px">
+            <div class="row" style="margin-bottom: 30px;">
+                <div class="col-md-6 notice" [ngStyle]="{display : warning ? 'block' : 'none'}">
+                    <fa-icon [icon]="faCircleExclamation" style="color: rgb(177, 2, 2);"></fa-icon>
+                    <span style="margin-left: 8px; font-weight: 500; font-size: 25px; color: #0C172E;">OTP is incorrect</span>
+                  </div>
+            </div>
             <div class="row">
                 <div class="col-md-4" style="font-size: 25px; line-height: 70px;">
                     Type OTP code
                 </div>
                 <div class="col-md-8">
                     <input 
+                        [(ngModel)]="otpCode" (keyup)="change()"
                         style="height: 70px; font-size: 25px;"
-                        type="tel" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                </div>
+            </div>
+            <div style="height: 30px;"></div>
+            <div class="row">
+                <div class="col-md-12" style="text-align: right; font-size: 20px; height: 20px;">
+                    <div *ngIf="timeOut != -1">
+                        <p style="color: red; display: inline-block;">{{timeOut}}</p> &nbsp;seconds left
+                    </div>
+                    <div *ngIf="timeOut == -1" style="height: 20px;" (click)="buy()">
+                        <button style="border: none; background-color: white; color: #0C172E;">Resend OPT code</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -118,13 +174,13 @@
         <!-- footer -->
         <div class="modal-footer" style="padding: 30px;">
             <button mat-button data-bs-dismiss="modal"
-            style="border: 1px solid rgb(210, 210, 210); height: 60px; width: 150px; font-size: 20px; margin-right: 20px;">
-            Close
+                style="border: 1px solid rgb(210, 210, 210); height: 60px; width: 150px; font-size: 20px; margin-right: 20px !important;">
+                Close
             </button>
-            <button mat-button data-bs-dismiss="modal"
-            style="background-color: #E8A207; height: 60px; width: 150px; font-size: 20px;">
-            VERIFY
-        </button>
+            <button mat-button (click)="verify()"
+                style="background-color: #E8A207; height: 60px; width: 150px; font-size: 20px;" >
+                VERIFY
+            </button>
         </div>
 
     </div>

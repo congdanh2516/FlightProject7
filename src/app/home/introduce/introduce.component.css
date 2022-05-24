@@ -1,0 +1,44 @@
+.introducecard {
+    height :400px;
+    width: 350px;
+    border: 2px solid black;
+    margin: auto;
+    background-color: white;
+    border-radius: 15px;
+}
+
+.introducecard:hover {
+    box-shadow: 1px 1px 7px 5px #ccc;
+    transition : 0.3s;
+}
+
+.image{
+    height: 40%;
+
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.slash{
+    height: 5%;
+    text-align: center;
+    font-weight: 700;
+    font-size: 25px;
+}
+
+.title{
+    margin-top: 10px;
+    height: 14%;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 40px;
+}
+.script{
+    height: 40%;
+    font-size: 20px;
+    text-align: center;
+    padding: 10px;
+    line-height: 25px;
+}

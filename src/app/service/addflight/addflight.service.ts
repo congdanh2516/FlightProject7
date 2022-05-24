@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { LoginService } from '../login/login.service';
 
 const httpOtions = {
   headers : new HttpHeaders({'Content-Type' : 'application/json'})
@@ -10,7 +11,7 @@ const httpOtions = {
 })
 export class AddflightService {
 
-  constructor(private httpClient : HttpClient) {}
+  constructor(private httpClient : HttpClient, private login : LoginService) {}
 
 
   getAirportFrom(){
@@ -22,6 +23,9 @@ export class AddflightService {
   }
 
   addFlight(flight : any){
-    return this.httpClient.post("http://localhost:9000/api/flights/add", flight, httpOtions);
+    let headers = new HttpHeaders()
+      .set('Authorization' , `bearer ${this.login.getAuthToken()}`)
+      .set("Content-Type", "Application/json");
+    return this.httpClient.post("http://localhost:9000/api/flights/add", flight, {headers : headers});
   }
 }

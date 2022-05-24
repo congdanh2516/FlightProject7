@@ -43,19 +43,19 @@ input, select{
     border-radius: 5px !important;
     border: 2px solid rgba(0, 0, 0, 0.253);
     height : 70px;
-    font-size: 20px;
+    font-size: 25px;
+    font-weight: 500;
 }
 
-input:hover, select:hover{
+/* input:hover, select:hover{
     border: 2px solid #0C172E !important;
     box-shadow: none !important;
-}   
+}    */
 
 .enterinfo{
     padding: 0px;
 }
 .enterinfo input{
-    margin-top: 30px;
     display: inline-block;
 }
 
@@ -70,4 +70,25 @@ select{
 
 .error{
     border-color: red !important;
+}
+
+.notice_error{
+    background-color: #f8f8f8; 
+    box-shadow: 1px 1px 7px 5px #ccc; 
+    margin-top: 30px;
+    margin-left: 20px;
+    padding: 25px;
+    font-size: 20px;
+
+    display: none;
+}
+
+
+select:focus, input:focus{
+    outline: none;
+    background-color: #f8f8f8;
+    box-shadow: 1px 1px 7px 5px #ccc;
+    border: none;
+    padding: 20px;
+    transition: 0.2s;
 }

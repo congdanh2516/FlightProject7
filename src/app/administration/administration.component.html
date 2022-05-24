@@ -1,43 +1,7 @@
-<!-- <div class="row">
-    <div class="col-md-7 animate__animated animate__fadeInLeft" 
-        style=" 
-        background-image: url('../../assets/image/admin3_1.jpg');
-        background-size: cover;
-        "
-        >
-
-        <div class="search-box">
-            <input class="search-txt" type="text" name="" id="" placeholder="Nhập mã chuyến bay">
-            <a href="#" class="search-btn">
-                <fa-icon [icon]="faMagnifyingGlass" style="color: #E8A207; font-size: 25px;"></fa-icon>
-            </a>
-        </div>
-        <p>
-            Advance Search
-        </p>
-       
-    </div>
-    
-    <div class="col-md-5 animate__animated animate__fadeInLeft" 
-        style="
-        background-image: url('../../assets/image/admin6.jfif');
-        background-size: cover;
-        justify-content: center; display: flex; align-items: center;">
-
-        <button mat-button (click)="openDialog()" 
-            style="background-color: #0C172E; color: white; border: none; font-size: 25px;
-            border-radius: 50%; height: 70px; width: 70px; font-size: 40px;
-        color: #E8A207">+
-        </button> 
-
-    </div>
-</div> -->
-
-
 <div class="admin">
     <div class="quote">
         <div class="row" 
-            style="height: 700px; margin-top: 50px; justify-content: center; display:flex; align-items: center; text-align: center;">
+            style="height: 950px; margin-top: 50px; justify-content: center; display:flex; align-items: center; text-align: center;">
             <div class="col-md-1"></div>
             <div class="col-md-10" class="animate__animated animate__slideInUp">
                 <p style="font-size: 70px;">Discover new lands</p>
@@ -45,7 +9,7 @@
                 <p style="font-size: 40px; color: #E8A207;">______</p>
                 <div class="option">
                     <div class="suboption">
-                        <button mat-button (click)="searchFlight()"  
+                        <button mat-button  
                             style="color: #0C172E; border: none; font-size: 25px;">
                             <a 
                             data-bs-toggle="modal" data-bs-target="#luggage"
@@ -55,7 +19,8 @@
                         </button>
                     </div>
                     <div class="suboption" style="border-right: 1px solid black;">
-                        <button mat-button (click)="openDialogAddNew()" 
+                        <!-- openDialogAddNew() -->
+                        <button mat-button (click)="createFlight()" 
                             style="color: #0C172E; border: none; font-size: 25px;">
                             Create new flight
                         </button> 
@@ -75,13 +40,12 @@
 </div>
 
 
-
-<div class="modal fade" id="flightStatus" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="flightStatus" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="search">
         <div class="row">
             <div class="col-md-9">
-                <input style="height: 70px;" 
-                    class="form-control" type="text" name="" placeholder="Enter Ticket Number">
+                <input style="height: 70px;"  [(ngModel)]="flightCode"
+                    class="form-control" type="text" name="" placeholder="Enter Flight code">
             </div>
             <div class="col-md-3">
                 <button mat-button
@@ -91,7 +55,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <div class="modal fade" id="luggage" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
     style="margin-top: 140px; padding: 0px !important; ">
@@ -99,13 +63,15 @@
       <div class="modal-content">
         <div class="modal-body" style="padding: 0px !important;">
             <div class="row" >
-                <div class="col-md-10">
-                    <input style="height: 70px;" 
-                        class="form-control" type="text" name="" placeholder="Enter Ticket Number">
+                <div class="col-md-9">
+                    <input style="height: 70px;"  [(ngModel)]="flightCode"
+                        class="form-control" type="text" name="" placeholder="Enter Flight code">
                 </div>
-                <div class="col-md-2">
-                    <button mat-button
-                        style="background-color: #E8A207; height: 70px; font-size: 20px;">
+                <div class="col-md-3">
+                    <!-- disabled="{{flightCode != '' ? false : true}}"  -->
+                    <button mat-button mat-button data-bs-dismiss="modal" 
+                        (click)="searchFlight()"
+                        style="background-color: #E8A207; height: 70px; font-size: 20px; width: 200px;">
                         Search
                     </button>
                 </div>
@@ -123,3 +89,4 @@
     </div>
 </div>
 
+<div style="height: 150px; background-color: #f8f8f8;"></div>

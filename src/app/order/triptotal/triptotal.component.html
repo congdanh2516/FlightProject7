@@ -7,7 +7,7 @@
         <div class="info">
             {{flight_searched.type ? 'ONE WAY' : 'ROUND TRIP'}} - {{this.flight_searched.quantityPassenger}} Passenger
         </div>
-        <div class="flightsumary" *ngFor = "let element of flight">
+        <div class="flightsumary" *ngFor = "let element of flight; let i = index">
             <p>{{element[0].departure.name.toUpperCase()}} to {{element[0].destination.name.toUpperCase()}}</p>
             <p>{{element[0].departDate}} • {{element[0].departHour}} to {{element[0].arrivedTime}}</p>
             <a data-bs-toggle="collapse" href=#{{element[0].airCode}} role="button" aria-expanded="false" aria-controls="collapseExample" 
@@ -24,7 +24,7 @@
                         <b>Duration</b> : {{element[0].timeTemp.hour}} hour(s) and {{element[0].timeTemp.minute}} minute(s) <br>
                         <b>Flight Code</b> : {{element[0].airCode}} <br>
                         <b>Aircraft Type</b> : {{element[0].airName}} <br>
-                        <b>Class</b> : Business
+                        <b>Class</b> : {{cfc[i].type == 'eco' ? 'Economy' : 'Business'}}
                     </p>
                 </div>
             </div>
@@ -37,35 +37,193 @@
                    Fare
                </div>
                <div class="col-md-6" style="text-align: right;">
-                   {{fare}} VND
+                    <a data-bs-toggle="collapse" href=#fare role="button" aria-expanded="false" aria-controls="collapseExample" 
+                        style="text-decoration: none;">
+                        {{fare | currency:'VND':'VND '}}
+                    </a>
                </div>
-           </div>
+
+                <div class="collapse" id="fare" style="width: 100%; font-size: 20px; margin-top: 10px;">
+                    <div class="card card-body" 
+                        style="border: none !important; padding: 0px !important">
+                        <hr>
+                        
+                        <div class="row" >
+                            <div class="col-md-1"></div>
+                            <div class="col-md-4">
+                                {{flight_searched.origin}} to {{flight_searched.destination}}
+                            </div>
+                            <div class="col-md-2">
+                                {{flight_searched.quantityPassenger}} <fa-icon [icon]="faPerson"></fa-icon>
+                            </div>
+                            <div class="col-md-5" style="text-align: right;">
+                                {{fareList[0] * flight_searched.quantityPassenger | currency:'VND':'VND '}}
+                            </div>
+                        </div>
+
+                        <div class="row" [ngStyle] = "{display : flight_searched.type ? 'none' : ''}">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-4">
+                                {{flight_searched.destination}} to {{flight_searched.origin}}
+                            </div>
+                            <div class="col-md-2">
+                                {{flight_searched.quantityPassenger}} <fa-icon [icon]="faPerson"></fa-icon>
+                            </div>
+                            <div class="col-md-5" style="text-align: right;">
+                                {{fareList[1] * flight_searched.quantityPassenger | currency:'VND':'VND '}}
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                </div>
+
+            </div>
 
            <div class="row">
                 <div class="col-md-6">
                     Taxes and fee
                 </div>
                 <div class="col-md-6" style="text-align: right;">
-                    {{taxes}} VND
+                    <a data-bs-toggle="collapse" href=#taxesnfee role="button" aria-expanded="false" aria-controls="collapseExample" 
+                        style="text-decoration: none;">
+                        {{taxesnfee + (secureFee + domesticServiceFee) * flight_searched.quantityPassenger | currency:'VND':'VND '}}
+                    </a>
                 </div>
+
+                <div class="collapse" id="taxesnfee" style="width: 100%; font-size: 20px; margin-top: 10px;">
+                    <div class="card card-body" 
+                        style="border: none !important; padding: 0px !important">
+                        <hr>
+                        
+                        <div class="row" >
+                            <div class="col-md-1"></div>
+                            <div class="col-md-4">
+                                VAT tax
+                            </div>
+                            <div class="col-md-2">
+                                {{flight_searched.quantityPassenger}} <fa-icon [icon]="faPerson"></fa-icon>
+                            </div>
+                            <div class="col-md-5" style="text-align: right;">
+                                {{taxesnfee | currency:'VND':'VND '}}
+                            </div>
+                        </div>
+    
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-4">
+                                Secure fee 
+                            </div>
+                            <div class="col-md-2">
+                                {{flight_searched.quantityPassenger}} <fa-icon [icon]="faPerson"></fa-icon>
+                            </div>
+                            <div class="col-md-5" style="text-align: right;">
+                                {{secureFee * flight_searched.quantityPassenger | currency:'VND':'VND '}}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-4">
+                                Airport fee
+                            </div>
+                            <div class="col-md-2">
+                                {{flight_searched.quantityPassenger}} <fa-icon [icon]="faPerson"></fa-icon>
+                            </div>
+                            <div class="col-md-5" style="text-align: right;">
+                                {{domesticServiceFee * flight_searched.quantityPassenger | currency:'VND':'VND '}}
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row" [ngStyle]="{display : (trip1 + trip2) == 0 ? 'none' : ''}">
+                <div class="col-md-6">
+                    Services (Luggage)
+                </div>
+                <div class="col-md-6" style="text-align: right;">
+                     <a data-bs-toggle="collapse" href=#services role="button" aria-expanded="false" aria-controls="collapseExample" 
+                         style="text-decoration: none;">
+                         {{LG010 * 162000 + LG023 * 270000 | currency:'VND':'VND '}}
+                     </a>
+                </div>
+ 
+                <div class="collapse" id="services" style="width: 100%; font-size: 20px; margin-top: 10px;">
+                    <div class="card card-body" 
+                        style="border: none !important; padding: 0px !important">
+                        <hr>
+                        <div [ngStyle]="{display : trip1 == 0 ? 'none' : ''}">
+                            <div class="row" >
+                                <!-- <div class="col-md-1"></div> -->
+                                <div class="col-md-4">
+                                    {{flight_searched.origin}} to {{flight_searched.destination}}
+                                </div>
+                            </div>
+                            <div style="margin-left: 20px;">
+                                <div class="row" *ngFor="let element of luggages" [ngStyle]="{display : (element[0].LG010 + element[0].LG023) == 0 ? 'none' : ''}">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="col-md-5">
+                                        {{element[0].name}}
+                                    </div>
+                                    <div class="col-md-2">
+                                        {{element[0].LG010 + element[0].LG023}} <fa-icon [icon]="faBriefcase"></fa-icon>
+                                    </div>
+                                    <div class="col-md-5" style="text-align: right;">
+                                        {{element[0].LG010*162000 + element[0].LG023*270000 | currency:'VND':'VND '}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div [ngStyle]="{display : trip2 == 0 ? 'none' : ''}">
+                            <div class="row" [ngStyle] = "{display : flight_searched.type ? 'none' : ''}">
+                                <!-- <div class="col-md-1"></div> -->
+                                <div class="col-md-4">
+                                    {{flight_searched.destination}} to {{flight_searched.origin}}
+                                </div>
+                            </div>
+                            <div style="margin-left: 20px;">
+                                <div class="row" *ngFor="let element of luggages" [ngStyle]="{display : (element[1].LG010 + element[1].LG023) == 0 ? 'none' : ''}">
+                                    <!-- <div class="col-md-1"></div> -->
+                                    <div class="col-md-5">
+                                        {{element[1].name}}
+                                    </div>
+                                    <div class="col-md-2">
+                                        {{element[1].LG010 + element[1].LG023}} <fa-icon [icon]="faBriefcase"></fa-icon>
+                                    </div>
+                                    <div class="col-md-5" style="text-align: right;">
+                                        {{element[1].LG010*162000 + element[1].LG023*270000 | currency:'VND':'VND '}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                </div>
+
             </div>
 
             <div class="row" style="font-size: 25px; font-weight: bold;">
                 <div class="col-md-6">
                     Total 
                 </div>
-                <div class="col-md-6" style="text-align: right;">
-                    {{fare + taxes}} VND
+                <div class="col-md-6" style="text-align: right;" [(ngModel)]="total">
+                    {{fare + taxesnfee + (secureFee + domesticServiceFee) * flight_searched.quantityPassenger + LG010 * 162000 + LG023 * 270000 | currency:'VND':'VND '}}
                 </div>
+                
             </div>
         </div>
 
-        <div style="padding : 0 30px">
+        <div style="padding : 0 30px" [ngStyle]="{display : paymentButton ? '' : 'none'}">
             <mat-dialog-actions align="center" style="margin-bottom: 10px;">
                 <button mat-button 
                     (click)="payment()"
-                    style="background-color: #E8A207; height: 60px; width: 100%; font-size: 20px;">
-                    Go ahead Payment
+                    style="background-color: #E8A207; height: 60px; width: 100%; font-size: 25px;">
+                    Payment
                 </button>
             </mat-dialog-actions>
         </div>

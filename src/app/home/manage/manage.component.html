@@ -1,7 +1,7 @@
-<div class="row manage">
+<div class="row manage" *ngIf="!showTicket">
     <div class="col-md-3"></div>
     <div class="col-md-5">
-        <input class="form-control" type="text" name="" placeholder="Enter Ticket Number">
+        <input class="form-control" type="text" name="" placeholder="Enter Ticket Number" [(ngModel)]="ticketString">
     </div>
     <div class="col-md-1">
         <button mat-button
@@ -12,12 +12,19 @@
     </div>
     <div class="col-md-3"></div>
 </div>
-
-<div [ngClass]="{appear : !ticket}" class="ticketinfo">
-    <div class="row">
+<div class="row" *ngIf="checkValidTicket">
+    <div class="col-md-12" style="text-align: center; color: rgb(153, 3, 3);">
+        <fa-icon [icon]="faExclamation"></fa-icon> This ticket dose not exist
+    </div>
+</div>
+<div [ngClass]="{appear : ticket}" class="ticketinfo" *ngIf="!showTicket">
+    <div class="row" [ngStyle]="{visibility : ticket ? 'visible' : 'hidden'}">
         <div class="col-md-1"></div>
-        <div class="col-md-11">
+        <div class="col-md-9">
             <h1 style="padding: 0px !important; font-size: 40px !important; margin-bottom: 0px !important;">Ticket Info</h1>
+        </div>
+        <div class="col-md-1" style="text-align: right;">
+            <fa-icon [icon]="faXmark" (click)="ticket = false"></fa-icon>
         </div>
     </div>
 
@@ -31,10 +38,10 @@
         <div class="row">
             <div class="col-md-1"></div>
             <div class="col-md-5">
-                Identification No: 
+                Identification No: <b>{{ticketInfo.userInfo.identificationCard}}</b>
             </div>
             <div class="col-md-5">
-                Name: 
+                Name: <b>{{ticketInfo.userInfo.userName.firstName + " " + ticketInfo.userInfo.userName.lastName}}</b>
             </div>
             <div class="col-md-1"></div>
         </div>
@@ -47,13 +54,14 @@
                 <fa-icon [icon]="faPlane"></fa-icon>&nbsp; Flight Info
             </div>
         </div>
+
         <div class="row">
             <div class="col-md-1"></div>
             <div class="col-md-5">
-                From: 
+                From: <b>{{ticketInfo.idFlight.departure.name}}</b>
             </div>
             <div class="col-md-5">
-                To:
+                To: <b>{{ticketInfo.idFlight.destination.name}}</b>
             </div>
             <div class="col-md-1"></div>
         </div>
@@ -61,13 +69,17 @@
         <div class="row">
             <div class="col-md-1"></div>
             <div class="col-md-5">
-                Date: 
+                Departure date: <b>{{departureDate}}</b>
             </div>
-            <div class="col-md-5">
-                Time:
+            <div class="col-md-3">
+                Time: <b>{{departureTime}}</b>
+            </div>
+            <div class="col-md-2">
+                Class: <b>{{ticketInfo.trader ? "Business" : "Economy"}}</b>
             </div>
             <div class="col-md-1"></div>
         </div>
+
     </div>
 
     <div class="passengerinfo">
@@ -79,15 +91,162 @@
         </div>
         <div class="row">
             <div class="col-md-1"></div>
-            <div class="col-md-1">
-
+            <div class="col-md-3" *ngIf="(ticketInfo.service.luggage.LG010 * 10 + ticketInfo.service.luggage.LG010 * 23) != 0">
+                Luggage: <b>{{ticketInfo.service.luggage.LG010 * 10 + ticketInfo.service.luggage.LG010 * 23}} kg</b>
             </div>
-            <div class="col-md-1">
-
+            <div class="col-md-3" *ngIf="ticketInfo.service.meal != ''">
+                Special meal: <b>{{ticketInfo.service.meal == 'ML001' ? 'Vegetable' : ''}} {{ticketInfo.service.meal == 'ML002' ? 'Hala' : ''}} {{ticketInfo.service.meal == 'ML003' ? 'Fruit' : ''}}</b>
             </div>
+            <div class="col-md-2" *ngIf="ticketInfo.service.crip">
+                <b>{{ticketInfo.service.crip ? 'Crip' : ''}}</b>
+            </div>
+            <div class="col-md-2" *ngIf="ticketInfo.service.health">
+                <b>{{ticketInfo.service.health ? 'Health' : ''}}</b>
+            </div>
+            
             <div class="col-md-1"></div>
         </div>
     </div>
 
+
+   <div class="row">
+       <div class="col-md-1"></div>
+       <div class="col-md-10" style="text-align: right;">
+        <button (click)="showTicket_fun()"
+            style="font-size: 28px; color: #0C172E; border: none; background-color: white;">
+            View and download ticket <fa-icon [icon]="faChevronRight "></fa-icon>
+       </button>
+       </div>
+       <div class="col-md-1"></div>
+   </div>
+
+
+ 
 </div>
 
+
+
+<div class="row" *ngIf="showTicket" style="margin-bottom: 50px;">
+    <div class="col-md-1"></div>
+    <div class="col-md-10" style="text-align: right;">
+        <button (click)="showTicket_fun()" style="border: none; background-color: white; margin-right: 25px;">
+            <fa-icon [icon]="faChevronLeft"></fa-icon> Back
+        </button>
+        <button mat-button data-bs-dismiss="modal" (click)="downloadAsPng()"
+            style="border: 1px solid rgb(210, 210, 210); height: 60px; width: 150px; font-size: 20px; margin-right: 20px !important;">
+            Download
+        </button>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+
+
+
+  <!-- ticket -->
+  <div *ngIf="showTicket" id="ticketdownload" class="ticket" style="height: 583px; width: 1220px; border-radius: 20 !important; background-color: rgba(255, 255, 255, 0); margin: auto; margin-bottom: 56px;">
+
+    <div class="row" style="background-color: #0C172E; height: 100px; border-top-left-radius: 0px; border-top-right-radius: 0px; margin : 0">
+
+        <div class="col-md-5" style="line-height: 100px; padding-left: 50px">
+            <fa-icon [icon]="faGlobe" style="font-size: 40px; color: white;"></fa-icon> &nbsp;
+            <span style="font-size: 40px; color: white; font-weight: bold;">DaTo Airways</span>
+        </div>
+
+        <div class="col-md-4" style="color: white; line-height: 100px; font-size: 30px;">
+            {{ticketInfo.trader? 'Business Class' : 'Economy Class'}}
+        </div>
+
+        <div class="col-md-3" style="display : flex; align-items: center">
+            <img src="../../../assets/image/skyteam2.png" alt="" width="200px" height="60px">
+        </div>
+
+    </div>
+
+    <!-- <div style="height: 15px;"></div> -->
+
+    <div class="row">
+
+        <div class="col-md-1"></div>
+
+        <div class="col-md-4">
+            <p>Carrier</p>
+            <h1>DaTo Airways</h1>
+        </div>
+
+        <div class="col-md-3">
+            <img src="../../../assets/image/qrcode.png" alt="" height="90px">
+        </div>
+
+        <div class="col-md-3">
+            <p>Flight code</p>
+            <h1>{{ticketInfo.idFlight.airCode}}</h1>
+        </div>
+
+    </div>
+
+    <div class="row" style="margin-top: 10px;">
+
+        <div class="col-md-1"></div>
+
+        <div class="col-md-4">
+            <p>Name</p>
+            <h1>{{ticketInfo.userInfo.userName.firstName + " " + ticketInfo.userInfo.userName.lastName}}</h1>
+        </div>
+
+        <div class="col-md-3"></div>
+
+        <div class="col-md-3">
+            <p>Gate</p>
+            <h1>08</h1>
+        </div>
+
+    </div>
+
+    <!-- <div style="height: 15px;"></div> -->
+
+    <div class="row" style="margin-top: 10px;">
+
+        <div class="col-md-1"></div>
+
+        <div class="col-md-4">
+            <p>From</p>
+            <h1>{{ticketInfo.idFlight.departure.name}}</h1>
+        </div>
+
+        <div class="col-md-3">
+            <p>Bording time</p>
+            <h1>{{departureTime}}</h1>
+        </div>
+
+        <div class="col-md-3">
+            <p>Seat</p>
+            <h1>Ckeck-in Required</h1>
+        </div>
+
+    </div>
+
+    <!-- <div style="height: 15px;"></div> -->
+    <div class="row" style="margin-top: 10px;">
+        <div class="col-md-1"></div>
+        <div class="col-md-4">
+            <p>To</p>
+            <h1>{{ticketInfo.idFlight.destination.name}}</h1>
+        </div>
+        <div class="col-md-3">
+            <p>Departure date</p>
+            <h1>{{departureDate}}</h1>
+        </div>
+        <div class="col-md-3">
+            <p>Aircraft name</p>
+            <h1>{{ticketInfo.idFlight.airName}}</h1>
+        </div>
+    </div>
+
+    <div style="height: 25px;"></div>
+    <div class="row" style="margin: 0">
+        <div class="col-md-8" style="background-color: #0C172E; height: 50px;"></div>
+        <div class="col-md-4" style="background-color: #E8A207; text-align: center; line-height: 50px;">
+            Boarding pass
+        </div>
+    </div>
+</div>

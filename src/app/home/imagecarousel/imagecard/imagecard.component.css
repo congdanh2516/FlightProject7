@@ -1,0 +1,26 @@
+.place{
+    background-size: cover;
+    background-repeat: no-repeat;
+    height : 500px;
+    position: relative;
+    border-radius: 15px;
+}
+
+.text{
+    position: relative;
+    top : 80%;
+    font-size: 30px;
+    color: #E8A207;
+    font-family: 'Raleway', sans-serif;
+    width: 80%;
+    height: 70px;
+    line-height: 70px;
+    padding-left: 10px;
+    font-weight: 700;
+}
+
+.place:hover .text{
+    background-color: #0c172e44;
+    box-shadow: 1px 1px 7px 5px #ccc;
+    transition : 0.4s;
+}

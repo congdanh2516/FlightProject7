@@ -2,8 +2,8 @@
     height: 120px;;
     line-height: 100px;
     background-color: #0C172E;
-    padding:0 30px;
-    padding-left: 0px;
+    /* padding:0 30px;
+    padding-left: 0px; */
     color: white;
     
 	display: flex;
@@ -13,4 +13,9 @@
 a{
     color: white;
     font-family: Tahoma;
+ }
+
+
+ .name:hover .logout{
+    display: none;
  }

@@ -5,6 +5,10 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { faCirclePlus } from '@fortawesome/free-solid-svg-icons';
 import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 
+import { LoginService } from '../service/login/login.service';
+import { Router } from '@angular/router';
+
+
 @Component({
   selector: 'app-administration',
   templateUrl: './administration.component.html',
@@ -12,10 +16,31 @@ import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 })
 export class AdministrationComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private login : LoginService, private router : Router) { 
+    // this.login.getRole().subscribe(
+    //   data => {
+    //     console.log("Role")
+    //     console.log(data);
+    //     if(data.role == 'admin'){
+    //       this.router.navigateByUrl('/admin')
+    //     }
+    //     else {
+    //       this.router.navigateByUrl('/home');
+    //     }
+    //   });
+
+    if (!localStorage.getItem('foo')) { 
+      localStorage.setItem('foo', 'no reload') 
+      location.reload() 
+    } else {
+      localStorage.removeItem('foo') 
+    }
+  }
 
   ngOnInit(): void {
+    
   }
+
 
   //icon
   faMagnifyingGlass = faMagnifyingGlass;
@@ -45,9 +70,17 @@ export class AdministrationComponent implements OnInit {
     });
   }
 
+  public flightCode : string = "";
   searchFlight(){
-    this.blur=true;
+    if(this.flightCode != ""){
+      console.log(this.flightCode);
+      this.router.navigateByUrl(`/admin/detail/${this.flightCode}`)
+    }
   }
 
   blur : boolean = false;
+
+  createFlight(){
+    this.router.navigateByUrl('/admin/create');
+  }
 }

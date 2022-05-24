@@ -33,8 +33,7 @@
           <ng-container *ngIf="!type; else roundTrip">
             <mat-form-field appearance="legacy" (click)="changeBlur()" style="width: 44.5%;">
               <mat-label>Depart Date - Return Date</mat-label>
-              <!-- [min]="minDate"  -->
-              <mat-date-range-input [formGroup]="range" [rangePicker]="picker" >
+              <mat-date-range-input [formGroup]="range" [rangePicker]="picker" [min]="minDate">
                 <input matStartDate formControlName="start"  [(ngModel)]="departDate">
                 <input matEndDate formControlName="end" [(ngModel)]="returnDate">
               </mat-date-range-input>

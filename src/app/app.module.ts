@@ -20,6 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { IvyCarouselModule } from 'angular-responsive-carousel';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -55,6 +57,15 @@ import { ContactInfoComponent } from './order/contact-info/contact-info.componen
 import { LuggagePersonalComponent } from './order/lugage/luggage-personal/luggage-personal.component';
 import { ExpandedservicePersonalComponent } from './order/expandedservice/expandedservice-personal/expandedservice-personal.component';
 import { ManageComponent } from './home/manage/manage.component';
+import { ImagecarouselComponent } from './home/imagecarousel/imagecarousel.component';
+import { ImagecardComponent } from './home/imagecarousel/imagecard/imagecard.component';
+import { AirplaneComponent } from './home/airplane/airplane.component';
+import { AirplanecardComponent } from './home/airplane/airplanecard/airplanecard.component';
+import { IntroduceComponent } from './home/introduce/introduce.component';
+import { StepperComponent } from './home/stepper/stepper.component';
+import { HowtobookComponent } from './home/howtobook/howtobook.component';
+import { DetailComponent } from './administration/detail/detail.component';
+import { PaymentsuccessComponent } from './payment/paymentsuccess/paymentsuccess.component';
 
 
 
@@ -90,7 +101,16 @@ import { ManageComponent } from './home/manage/manage.component';
     ContactInfoComponent,
     LuggagePersonalComponent,
     ExpandedservicePersonalComponent,
-    ManageComponent
+    ManageComponent,
+    ImagecarouselComponent,
+    ImagecardComponent,
+    AirplaneComponent,
+    AirplanecardComponent,
+    IntroduceComponent,
+    StepperComponent,
+    HowtobookComponent,
+    DetailComponent,
+    PaymentsuccessComponent
   ],
   imports: [
     BrowserModule,
@@ -115,7 +135,9 @@ import { ManageComponent } from './home/manage/manage.component';
     HttpClientModule,
     MatRadioModule,
     MatCheckboxModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    IvyCarouselModule,
+    NgxPayPalModule
   ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'fill'}}

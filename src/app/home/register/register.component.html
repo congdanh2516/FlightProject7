@@ -14,7 +14,7 @@
           <mat-label>Password</mat-label>
           <input [(ngModel)]="userPassword" 
           matInput formControlName="firstCtrl" [type]="hide ? 'password' : 'text'" required>
-          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" style="height: 20px !important;">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
         </mat-form-field>
@@ -68,7 +68,7 @@
 
           <mat-form-field appearance="legacy">
             <mat-label>Date of Birth</mat-label>
-            <input matInput formControlName="secondCtrl"
+            <input matInput formControlName="secondCtrl" id="dateOfBirth_2"
                [matDatepicker]="picker" [(ngModel)]="dateOfBirth">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>

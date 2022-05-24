@@ -1,5 +1,5 @@
 <!-- [class.appear]="appear" -->
-<div class="content" [class.appear]="appear">
+<div class="content" [class.appear]="hide">
     <div class="row" style="margin-top: 30px; font-size: 20px;">
         <div class="col-md-1" style="width: 40px;">
             <fa-icon [icon]="faCircleInfo" style="font-size: 25px;"></fa-icon>
@@ -9,36 +9,97 @@
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-md-7 notice" [ngStyle]="{display : error_popup && error_amount >0 ? 'block' : 'none'}">
+          <fa-icon [icon]="faCircleExclamation" style="color: rgb(177, 2, 2);"></fa-icon>
+          <span style="margin-left: 8px; font-weight: 500; font-size: 25px; color: #0C172E;">{{error_amount}} Error. Please resolve before you continue</span>
+          <p style="margin-top: 17px; font-size: 20px;">{{notice}}</p>
+        </div>
+    </div>
+
     <div class="enterinfo">
-        <select [(ngModel)]="suffix" (change)="onChange()"
-            class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" 
-            style="margin-bottom: 0px; width: 20%;" >
-            <option value="" selected="selected" disabled="disable" hidden="hidden">Suffix</option>
-            <option value="1">Mr</option>
-            <option value="0">Ms</option>
-        </select>
 
-        <input [(ngModel)]="firstName" (keyup)="onChange()" [ngClass]="{error : errorFirstName}"
-            type="text" class="form-control" placeholder="First Name" aria-label="Recipient's username" aria-describedby="basic-addon2"
-            style="width: 37%; margin-left: 3%;" required>
+        <div class="row" style="margin-top: 40px; font-size: 20px;">
+            <div class="col-md-5">
+                Last name
+            </div>
+            <div class="col-md-5">
+                First name
+            </div>
+            <div class="col-md-2">
+                Suffix
+            </div>
+        </div>
 
-        <input [(ngModel)]="lastName" (keyup)="onChange()"
-            type="text" class="form-control" placeholder="Last Name" aria-label="Recipient's username" aria-describedby="basic-addon2"
-            style="width: 37%; margin-left: 3%;">
+        <div class="row" style="margin-top: 15px;">
+            
+            <div class="col-md-5">
+                <input [(ngModel)]="firstName" (keyup)="onChange()"
+                    type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2"
+                     required>
+            </div>
+            <div class="col-md-5">
+                <input [(ngModel)]="lastName" (keyup)="onChange()"
+                    type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2"
+                     required>
+            </div>
 
-        <input [(ngModel)]="dateofBirth"  (change)="onChange()"
-            type="date" class="form-control" placeholder="Date of Birth" aria-label="Recipient's username" aria-describedby="basic-addon2"
-            style="width: 48.5%;">
+            <div class="col-md-2">
+                <select [(ngModel)]="suffix" (change)="onChange()"
+                    class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                    <!-- <option value="" selected="selected" disabled="disable" hidden="hidden">Suffix</option> -->
+                    <option value="Mr">Mr</option>
+                    <option value="Ms">Ms</option>
+                </select>
+            </div>
 
-        <input [(ngModel)]="identification" (keyup)="onChange()"
-            type="text" class="form-control" placeholder="Identification No" aria-label="Recipient's username" aria-describedby="basic-addon2"
-            style="width: 48.5%; margin-left: 3%;">
+        </div>
+
+        <div class="row" style="margin-top: 40px; font-size: 20px;">
+            <div class="col-md-5">
+                Date of Birth
+            </div>
+            <div class="col-md-7">
+                Identification Card No.
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 15px;">
+
+            <div class="col-md-2">
+                <select name="" id="" [(ngModel)]=monthBirth class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" (blur)="checkValidDate()"  (change)="onChange()">
+                    <option *ngFor="let element of monthList" value="{{element.value}}">{{element.view}}</option>
+                </select>
+            </div>
+            <div class="col-md-1">
+                <input [(ngModel)]=dateBirth (keyup)="onChange()" (blur)="checkValidDate()"
+                type="text" maxlength="2" class="form-control"  aria-label="Recipient's username" aria-describedby="basic-addon2" placeholder="dd"
+                >
+            </div>
+            <div class="col-md-2">
+                <input [(ngModel)]=yearBirth (keyup)="onChange()" (blur)="checkValidDate()"
+                type="text" maxlength="4" class="form-control"  aria-label="Recipient's username" aria-describedby="basic-addon2" placeholder="yyyy"
+                >
+            </div>
+            <div class="col-md-5">
+                <input [(ngModel)]="identification" (keyup)="onChange()"
+                type="text" class="form-control"  aria-label="Recipient's username" aria-describedby="basic-addon2"
+                >
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 20px;" *ngIf="unvalidDate">
+            <div class="col-md-5" style="font-size: 18px; color: rgb(168, 4, 4);">
+                <fa-icon [icon]="faCircleExclamation"></fa-icon> &nbsp;
+                Pleases enter valid date
+            </div>
+        </div>
 
     </div>
 
 </div>
 
 <!-- [class.appear]="!appear" -->
-<div class="content" [class.appear]="!appear" style="padding: 30px; font-size: 25px;">
+<div class="content" [class.appear]="!hide" style="padding: 30px; font-size: 25px;">
     {{firstName}}&nbsp;{{lastName}}
 </div>

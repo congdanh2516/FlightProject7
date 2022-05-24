@@ -1,0 +1,16 @@
+<div>
+    <div class="step">
+        <span style="font-size: 30px; font-weight: 550; color: #0C172E;" [ngClass]="{active : active == 1 || active == 2 || active == 3}">① </span> 
+        <span style="font-size: 25px;" [ngClass]="{active : active == 1 || active == 2 || active == 3}">Choose flight</span>
+    </div>
+    <span [ngStyle]="{color : active == 2 || active ==3 ? '#E8A207' : ''}" style="font-size: 20px;"> ── </span>
+    <div class="step">
+        <span style="font-size: 30px; font-weight: 550; color: #0C172E;" [ngClass]="{active : active == 2 || active == 1 || active == 3}">② </span> 
+        <span style="font-size: 25px;" [ngClass]="{active : active == 2 || active == 3}">Enter your info</span>
+    </div>
+    <span [ngStyle]="{color : active == 3 ? '#E8A207' : ''}" style="font-size: 20px;"> ── </span>
+    <div class="step">
+        <span style="font-size: 30px; font-weight: 550; color: #0C172E;" [ngClass]="{active : active == 3}">③ </span> 
+        <span style="font-size: 25px;" [ngClass]="{active : active == 3}">Pay</span>
+    </div>
+</div>

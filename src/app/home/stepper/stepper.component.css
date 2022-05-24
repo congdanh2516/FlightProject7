@@ -1,0 +1,11 @@
+.stepper {
+    height: 100px;
+}
+
+.active {
+    font-weight: 700 !important;
+}
+
+.step{
+    display: inline-block;
+}

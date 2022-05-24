@@ -1,21 +1,36 @@
-<div class="row nav_me">
+<div class="row nav_me" id="top">
     <div class="col-md-1"></div>
-    <div class="col-md-1" style="width: 60px; display: flex; align-items: center;">
-        <fa-icon [icon]="faGlobe" style="font-size: 40px;"></fa-icon>
+    <div class="col-md-1" style="width: 50px; display: flex; align-items: center; padding-left: 0 !important;">
+        <fa-icon [icon]="faGlobe" style="font-size: 35px;"></fa-icon>
     </div>
-    <div class="col-md-6 col-sm-5" style="font-size: 50px; font-weight: bold;">
+    <div class="col-md-6 col-sm-5" style="font-size: 40px; font-weight: bold;">
         <a href="/home" style="text-decoration: none; line-height: 60.8px;">
-            DaTo Airways</a>    
+            D A T O</a>    
     </div>
     
     <div class="col-md-4 col-sm-5" style="text-align: right; font-size: 25px; padding-right: 70px;">
-        <button mat-button (click)="openDialog()" 
-            style="background-color: #0C172E; color: white; border: none; font-size: 25px;">
+        <button mat-button (click)="openDialog()" *ngIf="!loggin.loggedIn()"
+            style="background-color: #0C172E; color: #E8A207; border: none; font-size: 25px;">
             Sign in &nbsp; &nbsp;
             <div style="display: inline; height: 100%; position: absolute;">
                 <fa-icon mat-button (click)="openDialog()" [icon]="faCircleUser" style="color: white; font-size: 40px;"></fa-icon>
             </div>
         </button> 
+
+        <button mat-button (click)="logout()" *ngIf="loggin.loggedIn()"
+            style="background-color: #0C172E; color: white; border: none; font-size: 25px;">
+            Log out
+        </button>
+        <span *ngIf="loggin.loggedIn()">  &nbsp; |</span>
+        <button mat-button (click)="accessAdmin()" *ngIf="loggin.loggedIn()"
+            style="background-color: #0C172E; color: white; border: none; font-size: 25px;">
+            {{name}} &nbsp; &nbsp;
+            <div style="display: inline; height: 100%; position: absolute;">
+                <fa-icon mat-button [icon]="faCircleUser" style="color: white; font-size: 40px;"></fa-icon>
+                <!-- <img src="../../../assets/image/avatar.jpg" alt="" height="40px" width="40px" style="border-radius: 50%;"> -->
+            </div>
+        </button> 
     </div>
 </div>
+
 
